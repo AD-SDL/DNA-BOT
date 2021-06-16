@@ -18,9 +18,9 @@ import argparse
 # Constant str
 TEMPLATE_DIR_NAME = 'template_ot2_scripts'
 CLIP_TEMP_FNAME = 'clip_template_noPCR_2.8.py'
-MAGBEAD_TEMP_FNAME = 'purification_template.py'
-F_ASSEMBLY_TEMP_FNAME = 'assembly_template.py'
-TRANS_SPOT_TEMP_FNAME = 'transformation_template.py'
+MAGBEAD_TEMP_FNAME = 'purification_template_2.8.py'
+F_ASSEMBLY_TEMP_FNAME = 'assembly_template_2.7.py'
+TRANS_SPOT_TEMP_FNAME = 'transformation_template_2.8.py'
 CLIP_FNAME = '1_clip.ot2.py'
 MAGBEAD_FNAME = '2_purification.ot2.py'
 F_ASSEMBLY_FNAME = '3_assembly.ot2.py'
