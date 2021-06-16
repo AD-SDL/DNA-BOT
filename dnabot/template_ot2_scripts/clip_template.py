@@ -30,10 +30,10 @@ def run(protocol: protocol_api.ProtocolContext):
         CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9']
         PIPETTE_TYPE = 'P10_Single'
         PIPETTE_MOUNT = 'right'
-        SOURCE_PLATE_TYPE = 'corning_96_wellplate_360ul_flat' # 4ti-0960_FrameStar'
-        DESTINATION_PLATE_TYPE = 'corning_96_wellplate_360ul_flat' #4ti-0960_FrameStar'
+        SOURCE_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt' # 4ti-0960_FrameStar'
+        DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt' #4ti-0960_FrameStar'
         DESTINATION_PLATE_POSITION = '1'
-        TUBE_RACK_TYPE = 'corning_96_wellplate_360ul_flat'#tube-rack_E1415-1500'
+        TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'# using well plate bc we don't have a tube rack at the lab, tube-rack_E1415-1500'
         TUBE_RACK_POSITION = '4'
         MASTER_MIX_WELL = 'A1'
         WATER_WELL = 'A2'
@@ -41,8 +41,6 @@ def run(protocol: protocol_api.ProtocolContext):
         MASTER_MIX_VOLUME = 20
         LINKER_MIX_SETTINGS = (1, 3)
         PART_MIX_SETTINGS = (4, 5)
-
-        dest_well_dict = {'A1':0, 'A2'}
 
         # Tiprack slots
         total_tips = 4 * len(parts_wells)
