@@ -1,0 +1,11 @@
+Converting from API1 to AP2
+
+(1) Change import statement to "from opentrons import protocol_api"
+(2) Nest all functionality in run function
+(3) Change invalid labware macros (for now)
+(4) Convert these methods:
+
+labware.load -> protocol.load_labware
+instruments.P10_Single -> pipette = protocol.load_instrument("p10_single",...
+plate.wells(start_name, length) -> plate.wells()[start_index: end_index]
+tube_rack.wells(well_name) -> tube_wrack.wells_by_name(well_name)
