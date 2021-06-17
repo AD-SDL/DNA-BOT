@@ -170,10 +170,52 @@ def run(protocol):
 
         #transfer prefixes, suffixes, and parts into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
+
+        def transfer_prefix (destination_wells,water_vols):
+
+            for j in range(len(destination_wells)):
+                pipette.aspirate(water_vols[j],water)
+                pipette.dispense(water_vols[j],destination_wells[j])
+                pipette.mix_after(3)
+                pipette.blow_out()
+
+        def transfer_suffix(destination_wells,water_vols):
+
+            for k in range(len(destination_wells)):
+            pipette.aspirate(water_vols[k],water)
+            pipette.dispense(water_vols[k],destination_wells[k])
+            pipette.mix_after(3)
+            pipette.blow_out()
+
+        def transfer_part(destination_wells,water_vols):
+
+            for i in range(len(destination_wells))
+            pipette.aspirate(water_vols[i],water)
+            pipette.dispense(water_vols[i],destination_wells[i])
+            pipette.mix_after(3)
+            pipette.blow_out()
+
+        reverse_tips = tipracks[0].wells()[::-1]
+
         for clip_num in range(len(parts_wells)):
-            pipette.transfer(1, source_plates[prefixes_plates[clip_num]].wells(prefixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
-            pipette.transfer(1, source_plates[suffixes_plates[clip_num]].wells(suffixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
-            pipette.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells(parts_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=PART_MIX_SETTINGS)
+
+            for wells in range(len(destination_wells)):
+                pipette.pick_up_tip(reverse_tips[tip_at])
+                transfer_prefix()
+                pipette.drop_tip()
+                tip_at += 1
+                pipette.pick_up_tip(reverse_tips[tip_at])
+                transfer_suffix()
+                pipette.drop_tip()
+                tip_at += 1
+                transfer_part()
+                pipette.drop_tip()
+                tip_at += 1
+
+        # for clip_num in range(len(parts_wells)):
+        #     pipette.transfer(1, source_plates[prefixes_plates[clip_num]].wells(prefixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
+        #     pipette.transfer(1, source_plates[suffixes_plates[clip_num]].wells(suffixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
+        #     pipette.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells(parts_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=PART_MIX_SETTINGS)
 
     # the run function will first define the CLIP function, and then run the CLIP function with the dictionary produced by DNA-BOT
     clip(**clips_dict)
