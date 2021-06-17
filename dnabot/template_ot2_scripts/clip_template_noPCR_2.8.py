@@ -133,7 +133,16 @@ def run(protocol):
         
         # transfer water into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
+        reverse_tips = tipracks[0].wells()[::-1]
+        tip_at = 0
+        for i in range(len(destination_wells)):
+            pipette.pick_up_tip(reverse_tips[tip_at])
+            pipette.aspirate(water_vols[i], water)
+            pipette.dispense(destination_wells[i])
+            pipette.drop_tip()
+            tip_at += 1
+
+        #pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
         
         #transfer prefixes, suffixes, and parts into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
