@@ -46,7 +46,10 @@ def run(protocol):
         print('Define labware must be changed to use', PIPETTE_TYPE)
         exit()
 
-        # Source Plates
+    #Number of tips in each tiprack, used in indexing.
+    NUM_TIPS = 96
+
+    # Source Plates
     SOURCE_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
 
@@ -78,7 +81,7 @@ def run(protocol):
             water_vols):
 
         ### Loading Tiprack
-        # Calculates whether one, two, or three tipracks are needed, which are in slots 3, 6, and 9 respectively
+        # Calculates whether one, two, or three tipracks are needed, which are in slots 7, 8, and 9 respectively
         total_tips = 4 * len(parts_wells)
         letter_dict = {'A': 0, 'B': 1, 'C': 2,
                        'D': 3, 'E': 4, 'F': 5, 'G': 6, 'H': 7}
@@ -89,6 +92,7 @@ def run(protocol):
                           (1 if (total_tips - tiprack_1_tips) % 96 > 0 else 0)
         else:
             tiprack_num = 1
+
         slots = CANDIDATE_TIPRACK_SLOTS[:tiprack_num]
 
         # loads the correct number of tipracks
@@ -135,8 +139,13 @@ def run(protocol):
             source_plates[key] = protocol.load_labware(SOURCE_PLATE_TYPE, key)
             # changed to protocol.load_labware for API 2.8
 
-        ### Transfers
 
+        #We are stating to pick up tips from H12 to avoid collision. Here we reverse the tip location list.
+        reverse_tips = [tipracks[0].wells()[::-1], tipracks[1].wells()[::-1]]
+        tip_at = 0
+
+
+        ### Transfers
         print(master_mix)
         print(type(master_mix))
 
@@ -147,12 +156,12 @@ def run(protocol):
         pipette.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=True, blowout_location='destination well', new_tip='never')
         '''
 
+        '''
         # Implementing the transfer above with an 8-channel pipette.
 
-        reverse_tips = tipracks[0].wells()[::-1]
-        tip_at = 0
+        
 
-        pipette.pick_up_tip(reverse_tips[tip_at])
+        pipette.pick_up_tip(reverse_tips[tip_at//96][tip_at%96])
         for well in destination_wells:
             pipette.aspirate(MASTER_MIX_VOLUME / len(destination_wells), master_mix)
             pipette.dispense(MASTER_MIX_VOLUME / len(destination_wells), well)
@@ -160,21 +169,52 @@ def run(protocol):
         tip_at += 1
         pipette.drop_tip()
 
-        '''
         # transfer water into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
+        for i in range(len(destination_wells)):
+            pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
+            pipette.aspirate(water_vols[i], water)
+            pipette.dispense(destination_wells[i])
+            pipette.drop_tip()
+            tip_at += 1
+    
+        '''
 
+        '''        
+        pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
         #transfer prefixes, suffixes, and parts into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
+        # for clip_num in range(len(parts_wells)):
+        #     pipette.transfer(1, source_plates[prefixes_plates[clip_num]].wells(prefixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
+        #     pipette.transfer(1, source_plates[suffixes_plates[clip_num]].wells(suffixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
+        #     pipette.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells(parts_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=PART_MIX_SETTINGS)
+
+        '''
+
+        # Implementing the transfer above with an 8-channel pipette.
+        def custom_transfer(destination_wells, vol, source, dest):
+            pipette.aspirate(vol, source)
+            pipette.dispense(vol, dest)
+            pipette.mix(3)
+            pipette.blow_out()
+            pipette.drop_tip()
+
         for clip_num in range(len(parts_wells)):
-            pipette.transfer(1, source_plates[prefixes_plates[clip_num]].wells(prefixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
-            pipette.transfer(1, source_plates[suffixes_plates[clip_num]].wells(suffixes_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=LINKER_MIX_SETTINGS)
-            pipette.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells(parts_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=PART_MIX_SETTINGS)
-    '''
+            pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
+            custom_transfer(1, source_plates[prefixes_plates[clip_num]].wells(prefixes_wells[clip_num]),destination_wells[clip_num])
+            tip_at += 1
+
+            pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
+            custom_transfer(1, source_plates[suffixes_plates[clip_num]].wells(suffixes_wells[clip_num]), destination_wells[clip_num])
+            tip_at += 1
+
+            pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
+            custom_transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells(parts_wells[clip_num]), destination_wells[clip_num])
+            tip_at += 1
 
     # the run function will first define the CLIP function, and then run the CLIP function with the dictionary produced by DNA-BOT
     clip(**clips_dict)
+
 
 
 run(protocol)
