@@ -23,31 +23,31 @@ def run(protocol):
     ### Constants - these have been moved out of the def clip() for clarity
         
     #Tiprack
-    tiprack_type="opentrons_96_tiprack_10ul"
+    tiprack_type= 'opentrons_96_tiprack_300ul' #"opentrons_96_tiprack_10ul"
     INITIAL_TIP = 'A1'
     CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9']
         
     # Pipettes - pipette instructions in a single location so redefining pipette type is simpler
-    PIPETTE_TYPE = 'p10_single'
+    PIPETTE_TYPE = 'p300_multi_gen2'
              # API 2 supports gen_1 pipettes like the p10_single
-    PIPETTE_MOUNT = 'right'
+    PIPETTE_MOUNT = 'left'
         ### Load Pipette        
         # checks if it's a P10 Single pipette
-    if PIPETTE_TYPE != 'p10_single':
+    if PIPETTE_TYPE != 'p300_multi_gen2':
         print('Define labware must be changed to use', PIPETTE_TYPE)
         exit()           
 
     # Source Plates
-    SOURCE_PLATE_TYPE = 'corning_96_wellplate_360ul_flat'
+    SOURCE_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
             # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
 
     # Destination Plates
-    DESTINATION_PLATE_TYPE = 'corning_96_wellplate_360ul_flat'
+    DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     DESTINATION_PLATE_POSITION = '1'   
             # INITIAL_DESTINATION_WELL constant removed, as destination_plate.wells() automatically starts from A1
         
     # Tube Rack
-    TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
+    TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep' #opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
             # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
     TUBE_RACK_POSITION = '4'
     MASTER_MIX_WELL = 'A1'
