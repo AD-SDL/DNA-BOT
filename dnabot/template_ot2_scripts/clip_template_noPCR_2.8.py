@@ -1,7 +1,7 @@
-from opentrons import protocol_api, simulate, execute
+#from opentrons import protocol_api, simulate, execute
 
-protocol = execute.get_protocol_api('2.8')
-protocol.home()
+#protocol = execute.get_protocol_api('2.8')
+#protocol.home()
 
 # Use this when you want to simulate.
 # protocol = simulate.get_protocol_api('2.8')
@@ -212,9 +212,9 @@ def run(protocol):
     clip(**clips_dict)
 
 
-run(protocol)
+#run(protocol)
 
 # for simulating
-for line in protocol.commands():
-    print(line)
+#for line in protocol.commands():
+#    print(line)
 
