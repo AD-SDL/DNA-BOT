@@ -1,13 +1,6 @@
-<<<<<<< HEAD
 from opentrons import protocol_api, simulate, execute
 protocol = execute.get_protocol_api('2.8')
 protocol.home()
-=======
-#from opentrons import protocol_api, simulate, execute
-
-#protocol = execute.get_protocol_api('2.8')
-#protocol.home()
->>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
 
 # Use this when you want to simulate.
 # protocol = simulate.get_protocol_api('2.8')
