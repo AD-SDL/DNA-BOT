@@ -1,4 +1,8 @@
 #from opentrons import protocol_api, simulate, execute
+<<<<<<< HEAD
+=======
+
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
 #protocol = execute.get_protocol_api('2.8')
 #protocol.home()
 
@@ -21,7 +25,11 @@ clips_dict = {"prefixes_wells": ["A8", "A7", "C5", "C7", "C10"], "prefixes_plate
               "parts_wells": ["E2", "F2", "C2", "B2", "D2"], "parts_plates": ["5", "5", "5", "5", "5"],
               "parts_vols": [1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0]}
 
+<<<<<<< HEAD
 clips_dict={"prefixes_wells": ["A8", "A8", "A8", "A8", "A8", "A8", "A7", "C5", "C5", "C7", "C7", "C7", "C10", "C10", "C12", "C12", "C9", "C9", "C9", "A7", "C10", "C10", "C5", "C5", "C12", "C12", "C6", "C6", "C6", "C6", "A7", "C4", "A7", "C4", "A7", "A7", "A7", "A7"], "prefixes_plates": ["2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2"], "suffixes_wells": ["B7", "B7", "B7", "B7", "B7", "B7", "C1", "C2", "C2", "C3", "C3", "C3", "B8", "B8", "B8", "B8", "C3", "C3", "C3", "C2", "C1", "C1", "B8", "B8", "C1", "C1", "C2", "C2", "B8", "B8", "C1", "C2", "C2", "B8", "C1", "C2", "C1", "C2"], "suffixes_plates": ["2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2"], "parts_wells": ["E2", "E2", "E2", "E2", "E2", "E2", "F2", "C2", "C2", "B2", "B2", "B2", "D2", "D2", "D2", "D2", "B2", "B2", "B2", "F2", "D2", "D2", "C2", "C2", "D2", "D2", "C2", "C2", "C2", "C2", "G2", "C2", "G2", "C2", "H2", "H2", "G1", "G1"], "parts_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"], "parts_vols": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0]}
+=======
+clips_dict={"prefixes_wells": ["A8", "A8", "A8", "A8", "A8", "A8", "A7", "C5", "C5", "C7", "C7", "C7", "C10", "C10", "C12", "C12", "C9", "C9", "C9", "A7", "C10", "C10", "C5", "C5", "C12", "C12", "C6", "C6", "C6", "C6", "A7", "C4", "A7", "C4", "A7", "A7", "A7", "A7"], "prefixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"], "suffixes_wells": ["B7", "B7", "B7", "B7", "B7", "B7", "C1", "C2", "C2", "C3", "C3", "C3", "B8", "B8", "B8", "B8", "C3", "C3", "C3", "C2", "C1", "C1", "B8", "B8", "C1", "C1", "C2", "C2", "B8", "B8", "C1", "C2", "C2", "B8", "C1", "C2", "C1", "C2"], "suffixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"], "parts_wells": ["E2", "E2", "E2", "E2", "E2", "E2", "F2", "C2", "C2", "B2", "B2", "B2", "D2", "D2", "D2", "D2", "B2", "B2", "B2", "F2", "D2", "D2", "C2", "C2", "D2", "D2", "C2", "C2", "C2", "C2", "G2", "C2", "G2", "C2", "H2", "H2", "G1", "G1"], "parts_plates": ["2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2"], "parts_vols": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0]}
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
 
 
 def run(protocol):
@@ -139,13 +147,17 @@ def run(protocol):
             source_plates[key] = protocol.load_labware(SOURCE_PLATE_TYPE, key)
             # changed to protocol.load_labware for API 2.8
 
+<<<<<<< HEAD
         # We are stating to pick up tips from H12 to avoid collision. Here we reverse the tip location list.
         reverse_tips = [tipracks[0].wells()[::-1], tipracks[1].wells()[::-1]]
+=======
+        # We are stating to pick up tips from H12 (last well) to avoid collision.
+        # Here we reverse the tip well list.
+        reverse_tips = [tipracks[i].wells()[::-1] for i in range(len(tipracks))]
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
         tip_at = 0
 
         ### Transfers
-        print(master_mix)
-        print(type(master_mix))
 
         '''
         # transfer master mix into destination wells
@@ -163,9 +175,17 @@ def run(protocol):
         tip_at += 1
         pipette.drop_tip()
 
+        '''
         # transfer water into destination wells
+<<<<<<< HEAD
 
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
+=======
+        pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
+        '''
+
+        # implement the transfer above with an 8-channel pipette
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
         for i in range(len(destination_wells)):
             pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
             pipette.aspirate(water_vols[i], water)
@@ -174,7 +194,10 @@ def run(protocol):
             tip_at += 1
 
         '''
+<<<<<<< HEAD
         pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
+=======
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
         #transfer prefixes, suffixes, and parts into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         # for clip_num in range(len(parts_wells)):
@@ -185,7 +208,7 @@ def run(protocol):
         '''
 
         # Implementing the transfer above with an 8-channel pipette.
-        def custom_transfer(destination_wells, vol, source, dest):
+        def custom_transfer(vol, source, dest):
             pipette.aspirate(vol, source)
             pipette.dispense(vol, dest)
             pipette.mix(3)
@@ -194,19 +217,31 @@ def run(protocol):
 
         for clip_num in range(len(parts_wells)):
             pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
+<<<<<<< HEAD
             custom_transfer(destination_wells, 1,
+=======
+            custom_transfer(1,
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
                             source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
             pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
+<<<<<<< HEAD
             custom_transfer(destination_wells, 1,
+=======
+            custom_transfer( 1,
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
                             source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
             pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
+<<<<<<< HEAD
             custom_transfer(destination_wells, parts_vols[clip_num],
+=======
+            custom_transfer(parts_vols[clip_num],
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
                             source_plates[parts_plates[clip_num]].wells_by_name()[parts_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
@@ -215,9 +250,18 @@ def run(protocol):
     clip(**clips_dict)
 
 
+<<<<<<< HEAD
 #run(protocol)
 '''
 # for simulating
 for line in protocol.commands():
     print(line)
 '''
+=======
+
+# for simulating
+#run(protocol)
+#for line in protocol.commands():
+#    print(line)
+
+>>>>>>> 6c113166582f790f0ae2fa76f48f3ddbbe2a8dba
