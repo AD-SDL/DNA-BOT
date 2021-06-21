@@ -1,0 +1,17 @@
+Steps to setup ssh connection to OT2
+(1) Connect to wifi in Opentrons app
+
+(2) Copy ssh key to OT2
+curl -H 'Content-Type: application/json' -d "{\"key\":\"$(cat ~/.ssh/id_rsa.pub)\"}" <wired_IP>:31950/server/ssh_keys
+Where wired_IP is is the wired IP address in the opentrons app
+
+(3) Copy protocol python file to OT2
+scp <python file> root@<wired_IP>:/data/user_storage
+
+(4) Unplug your USB connection to OT2
+
+(5) ssh to OT2
+ssh -i ~/.ssh/id_sdl root@<wireless_IP>
+Where wired_IP is is the wireless IP address in the opentrons app
+
+(6) Run your protocol with "opentrons_execute /data/user_storage/<python file>
