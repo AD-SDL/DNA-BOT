@@ -128,7 +128,7 @@ def run(protocol):
         ### Define Labware
         
         # Magnetic Module
-        MAGDECK = protocol.load_module('magdeck', MAGDECK_POSITION)
+        MAGDECK = protocol.load_module('magnetic module gen2', MAGDECK_POSITION)
             # changed to protocol.load_module for API verison 2
             # 'magdeck' is the gen 1 magnetic module, use 'magnetic module gen2' for the gen 2 magentic module
                 # if using gen 2 module, need to change settling time! (see comments under Constants)

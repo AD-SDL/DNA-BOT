@@ -10,7 +10,7 @@ Make sure to give a passphrase you will remember, you will need it in the next s
 2) Change ssh directory permissions. 
 
 chmod 600 ~/.ssh
-chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa ( if this doesn't work try chmod 0700 )
 
  
 (3) Add your ssh key to the ssh-agent. 
