@@ -136,13 +136,12 @@ def run(protocol):
             source_plates[key] = protocol.load_labware(SOURCE_PLATE_TYPE, key)
             # changed to protocol.load_labware for API 2.8
 
-        # We are stating to pick up tips from H12 to avoid collision. Here we reverse the tip location list.
-        reverse_tips = [tipracks[0].wells()[::-1], tipracks[1].wells()[::-1]]
+        # We are stating to pick up tips from H12 (last well) to avoid collision.
+        # Here we reverse the tip well list.
+        reverse_tips = [tipracks[i].wells()[::-1] for i in range(len(tipracks))]
         tip_at = 0
 
         ### Transfers
-        print(master_mix)
-        print(type(master_mix))
 
         '''
         # transfer master mix into destination wells
@@ -160,9 +159,12 @@ def run(protocol):
         tip_at += 1
         pipette.drop_tip()
 
+        '''
         # transfer water into destination wells
+        pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
+        '''
 
-        # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
+        # implement the transfer above with an 8-channel pipette
         for i in range(len(destination_wells)):
             pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
             pipette.aspirate(water_vols[i], water)
@@ -171,7 +173,6 @@ def run(protocol):
             tip_at += 1
 
         '''
-        pipette.transfer(water_vols, water, destination_wells, blow_out=True, blowout_location='destination well', new_tip='always')
         #transfer prefixes, suffixes, and parts into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         # for clip_num in range(len(parts_wells)):
@@ -182,7 +183,7 @@ def run(protocol):
         '''
 
         # Implementing the transfer above with an 8-channel pipette.
-        def custom_transfer(destination_wells, vol, source, dest):
+        def custom_transfer(vol, source, dest):
             pipette.aspirate(vol, source)
             pipette.dispense(vol, dest)
             pipette.mix(3)
@@ -191,19 +192,19 @@ def run(protocol):
 
         for clip_num in range(len(parts_wells)):
             pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
-            custom_transfer(destination_wells, 1,
+            custom_transfer(1,
                             source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
             pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
-            custom_transfer(destination_wells, 1,
+            custom_transfer( 1,
                             source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
             pipette.pick_up_tip(reverse_tips[int(tip_at // 96)][tip_at % 96])
-            custom_transfer(destination_wells, parts_vols[clip_num],
+            custom_transfer(parts_vols[clip_num],
                             source_plates[parts_plates[clip_num]].wells_by_name()[parts_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
@@ -212,9 +213,9 @@ def run(protocol):
     clip(**clips_dict)
 
 
-#run(protocol)
 
 # for simulating
+#run(protocol)
 #for line in protocol.commands():
 #    print(line)
 
