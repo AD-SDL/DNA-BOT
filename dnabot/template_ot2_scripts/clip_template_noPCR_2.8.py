@@ -27,7 +27,7 @@ def run(protocol):
     ### Constants - these have been moved out of the def clip() for clarity
 
     # Tiprack
-    tiprack_type = 'opentrons_96_tiprack_300ul'  # "opentrons_96_tiprack_10ul"
+    tiprack_type = 'opentrons_96_tiprack_20ul'  # "opentrons_96_tiprack_10ul"
     INITIAL_TIP = 'A1'
     CANDIDATE_TIPRACK_SLOTS = ['7', '8', '9']  # ['3', '6', '9']
 
