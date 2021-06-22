@@ -12,13 +12,15 @@ Make sure to give a passphrase you will remember, you will need it in the next s
 chmod 600 ~/.ssh
 chmod 600 ~/.ssh/id_rsa ( if this doesn't work try chmod 0700 )
 
- 
+
 (3) Add your ssh key to the ssh-agent. 
 ssh-add 
 
 
 Steps to setup ssh connection to OT2
 (4) Connect to wifi in Opentrons app
+
+NOTE: Copy the Wi-Fi IP of the OT-2 somewhere, you will need it for step (8) below.
 
 (5) Copy ssh key to OT2
 curl -H 'Content-Type: application/json' -d "{\"key\":\"$(cat ~/.ssh/id_rsa.pub)\"}" <wired_IP>:31950/server/ssh_keys
