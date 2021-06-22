@@ -152,8 +152,8 @@ def run(protocol):
         # Implementing the transfer above with an 8-channel pipette.
         pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
         for well in destination_wells:
-            pipette.aspirate(MASTER_MIX_VOLUME / len(destination_wells), master_mix)
-            pipette.dispense(MASTER_MIX_VOLUME / len(destination_wells), well)
+            pipette.aspirate(MASTER_MIX_VOLUME, master_mix)
+            pipette.dispense(MASTER_MIX_VOLUME, well)
 
         tip_at += 1
         pipette.drop_tip()
