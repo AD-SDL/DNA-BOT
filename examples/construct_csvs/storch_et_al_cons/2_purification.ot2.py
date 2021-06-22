@@ -133,6 +133,7 @@ def run(protocol):
 
         # Magnetic Module
         MAGDECK = protocol.load_module('magnetic module gen2', MAGDECK_POSITION)
+        MAGDECK.calibrate()
         # disengages the magnets when it is turned on
         MAGDECK.disengage()
 
