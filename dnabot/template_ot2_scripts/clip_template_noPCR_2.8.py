@@ -32,12 +32,12 @@ def run(protocol):
     CANDIDATE_TIPRACK_SLOTS = ['7', '8', '9']  # ['3', '6', '9']
 
     # Pipettes - pipette instructions in a single location so redefining pipette type is simpler
-    PIPETTE_TYPE = 'p300_multi_gen2'
+    PIPETTE_TYPE = 'p20_multi_gen2'
     # API 2 supports gen_1 pipettes like the p10_single
-    PIPETTE_MOUNT = 'left'
+    PIPETTE_MOUNT = 'right'
     ### Load Pipette
     # checks if it's a P10 Single pipette
-    if PIPETTE_TYPE != 'p300_multi_gen2':
+    if PIPETTE_TYPE != 'p20_multi_gen2':
         print('Define labware must be changed to use', PIPETTE_TYPE)
         exit()
 
