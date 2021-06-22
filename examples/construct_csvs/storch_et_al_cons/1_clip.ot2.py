@@ -21,7 +21,25 @@ clips_dict = {"prefixes_wells": ["A8", "A7", "C5", "C7", "C10"], "prefixes_plate
               "parts_wells": ["E2", "F2", "C2", "B2", "D2"], "parts_plates": ["5", "5", "5", "5", "5"],
               "parts_vols": [1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0]}
 
-clips_dict={"prefixes_wells": ["A8", "A8", "A8", "A8", "A8", "A8", "A7", "C5", "C5", "C7", "C7", "C7", "C10", "C10", "C12", "C12", "C9", "C9", "C9", "A7", "C10", "C10", "C5", "C5", "C12", "C12", "C6", "C6", "C6", "C6", "A7", "C4", "A7", "C4", "A7", "A7", "A7", "A7"], "prefixes_plates": ["2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2"], "suffixes_wells": ["B7", "B7", "B7", "B7", "B7", "B7", "C1", "C2", "C2", "C3", "C3", "C3", "B8", "B8", "B8", "B8", "C3", "C3", "C3", "C2", "C1", "C1", "B8", "B8", "C1", "C1", "C2", "C2", "B8", "B8", "C1", "C2", "C2", "B8", "C1", "C2", "C1", "C2"], "suffixes_plates": ["2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2"], "parts_wells": ["E2", "E2", "E2", "E2", "E2", "E2", "F2", "C2", "C2", "B2", "B2", "B2", "D2", "D2", "D2", "D2", "B2", "B2", "B2", "F2", "D2", "D2", "C2", "C2", "D2", "D2", "C2", "C2", "C2", "C2", "G2", "C2", "G2", "C2", "H2", "H2", "G1", "G1"], "parts_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"], "parts_vols": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0]}
+clips_dict={"prefixes_wells": ["A8", "A8", "A8", "A8", "A8", "A8", "A7", "C5", "C5", "C7", "C7", "C7", "C10", "C10",
+                               "C12", "C12", "C9", "C9", "C9", "A7", "C10", "C10", "C5", "C5", "C12", "C12", "C6", "C6",
+                               "C6", "C6", "A7", "C4", "A7", "C4", "A7", "A7", "A7", "A7"],
+            "prefixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5",
+                                "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"],
+            "suffixes_wells": ["B7", "B7", "B7", "B7", "B7", "B7", "C1", "C2", "C2", "C3", "C3", "C3", "B8", "B8", "B8", "B8", "C3",
+                               "C3", "C3", "C2", "C1", "C1", "B8", "B8", "C1", "C1", "C2", "C2", "B8", "B8", "C1", "C2", "C2", "B8",
+                               "C1", "C2", "C1", "C2"],
+            "suffixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5",
+                                 "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5",
+                                "5", "5", "5", "5", "5", "5", "5", "5", "5"],
+            "parts_wells": ["E2", "E2", "E2", "E2", "E2", "E2", "F2", "C2", "C2", "B2", "B2", "B2", "D2", "D2", "D2",
+                            "D2", "B2", "B2", "B2", "F2", "D2", "D2", "C2", "C2", "D2", "D2", "C2", "C2", "C2", "C2", "G2", "C2", "G2", "C2", "H2", "H2", "G1", "G1"],
+            "parts_plates": ["2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2",
+                             "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2", "2"],
+            "parts_vols": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+                           1, 1, 1, 1, 1],
+            "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0,
+                           7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0]}
 
 
 def run(protocol):
@@ -30,17 +48,17 @@ def run(protocol):
     ### Constants - these have been moved out of the def clip() for clarity
 
     # Tiprack
-    tiprack_type = 'opentrons_96_tiprack_300ul'  # "opentrons_96_tiprack_10ul"
+    tiprack_type = 'opentrons_96_tiprack_20ul'  # "opentrons_96_tiprack_10ul"
     INITIAL_TIP = 'A1'
     CANDIDATE_TIPRACK_SLOTS = ['7', '8', '9']  # ['3', '6', '9']
 
     # Pipettes - pipette instructions in a single location so redefining pipette type is simpler
-    PIPETTE_TYPE = 'p300_multi_gen2'
+    PIPETTE_TYPE = 'p20_multi_gen2'
     # API 2 supports gen_1 pipettes like the p10_single
-    PIPETTE_MOUNT = 'left'
+    PIPETTE_MOUNT = 'right'
     ### Load Pipette
     # checks if it's a P10 Single pipette
-    if PIPETTE_TYPE != 'p300_multi_gen2':
+    if PIPETTE_TYPE != 'p20_multi_gen2':
         print('Define labware must be changed to use', PIPETTE_TYPE)
         exit()
 
@@ -155,8 +173,8 @@ def run(protocol):
         # Implementing the transfer above with an 8-channel pipette.
         pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
         for well in destination_wells:
-            pipette.aspirate(MASTER_MIX_VOLUME / len(destination_wells), master_mix)
-            pipette.dispense(MASTER_MIX_VOLUME / len(destination_wells), well)
+            pipette.aspirate(MASTER_MIX_VOLUME, master_mix)
+            pipette.dispense(MASTER_MIX_VOLUME, well)
 
         tip_at += 1
         pipette.drop_tip()

@@ -27,17 +27,17 @@ def run(protocol):
     ### Constants - these have been moved out of the def clip() for clarity
 
     # Tiprack
-    tiprack_type = 'opentrons_96_tiprack_300ul'  # "opentrons_96_tiprack_10ul"
+    tiprack_type = 'opentrons_96_tiprack_20ul'  # "opentrons_96_tiprack_10ul"
     INITIAL_TIP = 'A1'
     CANDIDATE_TIPRACK_SLOTS = ['7', '8', '9']  # ['3', '6', '9']
 
     # Pipettes - pipette instructions in a single location so redefining pipette type is simpler
-    PIPETTE_TYPE = 'p300_multi_gen2'
+    PIPETTE_TYPE = 'p20_multi_gen2'
     # API 2 supports gen_1 pipettes like the p10_single
-    PIPETTE_MOUNT = 'left'
+    PIPETTE_MOUNT = 'right'
     ### Load Pipette
     # checks if it's a P10 Single pipette
-    if PIPETTE_TYPE != 'p300_multi_gen2':
+    if PIPETTE_TYPE != 'p20_multi_gen2':
         print('Define labware must be changed to use', PIPETTE_TYPE)
         exit()
 
@@ -152,8 +152,8 @@ def run(protocol):
         # Implementing the transfer above with an 8-channel pipette.
         pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
         for well in destination_wells:
-            pipette.aspirate(MASTER_MIX_VOLUME / len(destination_wells), master_mix)
-            pipette.dispense(MASTER_MIX_VOLUME / len(destination_wells), well)
+            pipette.aspirate(MASTER_MIX_VOLUME, master_mix)
+            pipette.dispense(MASTER_MIX_VOLUME, well)
 
         tip_at += 1
         pipette.drop_tip()
