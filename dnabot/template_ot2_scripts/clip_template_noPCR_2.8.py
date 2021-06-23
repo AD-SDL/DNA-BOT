@@ -56,7 +56,7 @@ def run(protocol):
     # Tube Rack
     TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'  # opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
     # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
-    TUBE_RACK_POSITION = '6'  # '4'
+    TUBE_RACK_POSITION = '9'  # Moved to 9 to avoid collisions '4'
     MASTER_MIX_WELL = 'A1'
     WATER_WELL = 'A2'
     MASTER_MIX_VOLUME = 20
