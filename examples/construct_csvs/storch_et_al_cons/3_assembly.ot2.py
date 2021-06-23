@@ -1,5 +1,8 @@
-from opentrons import simulate, protocol_api
+from opentrons import simulate, protocol_api,execute
 import numpy as np
+
+protocol = execute.get_protocol_api('2.7')
+protocol.home()
 # metadata
 metadata = {
 'protocolName': 'My Protocol',
@@ -7,7 +10,7 @@ metadata = {
 'description': 'Simple protocol to get started using OT2',
 'apiLevel': '2.7'
 }
-protocol = simulate.get_protocol_api('2.7')
+
 # protocol run function. the part after the colon lets your editor know
 # where to look for autocomplete suggestions
 # where to look for autocomplete suggestions
@@ -17,17 +20,18 @@ tiprack_num=5
 
 
 def run(protocol:protocol_api.ProtocolContext):
-    def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_filtertiprack_10ul"):
+    def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_filtertiprack_20ul"):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
-                CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '5', '8', '11']
+#                 CANDIDATE_TIPRACK_SLOTS = ['6', '9', '3', '2', '10', '8', '11']
+                CANDIDATE_TIPRACK_SLOTS = ['6', '9', '11'] # add more if needed
                 PIPETTE_MOUNT = 'right'
                 #Plate of sample after  purification
                 MAG_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
-                MAG_PLATE_POSITION = '1'
+                MAG_PLATE_POSITION = '5'
                 #Tuberack
-                TUBE_RACK_TYPE = 'opentrons_10_tuberack_falcon_4x50ml_6x15ml_conical'
-                TUBE_RACK_POSITION = '7'
+                TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'
+                TUBE_RACK_POSITION = '10'
                 #Destination plate
                 DESTINATION_PLATE_TYPE = 'opentrons_96_aluminumblock_generic_pcr_strip_200ul'
                 #Temperature control plate
@@ -38,6 +42,10 @@ def run(protocol:protocol_api.ProtocolContext):
                 MIX_SETTINGS = (1, 3)
                 tiprack_num=tiprack_num+1
 
+                slots = CANDIDATE_TIPRACK_SLOTS[:tiprack_num]
+                tipracks = [protocol.load_labware(tiprack_type, slot)
+                    for slot in slots]
+
                 # for transfers
                 reverse_tips = [tipracks[i].wells()[::-1] for i in range(len(tipracks))]
                 tip_at = 0
@@ -47,17 +55,15 @@ def run(protocol:protocol_api.ProtocolContext):
                 if sample_number > 96:
                     raise ValueError('Final assembly nummber cannot exceed 96.')
 
-                slots = CANDIDATE_TIPRACK_SLOTS[:tiprack_num]
-                tipracks = [protocol.load_labware(tiprack_type, slot)
-                    for slot in slots]
-                pipette = protocol.load_instrument('p10_single', PIPETTE_MOUNT, tip_racks=tipracks)#old code: pipette = instruments.P10_Single(mount=PIPETTE_MOUNT, tip_racks=tipracks)
 
+                pipette = protocol.load_instrument('p20_multi_gen2', PIPETTE_MOUNT, tip_racks=tipracks)#old code: pipette = instruments.P10_Single(mount=PIPETTE_MOUNT, tip_racks=tipracks)
+                pipette.drop_tip()
                 # Define Labware and set temperature
                 magbead_plate = protocol.load_labware(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
                #old code: magbead_plate = labware.load(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
                 tube_rack = protocol.load_labware(TUBE_RACK_TYPE, TUBE_RACK_POSITION)
                #old code: tube_rack = labware.load(TUBE_RACK_TYPE, TUBE_RACK_POSITION)
-                tempdeck = protocol.load_module('tempdeck', TEMPDECK_SLOT)
+                tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT)
                #old code: tempdeck = modules.load('tempdeck', TEMPDECK_SLOT)
                 destination_plate = tempdeck.load_labware(
                 DESTINATION_PLATE_TYPE, TEMPDECK_SLOT)
@@ -70,19 +76,20 @@ def run(protocol:protocol_api.ProtocolContext):
                     final_assembly_lens.append(len(values))
                 unique_assemblies_lens = list(set(final_assembly_lens))
                 master_mix_well_letters = ['A', 'B', 'C', 'D']
+#                 master_mix_well_letters = ['A1', 'A2', 'A3', 'A4']
                 for x in unique_assemblies_lens:
                     master_mix_well = master_mix_well_letters[(x - 1) // 6] + str(x - 1)
                     destination_inds = [i for i, lens in enumerate(final_assembly_lens) if lens == x]
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
+                    pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
                     for destination_well in destination_wells:# make tube_rack_wells and destination_plate.wells in the same type
-                        pipette.pick_up_tip()
                         # pipette.transfer(TOTAL_VOL - x * PART_VOL, tube_rack.wells(master_mix_well),
                         #                  destination_plate.wells(destination_well), new_tip='never')#transfer water and buffer in the pipette
-                        for well in destination_wells:
-                            pipette.aspirate(TOTAL_VOL - x * PART_VOL, tube_rack.wells(master_mix_well))
-                            pipette.dispense(destination_plate.wells(destination_well))
-                        pipette.drop_tip()
+                        pipette.aspirate(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well])
+                        pipette.dispense(TOTAL_VOL - x * PART_VOL,destination_plate.wells_by_name()[destination_well])
+                    pipette.drop_tip()
+                    tip_at += 1
 
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):
@@ -91,17 +98,19 @@ def run(protocol:protocol_api.ProtocolContext):
                         #                  destination_plate.wells(key), mix_after=MIX_SETTINGS,
                         #                  new_tip='always')#transfer parts in one tube
 
-                        for wells in destination_wells:
-                            pipette.aspirate(PART_VOL, magbead_plate.wells(value))
-                            pipette.dispense(destination_plate.wells(key))
-                            pipette.mix(3)
+                        pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
+                        pipette.aspirate(PART_VOL, magbead_plate.wells_by_name()[value])
+                        pipette.dispense(PART_VOL,destination_plate.wells_by_name()[key])
+                        pipette.mix(3)
 
                         tip_at += 1
                         pipette.drop_tip()
 
                 tempdeck.deactivate() #stop increasing the temperature
 
-                final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
+    final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
+
+run(protocol)
 
 for line in protocol.commands():
     print(line)
