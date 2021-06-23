@@ -1,6 +1,6 @@
-from opentrons import protocol_api, simulate, execute
-protocol = simulate.get_protocol_api('2.8')
-protocol.home()
+# from opentrons import protocol_api, simulate, execute
+# protocol = simulate.get_protocol_api('2.8')
+# protocol.home()
 
 # metadata
 metadata = {
@@ -15,8 +15,8 @@ def run(protocol):
     TIPRACK_TYPE = 'opentrons_96_tiprack_300ul'  # "opentrons_96_tiprack_10ul"
 
     MAGDECK = protocol.load_module('magnetic module gen2', '1')
-    MAGDECK.engage()
+    MAGDECK.engage(height = 8)
     MAGDECK.disengage()
 
-for line in protocol.commands():
-    print(line)
+# for line in protocol.commands():
+#     print(line)
