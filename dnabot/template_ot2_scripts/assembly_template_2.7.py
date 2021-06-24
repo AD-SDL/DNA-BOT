@@ -33,6 +33,11 @@ def run(protocol:protocol_api.ProtocolContext):
                 PART_VOL = 1.5
                 MIX_SETTINGS = (1, 3)
                 tiprack_num=tiprack_num+1
+
+                # for transfers
+                reverse_tips = [tipracks[i].wells()[::-1] for i in range(len(tipracks))]
+                tip_at = 0
+
                 # Errors
                 sample_number = len(final_assembly_dict.keys())
                 if sample_number > 96:
@@ -68,21 +73,31 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = list(destination_wells[destination_inds])
                     for destination_well in destination_wells:# make tube_rack_wells and destination_plate.wells in the same type
                         pipette.pick_up_tip()
-                        pipette.transfer(TOTAL_VOL - x * PART_VOL, tube_rack.wells(master_mix_well),
-                                         destination_plate.wells(destination_well), new_tip='never')#transfer water and buffer in the pipette
-
+                        # pipette.transfer(TOTAL_VOL - x * PART_VOL, tube_rack.wells(master_mix_well),
+                        #                  destination_plate.wells(destination_well), new_tip='never')#transfer water and buffer in the pipette
+                        for well in destination_wells:
+                            pipette.aspirate(TOTAL_VOL - x * PART_VOL, tube_rack.wells(master_mix_well))
+                            pipette.dispense(destination_plate.wells(destination_well))
                         pipette.drop_tip()
 
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):
                     for value in values:# magbead_plate.wells and destination_plate.wells in the same type
-                        pipette.transfer(PART_VOL, magbead_plate.wells(value),
-                                         destination_plate.wells(key), mix_after=MIX_SETTINGS,
-                                         new_tip='always')#transfer parts in one tube
+                        # pipette.transfer(PART_VOL, magbead_plate.wells(value),
+                        #                  destination_plate.wells(key), mix_after=MIX_SETTINGS,
+                        #                  new_tip='always')#transfer parts in one tube
+
+                        for wells in destination_wells:
+                            pipette.aspirate(PART_VOL, magbead_plate.wells(value))
+                            pipette.dispense(destination_plate.wells(key))
+                            pipette.mix(3)
+
+                        tip_at += 1
+                        pipette.drop_tip()
 
                 tempdeck.deactivate() #stop increasing the temperature
 
                 final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
 
-for line in protocol.commands(): 
+for line in protocol.commands():
     print(line)
