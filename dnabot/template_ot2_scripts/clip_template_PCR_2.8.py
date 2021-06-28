@@ -150,8 +150,7 @@ def run(protocol):
         # transfer master mix into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         pipette.pick_up_tip()
-        pipette.distribute(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=True,
-                         blowout_location='destination well', new_tip='never')
+        pipette.distribute(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
         pipette.drop_tip()
 
         tip_at += 8
@@ -173,7 +172,7 @@ def run(protocol):
         columns = len(water_vols) // 8 + 1
         pipette.distribute(water_vols[0::8],
                          water,
-                         destination_wells[0::8], blow_out=True, blowout_location='destination well')
+                         destination_wells[0::8], blow_out=False)
         # pipette.transfer(water_vols[0::8],
         #                    water,
         #                    destination_wells[0::8], blow_out=True, blowout_location='destination well',
