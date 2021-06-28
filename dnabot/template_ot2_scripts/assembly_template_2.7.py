@@ -7,7 +7,7 @@ metadata = {
 'description': 'Simple protocol to get started using OT2',
 'apiLevel': '2.7'
 }
-protocol = simulate.get_protocol_api('2.7')
+#protocol = simulate.get_protocol_api('2.7')
 # protocol run function. the part after the colon lets your editor know
 # where to look for autocomplete suggestions
 # where to look for autocomplete suggestions
@@ -123,7 +123,7 @@ def run(protocol:protocol_api.ProtocolContext):
 
     final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
 
-run(protocol)
-
-for line in protocol.commands():
-    print(line)
+# run(protocol)
+#
+# for line in protocol.commands():
+#     print(line)
