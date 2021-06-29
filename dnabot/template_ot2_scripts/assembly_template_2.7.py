@@ -1,5 +1,8 @@
 from opentrons import simulate, protocol_api
 import numpy as np
+import sys
+sys.path.append(".")
+from . import custom_utils
 # metadata
 metadata = {
 'protocolName': 'My Protocol',
@@ -76,10 +79,10 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-                    pipette.distribute(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well],
-                                     destination_wells, new_tip='once')  # transfer water and buffer in the pipette
-                    columns = len(destination_wells) // 8
-                    tip_at += 8 * columns  # 8 tips per column * number of columns
+                    custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
+                                                                 tube_rack.wells_by_name()[master_mix_well],
+                                                                 destination_wells, new_tip='once')
+                    tip_at += 8
 
                     '''
                      1 channel code
@@ -93,16 +96,7 @@ def run(protocol:protocol_api.ProtocolContext):
 
 
                 # We now need to switch the reverse pick algorithm so set an offset for the current rack
-                offset_by_rack = len(reverse_tips) * [0]
-                current_rack = tip_at // 96
-                for i in range(len(offset_by_rack)):
-                    if current_rack == i:
-                        offset_by_rack[i] = tip_at
-
-                # Calculates which rack and tip within rack to pick up based on how many have already been picked up
-                # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
-                def get_tip(index, offsets, tips):
-                    return tips[int(index // 96)][index % 96 - offsets[index // 96]]
+                offset_by_rack = switch_from_8_to_1(reverse_tips, tip_at)
 
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):

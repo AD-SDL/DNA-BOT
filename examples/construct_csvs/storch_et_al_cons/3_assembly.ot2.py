@@ -1,10 +1,8 @@
 from opentrons import simulate, protocol_api
 import numpy as np
-<<<<<<< HEAD
-protocol = execute.get_protocol_api('2.8')
-protocol.home()
-=======
->>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
+import sys
+sys.path.append(".")
+from . import custom_utils
 # metadata
 metadata = {
 'protocolName': 'My Protocol',
@@ -12,7 +10,7 @@ metadata = {
 'description': 'Simple protocol to get started using OT2',
 'apiLevel': '2.7'
 }
-protocol = simulate.get_protocol_api('2.7')
+#protocol = simulate.get_protocol_api('2.7')
 # protocol run function. the part after the colon lets your editor know
 # where to look for autocomplete suggestions
 # where to look for autocomplete suggestions
@@ -64,28 +62,19 @@ def run(protocol:protocol_api.ProtocolContext):
                #old code: magbead_plate = labware.load(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
                 tube_rack = protocol.load_labware(TUBE_RACK_TYPE, TUBE_RACK_POSITION)
                #old code: tube_rack = labware.load(TUBE_RACK_TYPE, TUBE_RACK_POSITION)
-                #tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT)
+                tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT)
                #old code: tempdeck = modules.load('tempdeck', TEMPDECK_SLOT)
-                destination_plate = protocol.load_labware(DESTINATION_PLATE_TYPE, TEMPDECK_SLOT)
-                #tempdeck.set_temperature(TEMP)
+                destination_plate = tempdeck.load_labware(
+                DESTINATION_PLATE_TYPE, TEMPDECK_SLOT)
+                tempdeck.set_temperature(TEMP)
                #old code: destination_plate = labware.load(DESTINATION_PLATE_TYPE, TEMPDECK_SLOT, share=True)tempdeck.set_temperature(TEMP)tempdeck.wait_for_temp()
 
-<<<<<<< HEAD
-                # Master mix transfer
-=======
                 # Master mix transfers
->>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
                 final_assembly_lens = []
                 for values in final_assembly_dict.values():
                     final_assembly_lens.append(len(values))
                 unique_assemblies_lens = list(set(final_assembly_lens))
                 # master_mix_well_letters = ['A', 'B', 'C', 'D']
-<<<<<<< HEAD
-                pipette.flow_rate.blow_out = 700
-                pipette.flow_rate.dispense = 500
-                pipette.pick_up_tip()
-=======
->>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
                 for x in unique_assemblies_lens:
                     # to use as 8 channel, start well must be A
                     master_mix_well = 'A1'  # master_mix_well_letters[(x - 1) // 6] + str(x - 1)
@@ -94,24 +83,10 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-<<<<<<< HEAD
-                    print(TOTAL_VOL - x * PART_VOL)
-                    for destination_well in destination_wells:
-                        pipette.aspirate(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well])
-                        pipette.dispense(TOTAL_VOL - x * PART_VOL, destination_well)
-                        pipette.blow_out()
-                        pipette.blow_out()
-                        pipette.blow_out()
-#                     pipette.transfer(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well],
-#                                      destination_wells, new_tip='once', blow_out=True,
-#                                        blowout_location='destination well')  # transfer water and buffer in the pipette
-                    pipette.drop_tip()
-=======
-                    pipette.distribute(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well],
-                                     destination_wells, new_tip='once')  # transfer water and buffer in the pipette
->>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
-                    columns = len(destination_wells) // 8
-                    tip_at += 8 * columns  # 8 tips per column * number of columns
+                    custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
+                                                                 tube_rack.wells_by_name()[master_mix_well],
+                                                                 destination_wells, new_tip='once')
+                    tip_at += 8
 
                     '''
                      1 channel code
@@ -125,16 +100,7 @@ def run(protocol:protocol_api.ProtocolContext):
 
 
                 # We now need to switch the reverse pick algorithm so set an offset for the current rack
-                offset_by_rack = len(reverse_tips) * [0]
-                current_rack = tip_at // 96
-                for i in range(len(offset_by_rack)):
-                    if current_rack == i:
-                        offset_by_rack[i] = tip_at
-
-                # Calculates which rack and tip within rack to pick up based on how many have already been picked up
-                # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
-                def get_tip(index, offsets, tips):
-                    return tips[int(index // 96)][index % 96 - offsets[index // 96]]
+                offset_by_rack = switch_from_8_to_1(reverse_tips, tip_at)
 
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):
@@ -151,10 +117,11 @@ def run(protocol:protocol_api.ProtocolContext):
                         tip_at += 1
                         pipette.drop_tip()
 
-                #tempdeck.deactivate() #stop increasing the temperature
+                tempdeck.deactivate() #stop increasing the temperature
 
     final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
-run(protocol)
 
-for line in protocol.commands():
-    print(line)
+# run(protocol)
+#
+# for line in protocol.commands():
+#     print(line)
