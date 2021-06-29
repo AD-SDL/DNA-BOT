@@ -153,8 +153,7 @@ def run(protocol):
         # transfer master mix into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         pipette.pick_up_tip()
-        pipette.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=True,
-                         blowout_location='destination well', new_tip='never')
+        pipette.distribute(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
         pipette.drop_tip()
 
         tip_at += 8
@@ -174,9 +173,13 @@ def run(protocol):
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         # assume that each column has same volume
         columns = len(water_vols) // 8 + 1
-        pipette.transfer(water_vols[0::8],
+        pipette.distribute(water_vols[0::8],
                          water,
-                         destination_wells[0::8], blow_out=True, blowout_location='destination well', new_tip='always')
+                         destination_wells[0::8], blow_out=False)
+        # pipette.transfer(water_vols[0::8],
+        #                    water,
+        #                    destination_wells[0::8], blow_out=True, blowout_location='destination well',
+        #                    new_tip='always')
 
         # We now need to switch the reverse pick algorithm so set an offset for the current rack
         offset_by_rack = len(reverse_tips) * [0]

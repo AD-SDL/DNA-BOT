@@ -7,8 +7,8 @@ Promega T4 DNA Ligase,20.0
 
 SOURCE_PLATES
 Deck position,Source plate,Path
-2,part_plate_2_230419.csv,/Users/priyankasetty/Argonne/SDL prototype/DNA-BOT/examples/part_linker_csvs/part_plate_2_230419.csv
-5,BIOLEGIO_BASIC_STD_SET.csv,/Users/priyankasetty/Argonne/SDL prototype/DNA-BOT/examples/part_linker_csvs/BIOLEGIO_BASIC_STD_SET.csv
+5,part_plate_2_230419.csv,/Users/shah38/Desktop/DNA-BOT//examples/part_linker_csvs/part_plate_2_230419.csv
+6,BIOLEGIO_BASIC_STD_SET.csv,/Users/shah38/Desktop/DNA-BOT/examples/part_linker_csvs/BIOLEGIO_BASIC_STD_SET.csv
 
 CLIP_REACTIONS
 prefixes,parts,suffixes,number,mag_well
@@ -33,3 +33,4 @@ LMP-P,BASIC_L3S2P21_J23101_RiboJ.1,UTR1-S,1,"('C11',)"
 LMP-P,BASIC_L3S2P21_J23101_RiboJ.1,UTR2-S,1,"('D11',)"
 LMP-P,BASIC_L3S2P21_J23104_RiboJ.1,UTR1-S,1,"('E11',)"
 LMP-P,BASIC_L3S2P21_J23104_RiboJ.1,UTR2-S,1,"('F11',)"
+
