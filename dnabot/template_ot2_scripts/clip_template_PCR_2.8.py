@@ -242,11 +242,11 @@ def run(protocol):
     ### PCR Reaction in Thermocycler
 
     protocol.pause('Please load plate onto the thermocycler')  # Thermocycler should be external (not on the deck)
-    resume = input("Type yes to resume: ")
+    #resume = input("Type yes to resume: ")
 
-    if resume == "yes":
-        print("Resuming protocol")
-        protocol.resume()
+    #if resume == "yes":
+    #    print("Resuming protocol")
+    #    protocol.resume()
 
     tc_mod = protocol.load_module('Thermocycler Module')
 
