@@ -1,7 +1,10 @@
-from opentrons import simulate, protocol_api,execute
+from opentrons import simulate, protocol_api
 import numpy as np
+<<<<<<< HEAD
 protocol = execute.get_protocol_api('2.8')
 protocol.home()
+=======
+>>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
 # metadata
 metadata = {
 'protocolName': 'My Protocol',
@@ -9,7 +12,7 @@ metadata = {
 'description': 'Simple protocol to get started using OT2',
 'apiLevel': '2.7'
 }
-
+protocol = simulate.get_protocol_api('2.7')
 # protocol run function. the part after the colon lets your editor know
 # where to look for autocomplete suggestions
 # where to look for autocomplete suggestions
@@ -56,7 +59,6 @@ def run(protocol:protocol_api.ProtocolContext):
 
 
                 pipette = protocol.load_instrument('p20_multi_gen2', PIPETTE_MOUNT, tip_racks=tipracks)#old code: pipette = instruments.P10_Single(mount=PIPETTE_MOUNT, tip_racks=tipracks)
-                pipette.drop_tip()
                 # Define Labware and set temperature
                 magbead_plate = protocol.load_labware(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
                #old code: magbead_plate = labware.load(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
@@ -68,15 +70,22 @@ def run(protocol:protocol_api.ProtocolContext):
                 #tempdeck.set_temperature(TEMP)
                #old code: destination_plate = labware.load(DESTINATION_PLATE_TYPE, TEMPDECK_SLOT, share=True)tempdeck.set_temperature(TEMP)tempdeck.wait_for_temp()
 
+<<<<<<< HEAD
                 # Master mix transfer
+=======
+                # Master mix transfers
+>>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
                 final_assembly_lens = []
                 for values in final_assembly_dict.values():
                     final_assembly_lens.append(len(values))
                 unique_assemblies_lens = list(set(final_assembly_lens))
                 # master_mix_well_letters = ['A', 'B', 'C', 'D']
+<<<<<<< HEAD
                 pipette.flow_rate.blow_out = 700
                 pipette.flow_rate.dispense = 500
                 pipette.pick_up_tip()
+=======
+>>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
                 for x in unique_assemblies_lens:
                     # to use as 8 channel, start well must be A
                     master_mix_well = 'A1'  # master_mix_well_letters[(x - 1) // 6] + str(x - 1)
@@ -85,6 +94,7 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
+<<<<<<< HEAD
                     print(TOTAL_VOL - x * PART_VOL)
                     for destination_well in destination_wells:
                         pipette.aspirate(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well])
@@ -96,6 +106,10 @@ def run(protocol:protocol_api.ProtocolContext):
 #                                      destination_wells, new_tip='once', blow_out=True,
 #                                        blowout_location='destination well')  # transfer water and buffer in the pipette
                     pipette.drop_tip()
+=======
+                    pipette.distribute(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well],
+                                     destination_wells, new_tip='once')  # transfer water and buffer in the pipette
+>>>>>>> 83503f0688a049c9cb6b56633b94abb8f01985b2
                     columns = len(destination_wells) // 8
                     tip_at += 8 * columns  # 8 tips per column * number of columns
 
