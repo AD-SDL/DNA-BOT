@@ -28,10 +28,7 @@ soc_well='A1'
 
 def run(protocol):
 # added run function for API version 2
-    # for transfers
-    tipracks = [protocol.load_labware(tiprack_type, slot)
-        for slot in slots]
-    reverse_tips = [tipracks[i].wells()[::-1] for i in range(len(tipracks))]
+    global tip_at
     tip_at = 0
     # generates 88 wells
     def generate_transformation_wells(spotting_tuples):
@@ -72,9 +69,10 @@ def run(protocol):
 
         # errrr should be fine lol # REMOVE
 
+        #number of tips
         # p20 tiprack slots
         p20_tips = transformation_reactions + spotting_reactions
-        p20_tiprack_slots = p20_tips // 96 + 1 if p20_tips % 96 > 0 else p20_tips / 96
+        p20_tiprack_slots = p20_tips // 96 + 1 if p20_tips % 96 > 0 else p20_tips / 96 # slots needed
 
         # p300 tiprack slots
         p300_tips = transformation_reactions + spotting_reactions
@@ -117,14 +115,15 @@ def run(protocol):
         #                      [transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells],
         #                      new_tip='always',
         #                      mix_after=(MIX_SETTINGS))
+        global tip_at
         for wells in transformation_wells:
-            pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
+            p20_pipette.pick_up_tip(reverse_tips_20[tip_at // 96][tip_at % 96])
             p20_pipette.aspirate(ASSEMBLY_VOL,[assembly_plate.wells_by_name()[well_name] for well_name in transformation_wells])
             p20_pipette.dispense(ASSEMBLY_VOL,[transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells])
             p20_pipette.mix(3)
 
             tip_at += 1
-            pipette.drop_tip()
+            p20_pipette.drop_tip()
 
 
 
@@ -273,7 +272,7 @@ def run(protocol):
             SAFE_HEIGHT = 15  # height avoids collision with agar tray.
 
             # Spot
-            p20_pipette.pick_up_tip()
+            p20_pipette.pick_up_tip(reverse_tips_20[tip_at // 96][tip_at % 96])
             p20_pipette.aspirate(spot_vol + dead_vol, source[0])
             # old code:
                 # p10_pipette.aspirate(spot_vol + dead_vol, source)
@@ -370,7 +369,7 @@ def run(protocol):
 
 
     ### Run protocol
-
+# fix the pipette
     # Constants
     CANDIDATE_P20_SLOTS = ['9', '2', '5']
     CANDIDATE_P300_SLOTS = ['3', '6']
@@ -438,8 +437,14 @@ def run(protocol):
     p20_slots = CANDIDATE_P20_SLOTS[:p20_p300_tiprack_slots[0]]
     p300_slots = CANDIDATE_P300_SLOTS[:p20_p300_tiprack_slots[1]]
 
+
     # Define labware
     p20_tipracks = [protocol.load_labware(P20_TIPRACK_TYPE, slot) for slot in p20_slots]
+
+    # for transfers
+    reverse_tips_20 = [p20_tipracks[i].wells()[::-1] for i in range(len(p20_tipracks))]
+    # tip_at = 0
+
         # changed to protocol.load_labware for API version 2
     p300_tipracks = [protocol.load_labware(P300_TIPRACK_TYPE, slot) for slot in p300_slots]
         # changed to protocol.load_labware for API version 2
@@ -468,7 +473,7 @@ def run(protocol):
     # Register agar_plate for calibration
     #not sure what tha trash is ?
     # p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'), trash=False)
-    p20_pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
+    p20_pipette.pick_up_tip(reverse_tips_20[tip_at // 96][tip_at % 96])
     p20_pipette.aspirate(1, agar_plate.wells_by_name()['A1'])
     p20_pipette.dispense(1,agar_plate.wells_by_name()['H12'])
     p20_pipette.drop_tip()

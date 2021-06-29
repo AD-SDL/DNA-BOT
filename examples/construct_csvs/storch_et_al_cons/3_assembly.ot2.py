@@ -2,7 +2,6 @@ import sys
 sys.path.append('/Users/shah38/Desktop/DNA-BOT/dnabot/template_ot2_scripts')
 from opentrons import simulate, protocol_api
 import numpy as np
-import custom_utils
 # metadata
 metadata = {
 'protocolName': 'My Protocol',
@@ -83,10 +82,21 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
+<<<<<<< HEAD
                     custom_utils.custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
+=======
+<<<<<<< HEAD
+                    pipette.distribute(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well],
+                                     destination_wells, new_tip='once')  # transfer water and buffer in the pipette
+                    columns = len(destination_wells) // 8
+                    tip_at += 8 * columns  # 8 tips per column * number of columns
+=======
+                    custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
+>>>>>>> fd4c884fdbe8d45aeb583678420ac062b052c051
                                                                  tube_rack.wells_by_name()[master_mix_well],
                                                                  destination_wells, new_tip='once')
                     tip_at += 8
+>>>>>>> 1ff0cf8759a214f78fe5ee9a685c94472e877575
 
                     '''
                      1 channel code
