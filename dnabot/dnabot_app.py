@@ -14,6 +14,7 @@ import dnabot_gui as gui
 import tkinter as tk
 import mplates
 import argparse
+import shutil
 
 # Constant str
 TEMPLATE_DIR_NAME = 'template_ot2_scripts'
@@ -199,7 +200,9 @@ def main():
         template_dir_path, TRANS_SPOT_TEMP_FNAME),
         spotting_tuples=spotting_tuples,
         soc_well=f"A{soc_column}")
-    
+    shutil.copyfile(os.path.join(
+        template_dir_path, "custom_utils.py"),
+        "custom_utils.py")
     # Write non-OT2 scripts
     if 'metainformation' in os.listdir():
         pass
