@@ -1,8 +1,6 @@
 from opentrons import simulate, protocol_api
 import numpy as np
-import sys
-sys.path.append(".")
-from . import custom_utils
+import custom_utils
 # metadata
 metadata = {
 'protocolName': 'My Protocol',
@@ -79,7 +77,7 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-                    custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
+                    custom_utils.custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
                                                                  tube_rack.wells_by_name()[master_mix_well],
                                                                  destination_wells, new_tip='once')
                     tip_at += 8
@@ -96,7 +94,7 @@ def run(protocol:protocol_api.ProtocolContext):
 
 
                 # We now need to switch the reverse pick algorithm so set an offset for the current rack
-                offset_by_rack = switch_from_8_to_1(reverse_tips, tip_at)
+                offset_by_rack = custom_utils.switch_from_8_to_1(reverse_tips, tip_at)
 
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):
@@ -105,7 +103,7 @@ def run(protocol:protocol_api.ProtocolContext):
                         #                  destination_plate.wells(key), mix_after=MIX_SETTINGS,
                         #                  new_tip='always')#transfer parts in one tube
 
-                        pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
+                        pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
                         pipette.aspirate(PART_VOL, magbead_plate.wells_by_name()[value])
                         pipette.dispense(PART_VOL,destination_plate.wells_by_name()[key])
                         pipette.mix(3)

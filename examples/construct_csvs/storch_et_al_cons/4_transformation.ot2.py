@@ -1,3 +1,5 @@
+import sys
+sys.path.append('/Users/shah38/Desktop/DNA-BOT/dnabot/template_ot2_scripts')
 from opentrons import protocol_api, simulate,execute
 import numpy as np
 protocol = simulate.get_protocol_api('2.8')

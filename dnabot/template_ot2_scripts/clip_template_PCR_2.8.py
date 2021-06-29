@@ -1,4 +1,5 @@
 #from opentrons import protocol_api, simulate, execute
+import custom_utils
 #protocol = execute.get_protocol_api('2.8')
 #protocol.home()
 
@@ -148,11 +149,16 @@ def run(protocol):
         ### Transfers
 
         # transfer master mix into destination wells
+        '''
+        Using custom transfer now, because had precision issues with transfer/distribute API
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         pipette.pick_up_tip()
         pipette.distribute(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
         pipette.drop_tip()
+        '''
+        custom_utils.custom_transfer_mastermix_water(pipette, MASTER_MIX_VOLUME, master_mix, destination_wells, new_tip='once')
 
+        # update tip_at index after MM transfer
         tip_at += 8
 
         '''
@@ -166,37 +172,27 @@ def run(protocol):
         pipette.drop_tip()
         '''
 
+        '''
+        Using custom transfer now, because had precision issues with transfer/distribute API
         # transfer water into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         # assume that each column has same volume
+        pipette.transfer(water_vols[0::8],
+                           water,
+                           destination_wells[0::8], blow_out=True, blowout_location='destination well',
+                           new_tip='always')
+        '''
+
+        custom_utils.custom_transfer_mastermix_water(pipette, water_vols[0::8], water, destination_wells[0::8], new_tip='always')
+        # update tip_at index after water transfer
         columns = len(water_vols) // 8 + 1
-        pipette.distribute(water_vols[0::8],
-                         water,
-                         destination_wells[0::8], blow_out=False)
-        # pipette.transfer(water_vols[0::8],
-        #                    water,
-        #                    destination_wells[0::8], blow_out=True, blowout_location='destination well',
-        #                    new_tip='always')
+        tip_at += columns * 8
 
         # We now need to switch the reverse pick algorithm so set an offset for the current rack
-        offset_by_rack = len(reverse_tips) * [0]
-        tip_at += columns * 8
-        current_rack = tip_at // 96
-        for i in range(len(offset_by_rack)):
-            if current_rack == i:
-                offset_by_rack[i] = tip_at
-        '''
-
-        # implement the transfer above with an 8-channel pipette
-        for i in range(len(destination_wells)):
-            pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
-            pipette.aspirate(water_vols[i], water)
-            pipette.dispense(water_vols[i], destination_wells[i])
-            pipette.drop_tip()
-            tip_at += 1
+        offset_by_rack = custom_utils.switch_from_8_to_1(reverse_tips, tip_at)
 
         '''
-        '''
+        old code
         #transfer prefixes, suffixes, and parts into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         for clip_num in range(len(parts_wells)):
@@ -205,13 +201,8 @@ def run(protocol):
             pipette.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells(parts_wells[clip_num]), destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always', mix_after=PART_MIX_SETTINGS)
         '''
 
-        # Calculates which rack and tip within rack to pick up based on how many have already been picked up
-        # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
-        def get_tip(index, offsets, tips):
-            return tips[int(index // 96)][index % 96 - offsets[index // 96]]
-
         # Implementing the transfer above with an 8-channel pipette.
-        def custom_transfer(vol, source, dest):
+        def custom_part_transfer(vol, source, dest):
             pipette.aspirate(vol, source)
             pipette.dispense(vol, dest)
             pipette.mix(3)
@@ -219,20 +210,20 @@ def run(protocol):
             pipette.drop_tip()
 
         for clip_num in range(len(parts_wells)):
-            pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
-            custom_transfer(1,
+            pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
+            custom_part_transfer(1,
                             source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
-            pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
-            custom_transfer(1,
+            pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
+            custom_part_transfer(1,
                             source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
-            pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
-            custom_transfer(parts_vols[clip_num],
+            pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
+            custom_part_transfer(parts_vols[clip_num],
                             source_plates[parts_plates[clip_num]].wells_by_name()[parts_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
