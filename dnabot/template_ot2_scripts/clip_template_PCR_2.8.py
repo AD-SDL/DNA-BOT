@@ -74,6 +74,7 @@ def run(protocol):
     LINKER_MIX_SETTINGS = (1, 3)
     PART_MIX_SETTINGS = (4, 5)
 
+    # Not used now, but maybe will have to if upgrade of Ot2 is needed
     def custom_transfer_mastermix_water(pipette, vol, source, destination_wells, new_tip='once'):
         if new_tip == 'once':
             pipette.pick_up_tip()
@@ -184,14 +185,11 @@ def run(protocol):
         ### Transfers
 
         # transfer master mix into destination wells
-        '''
-        Using custom transfer now, because had precision issues with transfer/distribute API
+
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         pipette.pick_up_tip()
-        pipette.distribute(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
+        pipette.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
         pipette.drop_tip()
-        '''
-        custom_transfer_mastermix_water(pipette, MASTER_MIX_VOLUME, master_mix, destination_wells, new_tip='once')
 
         # update tip_at index after MM transfer
         tip_at += 8
@@ -207,8 +205,7 @@ def run(protocol):
         pipette.drop_tip()
         '''
 
-        '''
-        Using custom transfer now, because had precision issues with transfer/distribute API
+
         # transfer water into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         # assume that each column has same volume
@@ -216,9 +213,8 @@ def run(protocol):
                            water,
                            destination_wells[0::8], blow_out=True, blowout_location='destination well',
                            new_tip='always')
-        '''
 
-        custom_transfer_mastermix_water(pipette, water_vols[0::8], water, destination_wells[0::8], new_tip='always')
+
         # update tip_at index after water transfer
         columns = len(water_vols) // 8 + 1
         tip_at += columns * 8

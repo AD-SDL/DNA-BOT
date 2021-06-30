@@ -13,25 +13,6 @@ metadata = {
 # where to look for autocomplete suggestions
 
 def run(protocol:protocol_api.ProtocolContext):
-    def custom_transfer_mastermix_water(pipette, vol, source, destination_wells, new_tip='once'):
-        if new_tip == 'once':
-            pipette.pick_up_tip()
-        for i in range(len(destination_wells)):
-            if new_tip == 'always':
-                pipette.pick_up_tip()
-            if type(vol) == list:
-                pipette.aspirate(vol[i], source)
-                pipette.dispense(vol[i], destination_wells[i])
-            else:
-                pipette.aspirate(vol, source)
-                pipette.dispense(vol, destination_wells[i])
-            pipette.blow_out()
-            pipette.blow_out()
-            pipette.blow_out()
-            if new_tip == 'always':
-                pipette.drop_tip()
-        if new_tip == 'once':
-            pipette.drop_tip()
 
     # Calculates which rack and tip within rack to pick up based on how many have already been picked up
     # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
@@ -112,9 +93,9 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-                    custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
+                    pipette.transfer(pipette, TOTAL_VOL - x * PART_VOL,
                                                                  tube_rack.wells_by_name()[master_mix_well],
-                                                                 destination_wells, new_tip='once')
+                                                                 destination_wells, new_tip='never')
                     tip_at += 8
 
                     '''
