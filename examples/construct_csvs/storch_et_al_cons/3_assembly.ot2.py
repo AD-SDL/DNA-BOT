@@ -1,5 +1,3 @@
-import sys
-sys.path.append('/Users/shah38/Desktop/DNA-BOT/dnabot/template_ot2_scripts')
 from opentrons import simulate, protocol_api
 import numpy as np
 # metadata
@@ -19,6 +17,42 @@ tiprack_num=5
 
 
 def run(protocol:protocol_api.ProtocolContext):
+    def custom_transfer_mastermix_water(pipette, vol, source, destination_wells, new_tip='once'):
+        if new_tip == 'once':
+            pipette.pick_up_tip()
+        for i in range(len(destination_wells)):
+            if new_tip == 'always':
+                pipette.pick_up_tip()
+            if type(vol) == list:
+                pipette.aspirate(vol[i], source)
+                pipette.dispense(vol[i], destination_wells[i])
+            else:
+                pipette.aspirate(vol, source)
+                pipette.dispense(vol, destination_wells[i])
+            pipette.blow_out()
+            pipette.blow_out()
+            pipette.blow_out()
+            if new_tip == 'always':
+                pipette.drop_tip()
+        if new_tip == 'once':
+            pipette.drop_tip()
+
+    # Calculates which rack and tip within rack to pick up based on how many have already been picked up
+    # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
+    def get_tip(index, offsets, tips):
+        return tips[int(index // 96)][index % 96 - offsets[index // 96]]
+
+    # After transfering MM, water as 8 channel now direct the pipette to pick up tips from the end
+    # Need to set offset so that pipette correctly transitions to using next tip rack
+    def switch_from_8_to_1(reverse_tips, tip_at):
+        # We now need to switch the reverse pick algorithm so set an offset for the current rack
+        offset_by_rack = len(reverse_tips) * [0]
+        current_rack = tip_at // 96
+        for i in range(len(offset_by_rack)):
+            if current_rack == i:
+                offset_by_rack[i] = tip_at
+        return offset_by_rack
+
     def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_filtertiprack_20ul"):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
@@ -82,21 +116,10 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-<<<<<<< HEAD
-                    custom_utils.custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
-=======
-<<<<<<< HEAD
-                    pipette.distribute(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well],
-                                     destination_wells, new_tip='once')  # transfer water and buffer in the pipette
-                    columns = len(destination_wells) // 8
-                    tip_at += 8 * columns  # 8 tips per column * number of columns
-=======
                     custom_transfer_mastermix_water(pipette, TOTAL_VOL - x * PART_VOL,
->>>>>>> fd4c884fdbe8d45aeb583678420ac062b052c051
                                                                  tube_rack.wells_by_name()[master_mix_well],
                                                                  destination_wells, new_tip='once')
                     tip_at += 8
->>>>>>> 1ff0cf8759a214f78fe5ee9a685c94472e877575
 
                     '''
                      1 channel code
@@ -110,7 +133,7 @@ def run(protocol:protocol_api.ProtocolContext):
 
 
                 # We now need to switch the reverse pick algorithm so set an offset for the current rack
-                offset_by_rack = custom_utils.switch_from_8_to_1(reverse_tips, tip_at)
+                offset_by_rack = switch_from_8_to_1(reverse_tips, tip_at)
 
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):
@@ -119,7 +142,7 @@ def run(protocol:protocol_api.ProtocolContext):
                         #                  destination_plate.wells(key), mix_after=MIX_SETTINGS,
                         #                  new_tip='always')#transfer parts in one tube
 
-                        pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
+                        pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
                         pipette.aspirate(PART_VOL, magbead_plate.wells_by_name()[value])
                         pipette.dispense(PART_VOL,destination_plate.wells_by_name()[key])
                         pipette.mix(3)

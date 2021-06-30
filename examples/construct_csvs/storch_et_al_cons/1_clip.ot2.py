@@ -1,7 +1,4 @@
-import sys
-sys.path.append('/Users/shah38/Desktop/DNA-BOT/dnabot/template_ot2_scripts')
 #from opentrons import protocol_api, simulate, execute
-import custom_utils
 #protocol = execute.get_protocol_api('2.8')
 #protocol.home()
 
@@ -80,6 +77,42 @@ def run(protocol):
     LINKER_MIX_SETTINGS = (1, 3)
     PART_MIX_SETTINGS = (4, 5)
 
+    def custom_transfer_mastermix_water(pipette, vol, source, destination_wells, new_tip='once'):
+        if new_tip == 'once':
+            pipette.pick_up_tip()
+        for i in range(len(destination_wells)):
+            if new_tip == 'always':
+                pipette.pick_up_tip()
+            if type(vol) == list:
+                pipette.aspirate(vol[i], source)
+                pipette.dispense(vol[i], destination_wells[i])
+            else:
+                pipette.aspirate(vol, source)
+                pipette.dispense(vol, destination_wells[i])
+            pipette.blow_out()
+            pipette.blow_out()
+            pipette.blow_out()
+            if new_tip == 'always':
+                pipette.drop_tip()
+        if new_tip == 'once':
+            pipette.drop_tip()
+
+    # Calculates which rack and tip within rack to pick up based on how many have already been picked up
+    # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
+    def get_tip(index, offsets, tips):
+        return tips[int(index // 96)][index % 96 - offsets[index // 96]]
+
+    # After transfering MM, water as 8 channel now direct the pipette to pick up tips from the end
+    # Need to set offset so that pipette correctly transitions to using next tip rack
+    def switch_from_8_to_1(reverse_tips, tip_at):
+        # We now need to switch the reverse pick algorithm so set an offset for the current rack
+        offset_by_rack = len(reverse_tips) * [0]
+        current_rack = tip_at // 96
+        for i in range(len(offset_by_rack)):
+            if current_rack == i:
+                offset_by_rack[i] = tip_at
+        return offset_by_rack
+
     def clip(
             prefixes_wells,
             prefixes_plates,
@@ -154,11 +187,14 @@ def run(protocol):
         ### Transfers
 
         # transfer master mix into destination wells
+        '''
+        Using custom transfer now, because had precision issues with transfer/distribute API
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        # pipette.pick_up_tip()
-        # pipette.distribute(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
-        # pipette.drop_tip()
-        custom_utils.custom_transfer_mastermix_water(pipette, MASTER_MIX_VOLUME, master_mix, destination_wells, new_tip='once')
+        pipette.pick_up_tip()
+        pipette.distribute(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
+        pipette.drop_tip()
+        '''
+        custom_transfer_mastermix_water(pipette, MASTER_MIX_VOLUME, master_mix, destination_wells, new_tip='once')
 
         # update tip_at index after MM transfer
         tip_at += 8
@@ -174,34 +210,27 @@ def run(protocol):
         pipette.drop_tip()
         '''
 
+        '''
+        Using custom transfer now, because had precision issues with transfer/distribute API
         # transfer water into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         # assume that each column has same volume
-        # pipette.transfer(water_vols[0::8],
-        #                    water,
-        #                    destination_wells[0::8], blow_out=True, blowout_location='destination well',
-        #                    new_tip='always')
+        pipette.transfer(water_vols[0::8],
+                           water,
+                           destination_wells[0::8], blow_out=True, blowout_location='destination well',
+                           new_tip='always')
+        '''
 
-        custom_utils.custom_transfer_mastermix_water(pipette, water_vols[0::8], water, destination_wells[0::8], new_tip='always')
+        custom_transfer_mastermix_water(pipette, water_vols[0::8], water, destination_wells[0::8], new_tip='always')
         # update tip_at index after water transfer
         columns = len(water_vols) // 8 + 1
         tip_at += columns * 8
 
         # We now need to switch the reverse pick algorithm so set an offset for the current rack
-        offset_by_rack = custom_utils.switch_from_8_to_1(reverse_tips, tip_at)
+        offset_by_rack = switch_from_8_to_1(reverse_tips, tip_at)
 
         '''
-
-        # implement the transfer above with an 8-channel pipette
-        for i in range(len(destination_wells)):
-            pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
-            pipette.aspirate(water_vols[i], water)
-            pipette.dispense(water_vols[i], destination_wells[i])
-            pipette.drop_tip()
-            tip_at += 1
-
-        '''
-        '''
+        old code
         #transfer prefixes, suffixes, and parts into destination wells
             # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         for clip_num in range(len(parts_wells)):
@@ -219,19 +248,19 @@ def run(protocol):
             pipette.drop_tip()
 
         for clip_num in range(len(parts_wells)):
-            pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
+            pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             custom_part_transfer(1,
                             source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
-            pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
+            pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             custom_part_transfer(1,
                             source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
                             destination_wells[clip_num])
             tip_at += 1
 
-            pipette.pick_up_tip(custom_utils.get_tip(tip_at, offset_by_rack, reverse_tips))
+            pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             custom_part_transfer(parts_vols[clip_num],
                             source_plates[parts_plates[clip_num]].wells_by_name()[parts_wells[clip_num]],
                             destination_wells[clip_num])
@@ -242,11 +271,11 @@ def run(protocol):
     ### PCR Reaction in Thermocycler
 
     protocol.pause('Please load plate onto the thermocycler')  # Thermocycler should be external (not on the deck)
-    resume = input("Type yes to resume: ")
+    #resume = input("Type yes to resume: ")
 
-    if resume == "yes":
-        print("Resuming protocol")
-        protocol.resume()
+    #if resume == "yes":
+    #    print("Resuming protocol")
+    #    protocol.resume()
 
     tc_mod = protocol.load_module('Thermocycler Module')
 

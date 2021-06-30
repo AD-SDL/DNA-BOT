@@ -200,9 +200,6 @@ def main():
         template_dir_path, TRANS_SPOT_TEMP_FNAME),
         spotting_tuples=spotting_tuples,
         soc_well=f"A{soc_column}")
-    shutil.copyfile(os.path.join(
-        template_dir_path, "custom_utils.py"),
-        "custom_utils.py")
     # Write non-OT2 scripts
     if 'metainformation' in os.listdir():
         pass
@@ -486,7 +483,6 @@ def generate_ot2_script(ot2_script_path, template_path, **kwargs):
 
     """
     with open(ot2_script_path, 'w') as wf:
-        wf.write("import sys\nsys.path.append('{}')\n".format(os.path.dirname(template_path)))
         with open(template_path, 'r') as rf:
             for index, line in enumerate(rf):
                 if line[:3] == 'def':
