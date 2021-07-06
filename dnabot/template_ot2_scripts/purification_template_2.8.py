@@ -1,7 +1,9 @@
 from opentrons import protocol_api, simulate, execute
 
 protocol = execute.get_protocol_api('2.8')
-# protocol.home()
+#protocol = simulate.get_protocol_api('2.8')
+
+protocol.home()
 
 # Rename to 'purification_template' and paste into 'template_ot2_scripts' folder in DNA-BOT to use
 
@@ -14,6 +16,10 @@ metadata = {
 # example values produced by DNA-BOT for a single construct containing 5 parts, un-comment and run to test the template:
 sample_number = 5
 ethanol_well = 'A11'
+
+
+sample_number=38
+ethanol_well='A11'
 
 
 def run(protocol):
@@ -39,12 +45,10 @@ def run(protocol):
             tiprack_type="opentrons_96_tiprack_300ul"):
 
         """
-
         Selected args:
             ethanol_well (str): well in reagent container containing ethanol.
             elution_buffer_well (str): well in reagent container containing elution buffer.
             sample_offset (int): offset the intial sample column by the specified value.
-
         """
 
         ### Constants
@@ -60,7 +64,7 @@ def run(protocol):
         CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '5']
 
         # Magnetic Module
-        MAGDECK_POSITION = '1'
+        MAGDECK_POSITION = 1
 
         # Mix Plate
         MIX_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
@@ -261,10 +265,12 @@ def run(protocol):
         # pipette.delay(minutes=settling_time)
         # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
+
         # Remove supernatant from magnetic beads
         for target in samples:
-            pipette.transfer(total_vol, target, liquid_waste, blow_out=True)
-
+            pipette.transfer(total_vol, target, liquid_waste, blow_out=True, blowout_location="destination well")
+        
+        
         # Wash beads twice with 70% ethanol
         air_vol = pipette.max_volume * AIR_VOL_COEFF
         for cycle in range(2):
@@ -309,8 +315,7 @@ def run(protocol):
 
         # Transfer purified parts to a new well
         for target, dest in zip(samples, output):
-            pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL, target,
-                             dest, blow_out=False)
+            pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL, target, dest, blow_out=False)
 
         # Disengage MagDeck
         MAGDECK.disengage()
@@ -318,7 +323,7 @@ def run(protocol):
     magbead(sample_number=sample_number, ethanol_well=ethanol_well)
 
 
-#     # removed elution buffer well='A1', added that to where the function is defined
+    # removed elution buffer well='A1', added that to where the function is defined
 
 run(protocol)
 
