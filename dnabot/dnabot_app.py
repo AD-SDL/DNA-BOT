@@ -18,7 +18,7 @@ import shutil
 
 # Constant str
 TEMPLATE_DIR_NAME = 'template_ot2_scripts'
-CLIP_TEMP_FNAME = 'clip_template_PCR_2.8.py'
+CLIP_TEMP_FNAME = 'clip_template_PCR_2.8_both_pipettes.py'
 MAGBEAD_TEMP_FNAME = 'purification_template_2.8.py'
 F_ASSEMBLY_TEMP_FNAME = 'assembly_template_2.7.py'
 TRANS_SPOT_TEMP_FNAME = 'transformation_template_2.8.py'
@@ -50,7 +50,10 @@ MAX_FINAL_ASSEMBLY_TIPRACKS = 7
 SPOTTING_VOLS_DICT = {2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5}
 
 # Constant lists
-SOURCE_DECK_POS = ['5', '6', '8', '7', '10', '11'] # change source decks to avoid collisions with wall using 8 channel as a 1 channel
+SOURCE_DECK_POS = ['2', '5', '8', '7', '10', '11']
+
+# change source decks to avoid collisions with wall using 8 channel as a 1 channel
+# SOURCE_DECK_POS = ['5', '6', '8', '7', '10', '11']
 
 def __cli():
     """Command line interface.
