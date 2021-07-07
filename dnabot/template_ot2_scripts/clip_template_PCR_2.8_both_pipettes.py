@@ -31,7 +31,7 @@ def run(protocol):
     # Tiprack
     tiprack_type = "opentrons_96_tiprack_20ul"
     INITIAL_TIP = 'A1'
-    CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9']
+    CANDIDATE_TIPRACK_SLOTS = ['1', '2']
 
     # Pipettes - pipette instructions in a single location so redefining pipette type is simpler
     PIPETTE_TYPE_multi = 'p20_multi_gen2'
@@ -72,7 +72,7 @@ def run(protocol):
     # TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
     TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'
     # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
-    TUBE_RACK_POSITION = '4'
+    TUBE_RACK_POSITION = '9'
     MASTER_MIX_WELL = 'A1'
     WATER_WELL = 'A2'
     # WATER_WELLS = ['A1', 'B2','C2', 'D2', 'E2', 'F2', 'G2', 'H2']
@@ -148,8 +148,8 @@ def run(protocol):
         # changed to protocol.load_labware for API 2.8
 
         # Loads pipette according to constants assigned above
-        pipette_multi = protocol.load_instrument(PIPETTE_TYPE_multi, mount=PIPETTE_MOUNT_multi, tip_racks=tipracks)
-        pipette_single = protocol.load_instrument(PIPETTE_TYPE_single, mount=PIPETTE_MOUNT_single, tip_racks=tipracks)
+        pipette_multi = protocol.load_instrument(PIPETTE_TYPE_multi, mount=PIPETTE_MOUNT_multi, tip_racks=[tipracks[0]])
+        pipette_single = protocol.load_instrument(PIPETTE_TYPE_single, mount=PIPETTE_MOUNT_single, tip_racks=[tipracks[1]])
 
         # changed to protocol.load_labware for API 2.8
         # removed 'pipette.start_at_tip(tipracks[0].well(INITIAL_TIP))'
@@ -198,7 +198,7 @@ def run(protocol):
 
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         pipette_multi.pick_up_tip()
-        pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
+        pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never', trash=False)
         pipette_multi.drop_tip()
 
         # update tip_at index after MM transfer
@@ -211,7 +211,7 @@ def run(protocol):
         pipette_multi.transfer(water_vols[0::8],
                            water,
                            destination_wells[0::8], blow_out=True, blowout_location='destination well',
-                           new_tip='always')
+                           new_tip='always', trash=False)
 
 
         # update tip_at index after water transfer
@@ -224,19 +224,22 @@ def run(protocol):
         for clip_num in range(len(parts_wells)):
             pipette_single.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             pipette_single.transfer(1, source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
-                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never', mix_after=LINKER_MIX_SETTINGS)
+                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never',
+                                    mix_after=LINKER_MIX_SETTINGS, trash=False)
             pipette_single.drop_tip()
             tip_at += 1
 
             pipette_single.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             pipette_single.transfer(1, source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
-                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never', mix_after=LINKER_MIX_SETTINGS)
+                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never',
+                                    mix_after=LINKER_MIX_SETTINGS, trash=False)
             pipette_single.drop_tip()
             tip_at += 1
 
             pipette_single.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             pipette_single.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells_by_name()[parts_wells[clip_num]],
-                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never', mix_after=PART_MIX_SETTINGS)
+                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never',
+                                    mix_after=PART_MIX_SETTINGS, trash=False)
             pipette_single.drop_tip()
             tip_at += 1
 
