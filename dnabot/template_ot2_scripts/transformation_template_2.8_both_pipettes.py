@@ -26,8 +26,6 @@ soc_well = 'A1'
 
 def run(protocol):
     # added run function for API version 2
-    global tip_at
-    tip_at = 0
 
     # generates 88 wells
     def generate_transformation_wells(spotting_tuples):
@@ -101,23 +99,12 @@ def run(protocol):
         # robot.pause()
         # robot.comment('Load competent cells, uncap and resume run')
         # API version 2 uses 'protocol.' instead of 'robot.' and combines '.pause' and '.comment'
-        # reverse tips
         # Transfer final assemblies
-        # p20_pipette.transfer(ASSEMBLY_VOL,
-        #                      [assembly_plate.wells_by_name()[well_name] for well_name in transformation_wells],
-        #                      [transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells],
-        #                      new_tip='always',
-        #                      mix_after=(MIX_SETTINGS))
-        global tip_at
-        #         print(transformation_wells)
-        for wells in transformation_wells:
-            p20_pipette.pick_up_tip(reverse_tips_20[tip_at // 96][tip_at % 96])
-            p20_pipette.aspirate(ASSEMBLY_VOL, assembly_plate.wells_by_name()[wells])
-            p20_pipette.dispense(ASSEMBLY_VOL, transformation_plate.wells_by_name()[wells])
-            p20_pipette.mix(3)
-
-            tip_at += 1
-            p20_pipette.drop_tip()
+        p20_pipette.transfer(ASSEMBLY_VOL,
+                             [assembly_plate.wells_by_name()[well_name] for well_name in transformation_wells],
+                             [transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells],
+                             new_tip='always',
+                             mix_after=(MIX_SETTINGS))
 
         # old code:
         # p10_pipette.transfer(ASSEMBLY_VOL,
@@ -128,18 +115,16 @@ def run(protocol):
         # .wells() doesn't take lists as arguements, newer wells_by_name() returns a dictionary
 
         # Incubate for 20 minutes and remove competent cells for heat shock
-        # DEBUG
-        INCUBATION_TIME = 1
         protocol.delay(minutes=INCUBATION_TIME)
         # old code:
         # p10_pipette.delay(minutes=INCUBATION_TIME)
         # API version 2 no longer has .delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
         protocol.pause("Remove transformation reactions, conduct heatshock and replace.")
-        # resume = input("Remove transformation reactions, conduct heatshock and replace. Type yes to resume: ")
-        # if resume == "yes":
-        #     print("Resuming protocol")
-        #     protocol.resume()
+        resume = input("Remove transformation reactions, conduct heatshock and replace. Type yes to resume: ")
+        if resume == "yes":
+            print("Resuming protocol")
+            protocol.resume()
 
         # old code:
         # robot.pause()
@@ -151,10 +136,10 @@ def run(protocol):
         Function pauses run enabling addition/removal of labware.
         """
         protocol.pause()
-        # resume = input("Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Type yes to resume: ")
-        # if resume == "yes":
-        #     print("Resuming protocol")
-        #     protocol.resume()
+        resume = input("Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Type yes to resume: ")
+        if resume == "yes":
+            print("Resuming protocol")
+            protocol.resume()
 
         # old code:
         # def phase_switch(comment='Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Resume run.'):
@@ -208,8 +193,6 @@ def run(protocol):
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
 
-        # DEBUG
-        OUTGROWTH_TIME = 1
         protocol.delay(minutes=OUTGROWTH_TIME)
         # old code:
         # p300_pipette.delay(minutes=OUTGROWTH_TIME)
@@ -265,7 +248,7 @@ def run(protocol):
             SAFE_HEIGHT = 15  # height avoids collision with agar tray.
 
             # Spot
-            p20_pipette.pick_up_tip(reverse_tips_20[tip_at // 96][tip_at % 96])
+            p20_pipette.pick_up_tip()
             p20_pipette.aspirate(spot_vol + dead_vol, source[0])
             # old code:
             # p10_pipette.aspirate(spot_vol + dead_vol, source)
@@ -430,9 +413,6 @@ def run(protocol):
     # Define labware
     p20_tipracks = [protocol.load_labware(P20_TIPRACK_TYPE, slot) for slot in p20_slots]
 
-    # for transfers
-    reverse_tips_20 = [p20_tipracks[i].wells()[::-1] for i in range(len(p20_tipracks))]
-    # tip_at = 0
 
     # changed to protocol.load_labware for API version 2
     p300_tipracks = [protocol.load_labware(P300_TIPRACK_TYPE, slot) for slot in p300_slots]
@@ -460,13 +440,9 @@ def run(protocol):
     # changed to protocol.load_labware for API version 2
 
     # Register agar_plate for calibration
-    # p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'), trash=False)
-    p20_pipette.pick_up_tip(reverse_tips_20[tip_at // 96][tip_at % 96])
-    p20_pipette.aspirate(1, agar_plate.wells_by_name()['A1'])
-    #     p20_pipette.dispense(1,agar_plate.wells_by_name()['H12'])
-    p20_pipette.dispense(1, agar_plate.wells_by_name()['A12'])
+    p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'), trash=False)
+    p20_pipette.dispense(1,agar_plate.wells_by_name()['H12'])
     p20_pipette.drop_tip()
-    tip_at += 1
 
     # removed:
     # p10_pipette.start_at_tip(p10_tipracks[0][0])
