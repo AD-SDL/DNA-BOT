@@ -82,43 +82,6 @@ def run(protocol):
     LINKER_MIX_SETTINGS = (1, 3)
     PART_MIX_SETTINGS = (4, 5)
 
-    # Not used now, but maybe will have to if upgrade of Ot2 is needed
-    def custom_transfer_mastermix_water(pipette, vol, source, destination_wells, new_tip='once'):
-        if new_tip == 'once':
-            pipette.pick_up_tip()
-        for i in range(len(destination_wells)):
-            if new_tip == 'always':
-                pipette.pick_up_tip()
-            if type(vol) == list:
-                pipette.aspirate(vol[i], source)
-                pipette.dispense(vol[i], destination_wells[i])
-            else:
-                pipette.aspirate(vol, source)
-                pipette.dispense(vol, destination_wells[i])
-            pipette.blow_out()
-            pipette.blow_out()
-            pipette.blow_out()
-            if new_tip == 'always':
-                pipette.drop_tip()
-        if new_tip == 'once':
-            pipette.drop_tip()
-
-    # Calculates which rack and tip within rack to pick up based on how many have already been picked up
-    # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
-    def get_tip(index, offsets, tips):
-        return tips[int(index // 96)][index % 96 - offsets[index // 96]]
-
-    # After transfering MM, water as 8 channel now direct the pipette to pick up tips from the end
-    # Need to set offset so that pipette correctly transitions to using next tip rack
-    def switch_from_8_to_1(reverse_tips, tip_at):
-        # We now need to switch the reverse pick algorithm so set an offset for the current rack
-        offset_by_rack = len(reverse_tips) * [0]
-        current_rack = tip_at // 96
-        for i in range(len(offset_by_rack)):
-            if current_rack == i:
-                offset_by_rack[i] = tip_at
-        return offset_by_rack
-
     def clip(
             prefixes_wells,
             prefixes_plates,
@@ -148,8 +111,8 @@ def run(protocol):
         # changed to protocol.load_labware for API 2.8
 
         # Loads pipette according to constants assigned above
-        pipette_multi = protocol.load_instrument(PIPETTE_TYPE_multi, mount=PIPETTE_MOUNT_multi, tip_racks=[tipracks[0]])
-        pipette_single = protocol.load_instrument(PIPETTE_TYPE_single, mount=PIPETTE_MOUNT_single, tip_racks=[tipracks[1]])
+        pipette_multi = protocol.load_instrument(PIPETTE_TYPE_multi, mount=PIPETTE_MOUNT_multi, tip_racks=tipracks)
+        pipette_single = protocol.load_instrument(PIPETTE_TYPE_single, mount=PIPETTE_MOUNT_single, tip_racks=tipracks)
 
         # changed to protocol.load_labware for API 2.8
         # removed 'pipette.start_at_tip(tipracks[0].well(INITIAL_TIP))'
@@ -187,11 +150,6 @@ def run(protocol):
             source_plates[key] = protocol.load_labware(SOURCE_PLATE_TYPE, key)
             # changed to protocol.load_labware for API 2.8
 
-        # We are stating to pick up tips from H12 (last well) to avoid collision.
-        # Here we reverse the tip well list.
-        reverse_tips = [tipracks[i].wells()[::-1] for i in range(len(tipracks))]
-        tip_at = 0
-
         ### Transfers
 
         # transfer master mix into destination wells
@@ -202,7 +160,6 @@ def run(protocol):
         pipette_multi.drop_tip()
 
         # update tip_at index after MM transfer
-        tip_at += 8
 
 
         # transfer water into destination wells
@@ -214,34 +171,18 @@ def run(protocol):
                            new_tip='always', trash=False)
 
 
-        # update tip_at index after water transfer
-        columns = len(water_vols) // 8 + 1
-        tip_at += columns * 8
-
-        # We now need to switch the reverse pick algorithm so set an offset for the current rack
-        offset_by_rack = switch_from_8_to_1(reverse_tips, tip_at)
-
         for clip_num in range(len(parts_wells)):
-            pipette_single.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             pipette_single.transfer(1, source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
-                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never',
+                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
                                     mix_after=LINKER_MIX_SETTINGS, trash=False)
-            pipette_single.drop_tip()
-            tip_at += 1
 
-            pipette_single.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             pipette_single.transfer(1, source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
-                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never',
+                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
                                     mix_after=LINKER_MIX_SETTINGS, trash=False)
-            pipette_single.drop_tip()
-            tip_at += 1
 
-            pipette_single.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
             pipette_single.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells_by_name()[parts_wells[clip_num]],
-                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='never',
+                                    destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
                                     mix_after=PART_MIX_SETTINGS, trash=False)
-            pipette_single.drop_tip()
-            tip_at += 1
 
 
     # the run function will first define the CLIP function, and then run the CLIP function with the dictionary produced by DNA-BOT
