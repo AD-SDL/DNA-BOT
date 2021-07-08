@@ -50,10 +50,10 @@ MAX_FINAL_ASSEMBLY_TIPRACKS = 7
 SPOTTING_VOLS_DICT = {2: 5, 3: 5, 4: 5, 5: 5, 6: 5, 7: 5}
 
 # Constant lists
-SOURCE_DECK_POS = ['3', '6', '8', '7', '10', '11']
+# SOURCE_DECK_POS = ['3', '6', '8', '7', '10', '11']
 
 # change source decks to avoid collisions with wall using 8 channel as a 1 channel
-# SOURCE_DECK_POS = ['5', '6', '8', '7', '10', '11']
+SOURCE_DECK_POS = ['5', '6', '8', '7', '10', '11']
 
 def __cli():
     """Command line interface.
