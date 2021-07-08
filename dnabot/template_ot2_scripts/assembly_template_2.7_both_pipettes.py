@@ -73,9 +73,9 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-                    pipette_multi.transfer(TOTAL_VOL - x * PART_VOL, master_mix_well,
+                    pipette_multi.transfer(TOTAL_VOL - x * PART_VOL,
                                                                  tube_rack.wells_by_name()[master_mix_well],
-                                                                 destination_wells, new_tip='never', trash=False)
+                                                                 destination_wells, new_tip='once', trash=False)
 
                     '''
                      1 channel code
