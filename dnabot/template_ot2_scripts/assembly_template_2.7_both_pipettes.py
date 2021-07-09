@@ -27,7 +27,7 @@ def run(protocol:protocol_api.ProtocolContext):
                 TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'
                 TUBE_RACK_POSITION = '7'
                 #Destination plate
-                DESTINATION_PLATE_TYPE = 'opentrons_96_aluminumblock_generic_pcr_strip_200ul'
+                DESTINATION_PLATE_TYPE = 'opentrons_96_aluminumblock_nest_wellplate_100ul'
                 #Temperature control plate
                 TEMPDECK_SLOT = '4'
                 TEMP = 20
@@ -75,7 +75,8 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
                     pipette_multi.transfer(TOTAL_VOL - x * PART_VOL,
                                                                  tube_rack.wells_by_name()[master_mix_well],
-                                                                 destination_wells, new_tip='once', trash=False)
+                                                                 destination_wells, new_tip='once', trash=False, blow_out=True,
+                                           blowout_location="destination well")
 
                     '''
                      1 channel code
@@ -92,7 +93,7 @@ def run(protocol:protocol_api.ProtocolContext):
                     for value in values:# magbead_plate.wells and destination_plate.wells in the same type
                         pipette_single.transfer(PART_VOL, magbead_plate.wells_by_name()[value],
                                          destination_plate.wells_by_name()[key], mix_after=MIX_SETTINGS,
-                                         new_tip='always', trash=False)#transfer parts in one tube
+                                         new_tip='always', trash=False, blow_out=True, blowout_location="destination well")#transfer parts in one tube
 
                 tempdeck.deactivate() #stop increasing the temperature
 
