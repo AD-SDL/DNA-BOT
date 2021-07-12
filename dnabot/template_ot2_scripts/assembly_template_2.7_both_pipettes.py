@@ -99,7 +99,3 @@ def run(protocol:protocol_api.ProtocolContext):
 
     final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
 
-# run(protocol)
-#
-# for line in protocol.commands():
-#     print(line)

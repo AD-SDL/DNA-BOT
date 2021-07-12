@@ -90,11 +90,11 @@ def run(protocol):
         # removed: tempdeck.wait_for_temp()
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
-        protocol.pause("Load competent cells, uncap and resume run ")
-        #         resume = input("Load competent cells, uncap and type yes to resume: ")
-        #         if resume == "yes":
-        #             print("Resuming protocol")
-        #             protocol.resume()
+        protocol.pause()
+        resume = input("Load competent cells, uncap and type yes to resume: ")
+        if resume == "yes":
+            print("Resuming protocol")
+            protocol.resume()
         # old code:
         # robot.pause()
         # robot.comment('Load competent cells, uncap and resume run')
@@ -120,7 +120,7 @@ def run(protocol):
         # p10_pipette.delay(minutes=INCUBATION_TIME)
         # API version 2 no longer has .delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
-        protocol.pause("Remove transformation reactions, conduct heatshock and replace.")
+        protocol.pause()
         resume = input("Remove transformation reactions, conduct heatshock and replace. Type yes to resume: ")
         if resume == "yes":
             print("Resuming protocol")
