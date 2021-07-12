@@ -1,10 +1,5 @@
 from opentrons import protocol_api, simulate, execute
 
-protocol = execute.get_protocol_api('2.8')
-#protocol = simulate.get_protocol_api('2.8')
-
-protocol.home()
-
 # Rename to 'purification_template' and paste into 'template_ot2_scripts' folder in DNA-BOT to use
 
 metadata = {
@@ -324,8 +319,3 @@ def run(protocol):
 
 
     # removed elution buffer well='A1', added that to where the function is defined
-
-run(protocol)
-
-for line in protocol.commands():
-    print(line)
