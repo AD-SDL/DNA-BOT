@@ -303,8 +303,7 @@ def run(protocol):
         for target in samples:
             pipette.transfer(elution_buffer_volume, elution_buffer,
                              target, mix_after=(ELUTION_MIX_REPS, mix_vol),
-                             trash=False
-            touch_tip = True)
+                             trash=False, touch_tip=True)
 
             # Incubate at room temperature
             protocol.delay(minutes=elution_time)
