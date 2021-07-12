@@ -68,7 +68,7 @@ def run(protocol):
         MIX_PLATE_POSITION = '4'
 
         # Reagents
-        REAGENT_CONTAINER_TYPE = 'nest_12_reservoir_15ml'
+        REAGENT_CONTAINER_TYPE = 'nest_96_wellplate_2ml_deep'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
