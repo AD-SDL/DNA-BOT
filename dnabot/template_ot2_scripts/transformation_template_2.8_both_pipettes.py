@@ -417,7 +417,7 @@ def run(protocol):
     # changed to protocol.load_labware for API version 2
     p300_tipracks = [protocol.load_labware(P300_TIPRACK_TYPE, slot) for slot in p300_slots]
     # changed to protocol.load_labware for API version 2
-    p20_pipette = protocol.load_instrument('p20_multi_gen2', mount=P20_MOUNT, tip_racks=p20_tipracks)
+    p20_pipette = protocol.load_instrument('p20_single_gen2', mount=P20_MOUNT, tip_racks=p20_tipracks)
     # changed to protocol.load_instrument for API version 2
     #     p20_pipette.drop_tip()
     p300_pipette = protocol.load_instrument('p300_multi_gen2', mount=P300_MOUNT, tip_racks=p300_tipracks)
@@ -441,8 +441,6 @@ def run(protocol):
 
     # Register agar_plate for calibration
     p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'), trash=False)
-    p20_pipette.dispense(1,agar_plate.wells_by_name()['H12'])
-    p20_pipette.drop_tip()
 
     # removed:
     # p10_pipette.start_at_tip(p10_tipracks[0][0])
