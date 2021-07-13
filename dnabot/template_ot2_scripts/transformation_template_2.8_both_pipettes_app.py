@@ -101,7 +101,7 @@ def run(protocol):
                              [assembly_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              [transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              new_tip='always',
-                             mix_after=(MIX_SETTINGS))
+                             mix_after=(MIX_SETTINGS), trash=False)
 
         # old code:
         # p10_pipette.transfer(ASSEMBLY_VOL,
@@ -150,8 +150,7 @@ def run(protocol):
         SOC_VOL = 125
         SOC_MIX_SETTINGS = (4, 50)
         TEMP = 37
-        #         OUTGROWTH_TIME = 60
-        OUTGROWTH_TIME = 1
+        OUTGROWTH_TIME = 60
         SOC_ASPIRATION_RATE = 25
         P300_DEFAULT_ASPIRATION_RATE = 150
 
@@ -170,7 +169,7 @@ def run(protocol):
         # p300_pipette.set_flow_rate(aspirate=SOC_ASPIRATION_RATE)
         # flow rates are set directly in API version 2, brackets not required
         p300_pipette.transfer(SOC_VOL, soc, transformation_cols,
-                              new_tip='always', mix_after=SOC_MIX_SETTINGS)
+                              new_tip='always', mix_after=SOC_MIX_SETTINGS, trash=False)
         p300_pipette.flow_rate.aspirate = P300_DEFAULT_ASPIRATION_RATE
         # old code:
         # p300_pipette.set_flow_rate(aspirate=P300_DEFAULT_ASPIRATION_RATE)
@@ -182,6 +181,8 @@ def run(protocol):
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
 
+        # DEBUG
+        OUTGROWTH_TIME = 1
         protocol.delay(minutes=OUTGROWTH_TIME)
         # old code:
         # p300_pipette.delay(minutes=OUTGROWTH_TIME)
@@ -287,7 +288,8 @@ def run(protocol):
             # the simple .blow_out command blows out at current position (spotting waste) by defualt
             # unlike blowout=true in complex commands, which by default will blow out in waste
 
-            p20_pipette.drop_tip()
+            #p20_pipette.drop_tip()
+            p20_pipette.return_tip()
 
         def spot_tuple(spotting_tuple):
             """
@@ -329,7 +331,8 @@ def run(protocol):
                 # .mix only takes one location, not several locations
                 # added [0] to specify only the wells in row A
                 # is identical for the protocol, as this is using a multi-channel pipette
-                p300_pipette.drop_tip()
+                #p300_pipette.drop_tip()
+                p300_pipette.return_tip()
             spot_tuple(spotting_tuple)
 
     ### Run protocol
