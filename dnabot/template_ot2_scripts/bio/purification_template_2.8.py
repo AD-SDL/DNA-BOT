@@ -63,7 +63,7 @@ def run(protocol):
 
         # Reagents
         # total ethanol volume is 150uL * 5 columns * 2 washes = 1.5mL
-        REAGENT_CONTAINER_TYPE = 'nest_12_reservoir_15ml'
+        REAGENT_CONTAINER_TYPE = 'usascientific_12_reservoir_22ml'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
