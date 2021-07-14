@@ -112,6 +112,8 @@ def run(protocol):
         # .wells() doesn't take lists as arguements, newer wells_by_name() returns a dictionary
 
         # Incubate for 20 minutes and remove competent cells for heat shock
+        #DEBUG
+        INCUBATION_TIME=1
         protocol.delay(minutes=INCUBATION_TIME)
         # old code:
         # p10_pipette.delay(minutes=INCUBATION_TIME)
