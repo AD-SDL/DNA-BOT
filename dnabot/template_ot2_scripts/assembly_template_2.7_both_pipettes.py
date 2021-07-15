@@ -80,7 +80,8 @@ def run(protocol:protocol_api.ProtocolContext):
                     for d in list(chunks(destination_wells, 3)):
                         pipette_multi.transfer(TOTAL_VOL - x * PART_VOL,
                                                                      tube_rack.wells_by_name()[master_mix_well],
-                                                                     d, new_tip='once', trash=False, blow_out=True,
+                                                                     d, touch_tip=True,
+                                               new_tip='once', trash=False, blow_out=True,
                                            blowout_location="destination well")
 
                     '''

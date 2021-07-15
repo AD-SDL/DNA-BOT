@@ -56,7 +56,7 @@ def run(protocol):
 
     # Tube Rack
     # use a wellplate instead of a tube rack so we can use the 8 channel pipette
-    TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'
+    TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
     TUBE_RACK_POSITION = '3'
     MASTER_MIX_WELL = 'A1'
     WATER_WELL = 'A2'
@@ -95,7 +95,6 @@ def run(protocol):
         # changed to protocol.load_labware for API 2.8
 
         # Loads pipette according to constants assigned above
-        pipette_multi = protocol.load_instrument(PIPETTE_TYPE_multi, mount=PIPETTE_MOUNT_multi, tip_racks=tipracks)
         pipette_single = protocol.load_instrument(PIPETTE_TYPE_single, mount=PIPETTE_MOUNT_single, tip_racks=tipracks)
 
         # changed to protocol.load_labware for API 2.8
@@ -139,17 +138,16 @@ def run(protocol):
         # transfer master mix into destination wells
 
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        pipette_multi.pick_up_tip()
-        pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never')
-        pipette_multi.drop_tip()
+        pipette_single.pick_up_tip()
+        pipette_single.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=True, blowout_location='destination well', new_tip='never')
+        pipette_single.drop_tip()
 
 
         # transfer water into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        # assume that each column has same volume
-        pipette_multi.transfer(water_vols[0::8],
+        pipette_single.transfer(water_vols,
                            water,
-                           destination_wells[0::8], blow_out=True, blowout_location='destination well',
+                           destination_wells, blow_out=True, blowout_location='destination well',
                            new_tip='always')
 
 

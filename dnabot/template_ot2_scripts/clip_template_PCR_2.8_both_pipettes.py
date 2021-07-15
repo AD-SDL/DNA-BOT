@@ -161,7 +161,8 @@ def run(protocol):
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
         # After ~3 transfers with the same tips, dripping is expected so drop the tip after 4 columns
         for d in list(chunks(destination_wells, 3*8)):
-            pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, d, blow_out=True, blowout_location='destination well', new_tip='once', trash=False)
+            pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, d, blow_out=True, blowout_location='destination well',
+                                   touch_tip=True, new_tip='once', trash=False)
 
         # transfer water into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
@@ -169,7 +170,7 @@ def run(protocol):
         pipette_multi.transfer(water_vols[0::8],
                            water,
                            destination_wells[0::8], blow_out=True, blowout_location='destination well',
-                           new_tip='always', trash=False)
+                           touch_tip=True, new_tip='always', trash=False)
 
 
         for clip_num in range(len(parts_wells)):
