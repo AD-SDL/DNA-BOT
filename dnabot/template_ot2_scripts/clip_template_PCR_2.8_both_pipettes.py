@@ -24,6 +24,10 @@ clips_dict = {"prefixes_wells": ["A8", "A7", "C5", "C7", "C10"], "prefixes_plate
 
 
 def run(protocol):
+    def chunks(lst, n):
+        """Yield successive n-sized chunks from lst."""
+        for i in range(0, len(lst), n):
+            yield lst[i:i + n]
     # added run function for API 2.8
 
     ### Constants - these have been moved out of the def clip() for clarity
@@ -155,12 +159,9 @@ def run(protocol):
         # transfer master mix into destination wells
 
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        pipette_multi.pick_up_tip()
-        pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never', trash=False)
-        pipette_multi.drop_tip()
-
-        # update tip_at index after MM transfer
-
+        # After ~3 transfers with the same tips, dripping is expected so drop the tip after 4 columns
+        for d in list(chunks(destination_wells, 3*8)):
+            pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, d, blow_out=True, blowout_location='destination well', new_tip='once', trash=False)
 
         # transfer water into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)

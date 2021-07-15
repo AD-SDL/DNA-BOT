@@ -13,7 +13,10 @@ metadata = {
 # where to look for autocomplete suggestions
 
 def run(protocol:protocol_api.ProtocolContext):
-
+    def chunks(lst, n):
+        """Yield successive n-sized chunks from lst."""
+        for i in range(0, len(lst), n):
+            yield lst[i:i + n]
     def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_filtertiprack_20ul"):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
@@ -73,9 +76,11 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-                    pipette_multi.transfer(TOTAL_VOL - x * PART_VOL,
-                                                                 tube_rack.wells_by_name()[master_mix_well],
-                                                                 destination_wells, new_tip='once', trash=False, blow_out=True,
+                    # After ~3 transfers with the same tips, dripping is expected so drop the tip after 4 columns
+                    for d in list(chunks(destination_wells, 3)):
+                        pipette_multi.transfer(TOTAL_VOL - x * PART_VOL,
+                                                                     tube_rack.wells_by_name()[master_mix_well],
+                                                                     d, new_tip='once', trash=False, blow_out=True,
                                            blowout_location="destination well")
 
                     '''
