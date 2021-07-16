@@ -62,13 +62,13 @@ def run(protocol):
         MAGDECK_POSITION = 1
 
         # Mix Plate
-        MIX_PLATE_TYPE = 'corning_96_wellplate_360ul_flat'
+        MIX_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         # also acts as the type of plate loaded onto the magnetic module
-        MIX_PLATE_POSITION = '4'
+        MIX_PLATE_POSITION = '10'
 
         # Reagents
-        REAGENT_CONTAINER_TYPE = 'usascientific_12_reservoir_22ml'
+        REAGENT_CONTAINER_TYPE = '4ti0131_12_reservoir_21000ul'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
@@ -231,7 +231,6 @@ def run(protocol):
             pipette.mix(IMMOBILISE_MIX_REPS, mix_vol, mixing[target][0])
             # similar to above, added [0] because samples[target] returned a list of every well in column 1 rather than just one well
             pipette.blow_out()
-            pipette.touch_tip()
 
             # Dispose of tip
             protocol.max_speeds.update(DEFAULT_HEAD_SPEEDS)
@@ -254,7 +253,7 @@ def run(protocol):
         for target in range(int(len(samples))):
             pipette.transfer(total_vol, mixing[target], samples[target], blow_out=True,
                              blowout_location='destination well', trash=False, touch_tip=True)
-            print(total_vol)
+            # is this too fragile to do touch tip?
             # added blowout_location=destination well because default location of blowout is waste in API version 2
 
         # Engagae MagDeck and incubate
@@ -268,13 +267,13 @@ def run(protocol):
         for target in samples:
             pipette.transfer(total_vol, target, liquid_waste,
                              blow_out=True, blowout_location="destination well",
-                             trash=False, touch_tip=True)
+                             trash=False)
 
         # Wash beads twice with 70% ethanol
         air_vol = pipette.max_volume * AIR_VOL_COEFF
         for cycle in range(2):
             for target in samples:
-                pipette.transfer(ETHANOL_VOL, ethanol, target, air_gap=air_vol, trash=False, touch_tip=True)
+                pipette.transfer(ETHANOL_VOL, ethanol, target, air_gap=air_vol, trash=False)
             protocol.delay(minutes=WASH_TIME)
             # old code:
             # pipette.delay(minutes=WASH_TIME)
@@ -282,7 +281,7 @@ def run(protocol):
             for target in samples:
                 pipette.transfer(ETHANOL_VOL + ETHANOL_DEAD_VOL, target,
                                  liquid_waste, air_gap=air_vol,
-                                 trash=False, touch_tip=True)
+                                 trash=False, blowout=True, blowout_location='destination well')
 
         # Dry at room temperature
         protocol.delay(minutes=drying_time)
@@ -301,7 +300,7 @@ def run(protocol):
         for target in samples:
             pipette.transfer(elution_buffer_volume, elution_buffer,
                              target, mix_after=(ELUTION_MIX_REPS, mix_vol),
-                             trash=False, touch_tip=True)
+                             trash=False,  blowout=True, blowout_location='destination well')
 
         # Incubate at room temperature
         protocol.delay(minutes=elution_time)
@@ -319,7 +318,7 @@ def run(protocol):
         # Transfer purified parts to a new well
         for target, dest in zip(samples, output):
             pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL,
-                             target, dest, blow_out=False, trash=False, touch_tip=True)
+                             target, dest, blow_out=False, trash=False)
 
         # Disengage MagDeck
         MAGDECK.disengage()
