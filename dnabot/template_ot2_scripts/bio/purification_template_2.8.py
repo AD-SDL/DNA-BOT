@@ -22,7 +22,7 @@ def run(protocol):
             bead_ratio=1.8,
             elution_buffer_volume=40,
             incubation_time=5,
-            settling_time=5,
+            settling_time=7, # changed for gen2 module
             # if using Gen 2 magentic module, need to change time! see: https://docs.opentrons.com/v2/new_modules.html
             # "The GEN2 Magnetic Module uses smaller magnets than the GEN1 version...this means it will take longer for the GEN2 module to attract beads."
             # Recommended Magnetic Module GEN2 bead attraction time:
@@ -290,27 +290,27 @@ def run(protocol):
                              target, mix_after=(ELUTION_MIX_REPS, mix_vol),
                             touch_tip=True)
 
-            # Incubate at room temperature
-            protocol.delay(minutes=elution_time)
-            # old code:
-            # pipette.delay(minutes=elution_time)
-            # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
+        # Incubate at room temperature
+        protocol.delay(minutes=elution_time)
+        # old code:
+        # pipette.delay(minutes=elution_time)
+        # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
-            # Engage MagDeck (remains engaged for DNA elution)
-            MAGDECK.engage(height=MAGDECK_HEIGHT)
-            protocol.delay(minutes=ELUTANT_SEP_TIME)
-            # old code:
-            # pipette.delay(minutes=ELUTANT_SEP_TIME)
-            # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
+        # Engage MagDeck (remains engaged for DNA elution)
+        MAGDECK.engage(height=MAGDECK_HEIGHT)
+        protocol.delay(minutes=ELUTANT_SEP_TIME)
+        # old code:
+        # pipette.delay(minutes=ELUTANT_SEP_TIME)
+        # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
-            # Transfer purified parts to a new well
-            for target, dest in zip(samples, output):
-                pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL,
-                                 target, dest, blow_out=False,touch_tip=True)
+        # Transfer purified parts to a new well
+        for target, dest in zip(samples, output):
+            pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL,
+                             target, dest, blow_out=False,touch_tip=True)
 
-            # Disengage MagDeck
-            MAGDECK.disengage()
+        # Disengage MagDeck
+        MAGDECK.disengage()
 
-        magbead(sample_number=sample_number, ethanol_well=ethanol_well)
+    magbead(sample_number=sample_number, ethanol_well=ethanol_well)
 
     # removed elution buffer well='A1', added that to where the function is defined

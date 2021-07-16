@@ -62,13 +62,13 @@ def run(protocol):
         MAGDECK_POSITION = 1
 
         # Mix Plate
-        MIX_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
+        MIX_PLATE_TYPE = 'corning_96_wellplate_360ul_flat'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         # also acts as the type of plate loaded onto the magnetic module
         MIX_PLATE_POSITION = '4'
 
         # Reagents
-        REAGENT_CONTAINER_TYPE = 'nest_96_wellplate_2ml_deep'
+        REAGENT_CONTAINER_TYPE = 'usascientific_12_reservoir_22ml'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
@@ -208,7 +208,6 @@ def run(protocol):
             # Aspirate beads
             pipette.pick_up_tip()
             pipette.aspirate(bead_volume, beads)
-            print(bead_volume)
             protocol.max_speeds.update(SLOW_HEAD_SPEEDS)
             # old code:
             # robot.head_speed(**SLOW_HEAD_SPEEDS, combined_speed=max(SLOW_HEAD_SPEEDS.values()))
@@ -219,7 +218,6 @@ def run(protocol):
 
             # Aspirte samples
             pipette.aspirate(sample_volume + DEAD_TOTAL_VOL, samples[target][0])
-            print(sample_volume + DEAD_TOTAL_VOL)
             # old code:
             # pipette.aspirate(sample_volume + DEAD_TOTAL_VOL, samples[target][0])
             # TypeError: location should be a Well or Location, but it is [list of all wells in column 1]
@@ -305,27 +303,27 @@ def run(protocol):
                              target, mix_after=(ELUTION_MIX_REPS, mix_vol),
                              trash=False, touch_tip=True)
 
-            # Incubate at room temperature
-            protocol.delay(minutes=elution_time)
-            # old code:
-            # pipette.delay(minutes=elution_time)
-            # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
+        # Incubate at room temperature
+        protocol.delay(minutes=elution_time)
+        # old code:
+        # pipette.delay(minutes=elution_time)
+        # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
-            # Engage MagDeck (remains engaged for DNA elution)
-            MAGDECK.engage(height=MAGDECK_HEIGHT)
-            protocol.delay(minutes=ELUTANT_SEP_TIME)
-            # old code:
-            # pipette.delay(minutes=ELUTANT_SEP_TIME)
-            # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
+        # Engage MagDeck (remains engaged for DNA elution)
+        MAGDECK.engage(height=MAGDECK_HEIGHT)
+        protocol.delay(minutes=ELUTANT_SEP_TIME)
+        # old code:
+        # pipette.delay(minutes=ELUTANT_SEP_TIME)
+        # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
-            # Transfer purified parts to a new well
-            for target, dest in zip(samples, output):
-                pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL,
-                                 target, dest, blow_out=False, trash=False, touch_tip=True)
+        # Transfer purified parts to a new well
+        for target, dest in zip(samples, output):
+            pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL,
+                             target, dest, blow_out=False, trash=False, touch_tip=True)
 
-            # Disengage MagDeck
-            MAGDECK.disengage()
+        # Disengage MagDeck
+        MAGDECK.disengage()
 
-        magbead(sample_number=sample_number, ethanol_well=ethanol_well)
+    magbead(sample_number=sample_number, ethanol_well=ethanol_well)
 
     # removed elution buffer well='A1', added that to where the function is defined
