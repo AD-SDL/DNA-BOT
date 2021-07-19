@@ -1,0 +1,32 @@
+Labware changes from DNABOT (API 2 branch):
+
+4ti_0960RIG_96_wellplate_200ul -> nest_96_wellplate_100ul_pcr_full_skirt
+1500_starlabtubes_24_tuberack_1500ul  -> opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap
+4Ti_0131_Reservoir_12_trough_21000ul -> nest_96_wellplate_2ml_deep depending on volume needed
+opentrons_96_filtertiprack_20ul -> opentrons_96_tiprack_20ul
+E1415-1500_starlabtubes_24_tuberack_1500ul -> opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap
+
+All lab ware needed (API2)
+
+Clip
+opentrons_96_tiprack_20ul X 2 
+nest_96_wellplate_100ul_pcr_full_skirt X 3 (parts, linkers, destination)
+opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap X 1 (MM, water)
+
+Purification
+opentrons_96_tiprack_300ul X 5
+nest_96_wellplate_100ul_pcr_full_skirt X 2 (one on MagDeck is from clip)
+4Ti_0131_Reservoir_12_trough_21000ul (custom) X 1 (reagents/ethanol)
+nest_96_wellplate_2ml_deep X 1(beads)
+
+Assembly
+opentrons_96_tiprack_20ul X 7 (not sure if all are needed…)
+nest_96_wellplate_100ul_pcr_full_skirt X 2 (one is from purification step, one is on TempDeck)
+opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap X 1 (MM)
+
+Transformation
+opentrons_96_tiprack_20ul X 3
+opentrons_96_tiprack_300ul X 2
+nest_96_wellplate_100ul_pcr_full_skirt X 3 (one from assembly, one is agar, one is on TempDeck/destination)
+opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap X 1 (waste)
+nest_96_wellplate_2ml_deep X 1 (SOC)
