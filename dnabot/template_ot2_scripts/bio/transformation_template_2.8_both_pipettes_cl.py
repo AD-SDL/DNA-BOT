@@ -423,7 +423,7 @@ def run(protocol):
 
     assembly_plate = protocol.load_labware(ASSEMBLY_PLATE_TYPE, ASSEMBLY_PLATE_SLOT)
     # changed to protocol.load_labware for API version 2
-    tempdeck = protocol.load_module('tempdeck', TEMPDECK_SLOT)
+    tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT)
     # changed to protocol.load_module for API version 2
     transformation_plate = tempdeck.load_labware(TRANSFORMATION_PLATE_TYPE, TEMPDECK_SLOT)
     # changed to protocol.load_labware for API version 2

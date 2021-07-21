@@ -13,7 +13,7 @@ def run(protocol):
 
     pipette_300 = protocol.load_instrument("p300_multi_gen2", mount="left", tip_racks=tipracks_300)
 
-    trough = protocol.load_labware("4Ti_0131_Reservoir_12_trough_21000ul", 6)
+    trough = protocol.load_labware("4ti0131_12_reservoir_21000ul", 6)
     deep_well = protocol.load_labware("nest_96_wellplate_2ml_deep", 2)
 
     TEMPDECK = protocol.load_module('temperature module gen2', 1)

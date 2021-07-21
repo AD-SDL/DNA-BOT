@@ -16,7 +16,7 @@ opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap X 1 (MM, water)
 Purification
 opentrons_96_tiprack_300ul X 5
 nest_96_wellplate_100ul_pcr_full_skirt X 2 (one on MagDeck is from clip)
-4Ti_0131_Reservoir_12_trough_21000ul (custom) X 1 (reagents/ethanol)
+4ti0131_12_reservoir_21000ul (custom) X 1 (reagents/ethanol)
 nest_96_wellplate_2ml_deep X 1(beads)
 
 Assembly
