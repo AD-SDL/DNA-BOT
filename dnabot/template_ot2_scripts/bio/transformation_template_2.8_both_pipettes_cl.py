@@ -293,8 +293,7 @@ def run(protocol):
             # the simple .blow_out command blows out at current position (spotting waste) by defualt
             # unlike blowout=true in complex commands, which by default will blow out in waste
 
-            #p20_pipette.drop_tip()
-            p20_pipette.return_tip()
+            p20_pipette.drop_tip()
 
         def spot_tuple(spotting_tuple):
             """
@@ -336,8 +335,7 @@ def run(protocol):
                 # .mix only takes one location, not several locations
                 # added [0] to specify only the wells in row A
                 # is identical for the protocol, as this is using a multi-channel pipette
-                #p300_pipette.drop_tip()
-                p300_pipette.return_tip()
+                p300_pipette.drop_tip()
             spot_tuple(spotting_tuple)
 
     ### Run protocol
