@@ -100,7 +100,7 @@ def run(protocol):
                              [assembly_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              [transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              new_tip='always',
-                             mix_after=(MIX_SETTINGS), trash=False)
+                             mix_after=(MIX_SETTINGS))
 
         # old code:
         # p10_pipette.transfer(ASSEMBLY_VOL,
@@ -176,7 +176,7 @@ def run(protocol):
         # p300_pipette.set_flow_rate(aspirate=SOC_ASPIRATION_RATE)
         # flow rates are set directly in API version 2, brackets not required
         p300_pipette.transfer(SOC_VOL, soc, transformation_cols,
-                              new_tip='always', mix_after=SOC_MIX_SETTINGS, trash=False)
+                              new_tip='always', mix_after=SOC_MIX_SETTINGS)
         p300_pipette.flow_rate.aspirate = P300_DEFAULT_ASPIRATION_RATE
         # old code:
         # p300_pipette.set_flow_rate(aspirate=P300_DEFAULT_ASPIRATION_RATE)
@@ -436,7 +436,7 @@ def run(protocol):
     # changed to protocol.load_labware for API version 2
 
     # Register agar_plate for calibration
-    p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'), trash=False)
+    p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'))
 
     # removed:
     # p10_pipette.start_at_tip(p10_tipracks[0][0])
