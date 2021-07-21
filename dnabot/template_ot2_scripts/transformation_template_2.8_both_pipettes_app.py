@@ -209,7 +209,7 @@ def run(protocol):
             spotting_tuples,
             dead_vol=2,
             spotting_dispense_rate=0.025,
-            stabbing_depth=2,
+            stabbing_depth=10,
             max_spot_vol=5):
         """
         Spots transformation reactions.
@@ -236,7 +236,7 @@ def run(protocol):
             # Constants
             DEFAULT_HEAD_SPEED = {'x': 400, 'y': 400, 'z': 125, 'a': 125}
             SPOT_HEAD_SPEED = {'x': 400, 'y': 400, 'z': 125, 'a': 125 // 4}
-            DISPENSING_HEIGHT = 5
+            DISPENSING_HEIGHT = 0
             SAFE_HEIGHT = 15  # height avoids collision with agar tray.
 
             # Spot
