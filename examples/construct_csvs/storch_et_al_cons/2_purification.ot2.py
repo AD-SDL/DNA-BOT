@@ -1,10 +1,5 @@
 from opentrons import protocol_api, simulate, execute
 
-protocol = execute.get_protocol_api('2.8')
-#protocol = simulate.get_protocol_api('2.8')
-
-protocol.home()
-
 # Rename to 'purification_template' and paste into 'template_ot2_scripts' folder in DNA-BOT to use
 
 metadata = {
@@ -74,10 +69,10 @@ def run(protocol):
         MIX_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         # also acts as the type of plate loaded onto the magnetic module
-        MIX_PLATE_POSITION = '4'
+        MIX_PLATE_POSITION = '10'
 
         # Reagents
-        REAGENT_CONTAINER_TYPE = 'nest_12_reservoir_15ml'
+        REAGENT_CONTAINER_TYPE = '4ti0131_12_reservoir_21000ul'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
@@ -235,6 +230,7 @@ def run(protocol):
 
             # Transfer and mix on mix_plate
             pipette.dispense(total_vol, mixing[target][0])
+            print(total_vol)
             # similar to above, added [0] because samples[target] returned a list of every well in column 1 rather than just one well
             pipette.mix(IMMOBILISE_MIX_REPS, mix_vol, mixing[target][0])
             # similar to above, added [0] because samples[target] returned a list of every well in column 1 rather than just one well
@@ -248,7 +244,8 @@ def run(protocol):
             # replaced with protocol.max_speeds
             # new code no longer uses the lower value between combined speed or specified speed
             # just uses each axis' specified speed directly
-            pipette.drop_tip()
+            # pipette.drop_tip()
+            pipette.return_tip()
 
         # Immobilise sample
         protocol.delay(minutes=incubation_time)
@@ -259,7 +256,8 @@ def run(protocol):
         # Transfer beads+samples back to magdeck
         for target in range(int(len(samples))):
             pipette.transfer(total_vol, mixing[target], samples[target], blow_out=True,
-                             blowout_location='destination well')
+                             blowout_location='destination well', trash=False, touch_tip=True)
+            # is this too fragile to do touch tip?
             # added blowout_location=destination well because default location of blowout is waste in API version 2
 
         # Engagae MagDeck and incubate
@@ -269,23 +267,25 @@ def run(protocol):
         # pipette.delay(minutes=settling_time)
         # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
 
-
         # Remove supernatant from magnetic beads
         for target in samples:
-            pipette.transfer(total_vol, target, liquid_waste, blow_out=True, blowout_location="destination well")
-        
-        
+            pipette.transfer(total_vol, target, liquid_waste,
+                             blow_out=True, blowout_location="destination well",
+                             trash=False)
+
         # Wash beads twice with 70% ethanol
         air_vol = pipette.max_volume * AIR_VOL_COEFF
         for cycle in range(2):
             for target in samples:
-                pipette.transfer(ETHANOL_VOL, ethanol, target, air_gap=air_vol)
+                pipette.transfer(ETHANOL_VOL, ethanol, target, air_gap=air_vol, trash=False)
             protocol.delay(minutes=WASH_TIME)
             # old code:
             # pipette.delay(minutes=WASH_TIME)
             # API Version 2 no longer has delay() for pipettes, it uses protocol.delay() to pause the entire protocol
             for target in samples:
-                pipette.transfer(ETHANOL_VOL + ETHANOL_DEAD_VOL, target, liquid_waste, air_gap=air_vol)
+                pipette.transfer(ETHANOL_VOL + ETHANOL_DEAD_VOL, target,
+                                 liquid_waste, air_gap=air_vol,
+                                 trash=False, blowout=True, blowout_location='destination well')
 
         # Dry at room temperature
         protocol.delay(minutes=drying_time)
@@ -302,7 +302,9 @@ def run(protocol):
         else:
             mix_vol = elution_buffer_volume / 2
         for target in samples:
-            pipette.transfer(elution_buffer_volume, elution_buffer, target, mix_after=(ELUTION_MIX_REPS, mix_vol))
+            pipette.transfer(elution_buffer_volume, elution_buffer,
+                             target, mix_after=(ELUTION_MIX_REPS, mix_vol),
+                             trash=False,  blowout=True, blowout_location='destination well')
 
         # Incubate at room temperature
         protocol.delay(minutes=elution_time)
@@ -319,17 +321,12 @@ def run(protocol):
 
         # Transfer purified parts to a new well
         for target, dest in zip(samples, output):
-            pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL, target, dest, blow_out=False)
+            pipette.transfer(elution_buffer_volume - ELUTION_DEAD_VOL,
+                             target, dest, blow_out=False, trash=False)
 
         # Disengage MagDeck
         MAGDECK.disengage()
 
     magbead(sample_number=sample_number, ethanol_well=ethanol_well)
 
-
     # removed elution buffer well='A1', added that to where the function is defined
-
-run(protocol)
-
-for line in protocol.commands():
-    print(line)

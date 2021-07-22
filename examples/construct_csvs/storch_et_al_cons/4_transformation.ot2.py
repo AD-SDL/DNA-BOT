@@ -95,10 +95,7 @@ def run(protocol):
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
         protocol.pause("Load competent cells, uncap and resume run ")
-        #         resume = input("Load competent cells, uncap and type yes to resume: ")
-        #         if resume == "yes":
-        #             print("Resuming protocol")
-        #             protocol.resume()
+
         # old code:
         # robot.pause()
         # robot.comment('Load competent cells, uncap and resume run')
@@ -108,7 +105,7 @@ def run(protocol):
                              [assembly_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              [transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              new_tip='always',
-                             mix_after=(MIX_SETTINGS))
+                             mix_after=(MIX_SETTINGS), trash=False)
 
         # old code:
         # p10_pipette.transfer(ASSEMBLY_VOL,
@@ -119,16 +116,26 @@ def run(protocol):
         # .wells() doesn't take lists as arguements, newer wells_by_name() returns a dictionary
 
         # Incubate for 20 minutes and remove competent cells for heat shock
+        #DEBUG
+        INCUBATION_TIME=1
         protocol.delay(minutes=INCUBATION_TIME)
         # old code:
         # p10_pipette.delay(minutes=INCUBATION_TIME)
         # API version 2 no longer has .delay() for pipettes, it uses protocol.delay() to pause the entire protocol
+    def heat_shock():
 
-        protocol.pause("Remove transformation reactions, conduct heatshock and replace.")
-        resume = input("Remove transformation reactions, conduct heatshock and replace. Type yes to resume: ")
-        if resume == "yes":
-            print("Resuming protocol")
-            protocol.resume()
+
+        #Thermocycler Module
+        tc_mod = protocol.load_module('temperature module gen2', TEMPDECK_SLOT2)
+        # Destination Plates
+        DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
+        # Loads destination plate onto Thermocycler Module
+        destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
+        tc_mod.set_temperature(42)
+        protocol.pause('Place the competent cells on tempdeck and resume run to conduct heat shock for 15s at 42 degrees and return to 4 degrees for 2 minutes.')
+        protocol.delay(seconds=45)
+
+        # protocol.pause("Remove transformation reactions, conduct heatshock and replace.")
 
         # old code:
         # robot.pause()
@@ -139,11 +146,7 @@ def run(protocol):
         """
         Function pauses run enabling addition/removal of labware.
         """
-        protocol.pause()
-        resume = input("Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Type yes to resume: ")
-        if resume == "yes":
-            print("Resuming protocol")
-            protocol.resume()
+        protocol.pause("Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media.")
 
         # old code:
         # def phase_switch(comment='Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Resume run.'):
@@ -165,8 +168,7 @@ def run(protocol):
         SOC_VOL = 125
         SOC_MIX_SETTINGS = (4, 50)
         TEMP = 37
-        #         OUTGROWTH_TIME = 60
-        OUTGROWTH_TIME = 1
+        OUTGROWTH_TIME = 60
         SOC_ASPIRATION_RATE = 25
         P300_DEFAULT_ASPIRATION_RATE = 150
 
@@ -185,7 +187,7 @@ def run(protocol):
         # p300_pipette.set_flow_rate(aspirate=SOC_ASPIRATION_RATE)
         # flow rates are set directly in API version 2, brackets not required
         p300_pipette.transfer(SOC_VOL, soc, transformation_cols,
-                              new_tip='always', mix_after=SOC_MIX_SETTINGS)
+                              new_tip='always', mix_after=SOC_MIX_SETTINGS, trash=False)
         p300_pipette.flow_rate.aspirate = P300_DEFAULT_ASPIRATION_RATE
         # old code:
         # p300_pipette.set_flow_rate(aspirate=P300_DEFAULT_ASPIRATION_RATE)
@@ -197,6 +199,8 @@ def run(protocol):
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
 
+        # DEBUG
+        OUTGROWTH_TIME = 1
         protocol.delay(minutes=OUTGROWTH_TIME)
         # old code:
         # p300_pipette.delay(minutes=OUTGROWTH_TIME)
@@ -221,7 +225,7 @@ def run(protocol):
             spotting_tuples,
             dead_vol=2,
             spotting_dispense_rate=0.025,
-            stabbing_depth=2,
+            stabbing_depth=9.5,
             max_spot_vol=5):
         """
         Spots transformation reactions.
@@ -248,7 +252,7 @@ def run(protocol):
             # Constants
             DEFAULT_HEAD_SPEED = {'x': 400, 'y': 400, 'z': 125, 'a': 125}
             SPOT_HEAD_SPEED = {'x': 400, 'y': 400, 'z': 125, 'a': 125 // 4}
-            DISPENSING_HEIGHT = 5
+            DISPENSING_HEIGHT = 0
             SAFE_HEIGHT = 15  # height avoids collision with agar tray.
 
             # Spot
@@ -302,7 +306,8 @@ def run(protocol):
             # the simple .blow_out command blows out at current position (spotting waste) by defualt
             # unlike blowout=true in complex commands, which by default will blow out in waste
 
-            p20_pipette.drop_tip()
+            #p20_pipette.drop_tip()
+            p20_pipette.return_tip()
 
         def spot_tuple(spotting_tuple):
             """
@@ -344,13 +349,14 @@ def run(protocol):
                 # .mix only takes one location, not several locations
                 # added [0] to specify only the wells in row A
                 # is identical for the protocol, as this is using a multi-channel pipette
-                p300_pipette.drop_tip()
+                #p300_pipette.drop_tip()
+                p300_pipette.return_tip()
             spot_tuple(spotting_tuple)
 
     ### Run protocol
     # fix the pipette
     # Constants
-    CANDIDATE_P20_SLOTS = ['9', '4', '5']
+    CANDIDATE_P20_SLOTS = ['9', '6', '5']
     CANDIDATE_P300_SLOTS = ['2', '3']
     P20_TIPRACK_TYPE = 'opentrons_96_tiprack_20ul'
     # changed from 'tiprack-10ul'
@@ -361,7 +367,8 @@ def run(protocol):
     # changed from '4ti-0960_FrameStar'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
     ASSEMBLY_PLATE_SLOT = '8'
-    TEMPDECK_SLOT = '10'
+    TEMPDECK_SLOT1 = '10'
+    TEMPDECK_SLOT2 = '4'
     TRANSFORMATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from 'Eppendorf_30133366_plate_96'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
@@ -421,7 +428,7 @@ def run(protocol):
     # changed to protocol.load_labware for API version 2
     p300_tipracks = [protocol.load_labware(P300_TIPRACK_TYPE, slot) for slot in p300_slots]
     # changed to protocol.load_labware for API version 2
-    p20_pipette = protocol.load_instrument('p20_multi_gen2', mount=P20_MOUNT, tip_racks=p20_tipracks)
+    p20_pipette = protocol.load_instrument('p20_single_gen2', mount=P20_MOUNT, tip_racks=p20_tipracks)
     # changed to protocol.load_instrument for API version 2
     #     p20_pipette.drop_tip()
     p300_pipette = protocol.load_instrument('p300_multi_gen2', mount=P300_MOUNT, tip_racks=p300_tipracks)
@@ -429,9 +436,10 @@ def run(protocol):
 
     assembly_plate = protocol.load_labware(ASSEMBLY_PLATE_TYPE, ASSEMBLY_PLATE_SLOT)
     # changed to protocol.load_labware for API version 2
-    tempdeck = protocol.load_module('tempdeck', TEMPDECK_SLOT)
+    tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT1)
+    # tempdeck2 = protocol.load_module('temperature module gen2', TEMPDECK_SLOT2)
     # changed to protocol.load_module for API version 2
-    transformation_plate = tempdeck.load_labware(TRANSFORMATION_PLATE_TYPE, TEMPDECK_SLOT)
+    transformation_plate = tempdeck.load_labware(TRANSFORMATION_PLATE_TYPE, TEMPDECK_SLOT1)
     # changed to protocol.load_labware for API version 2
     # removed share=True, not required in API version 2
     # removed TEMPDECK_SLOT as it is loaded directly onto temperature module
@@ -445,8 +453,6 @@ def run(protocol):
 
     # Register agar_plate for calibration
     p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'), trash=False)
-    p20_pipette.dispense(1,agar_plate.wells_by_name()['H12'])
-    p20_pipette.drop_tip()
 
     # removed:
     # p10_pipette.start_at_tip(p10_tipracks[0][0])
@@ -455,6 +461,7 @@ def run(protocol):
 
     # Run functions
     transformation_setup(generate_transformation_wells(spotting_tuples))
+    heat_shock()
     phase_switch()
     spotting_tuples_cols = [col for cols in spotting_cols(spotting_tuples) for col in cols]
     unique_cols = [col for i, col in enumerate(spotting_tuples_cols) if spotting_tuples_cols.index(col) == i]

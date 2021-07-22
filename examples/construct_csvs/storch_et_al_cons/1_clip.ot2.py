@@ -1,13 +1,5 @@
-#from opentrons import protocol_api, simulate, execute
-#protocol = execute.get_protocol_api('2.8')
-#protocol.home()
-
-# Use this when you want to simulate.
-# protocol = simulate.get_protocol_api('2.8')
-
-# Rename to 'clip_template' and paste into 'template_ot2_scripts' folder in DNA-BOT to use
-
-#metadata
+# Final version of the clips template to be used in actual DNA assembly experiment
+# with all the correct labware
 metadata = {
      'apiLevel': '2.8',
      'protocolName': 'CLIP_With_Thermocycler',
@@ -48,7 +40,6 @@ def run(protocol):
 
 
     PIPETTE_TYPE_single = 'p20_single_gen2'
-    # API 2 supports gen_1 pipettes like the p10_single
     PIPETTE_MOUNT_single = 'left'
     ### Load Pipette
     # checks if it's a P20 Single pipette
@@ -62,23 +53,16 @@ def run(protocol):
     # Loads destination plate onto Thermocycler Module
     destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
 
-    # not supported by API 1
-    # DESTINATION_PLATE_POSITION removed, as it is on the thermocylcer module (which is always on the same slot)
-    # DESTINATION_PLATE_POSITION = '1'
-    # INITIAL_DESTINATION_WELL constant removed, as destination_plate.wells() automatically starts from A1
     # Source Plates
     SOURCE_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
 
     # Tube Rack
-    # Changed this:
-    # TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
-    TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'
-    # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
+    # use a wellplate instead of a tube rack so we can use the 8 channel pipette
+    TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
     TUBE_RACK_POSITION = '3'
     MASTER_MIX_WELL = 'A1'
     WATER_WELL = 'A2'
-    # WATER_WELLS = ['A1', 'B2','C2', 'D2', 'E2', 'F2', 'G2', 'H2']
     MASTER_MIX_VOLUME = 20
 
     # Mix settings
@@ -114,7 +98,6 @@ def run(protocol):
         # changed to protocol.load_labware for API 2.8
 
         # Loads pipette according to constants assigned above
-        pipette_multi = protocol.load_instrument(PIPETTE_TYPE_multi, mount=PIPETTE_MOUNT_multi, tip_racks=tipracks)
         pipette_single = protocol.load_instrument(PIPETTE_TYPE_single, mount=PIPETTE_MOUNT_single, tip_racks=tipracks)
 
         # changed to protocol.load_labware for API 2.8
@@ -158,34 +141,31 @@ def run(protocol):
         # transfer master mix into destination wells
 
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        pipette_multi.pick_up_tip()
-        pipette_multi.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=False,new_tip='never', trash=False)
-        pipette_multi.drop_tip()
-
-        # update tip_at index after MM transfer
+        pipette_single.pick_up_tip()
+        pipette_single.transfer(MASTER_MIX_VOLUME, master_mix, destination_wells, blow_out=True, blowout_location='destination well', new_tip='never')
+        pipette_single.drop_tip()
 
 
         # transfer water into destination wells
         # added blowout into destination wells ('blowout_location' only works for API 2.8 and above)
-        # assume that each column has same volume
-        pipette_multi.transfer(water_vols[0::8],
+        pipette_single.transfer(water_vols,
                            water,
-                           destination_wells[0::8], blow_out=True, blowout_location='destination well',
-                           new_tip='always', trash=False)
+                           destination_wells, blow_out=True, blowout_location='destination well',
+                           new_tip='always')
 
 
         for clip_num in range(len(parts_wells)):
             pipette_single.transfer(1, source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
                                     destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
-                                    mix_after=LINKER_MIX_SETTINGS, trash=False)
+                                    mix_after=LINKER_MIX_SETTINGS)
 
             pipette_single.transfer(1, source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
                                     destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
-                                    mix_after=LINKER_MIX_SETTINGS, trash=False)
+                                    mix_after=LINKER_MIX_SETTINGS)
 
             pipette_single.transfer(parts_vols[clip_num], source_plates[parts_plates[clip_num]].wells_by_name()[parts_wells[clip_num]],
                                     destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
-                                    mix_after=PART_MIX_SETTINGS, trash=False)
+                                    mix_after=PART_MIX_SETTINGS)
 
 
     # the run function will first define the CLIP function, and then run the CLIP function with the dictionary produced by DNA-BOT
@@ -207,9 +187,3 @@ def run(protocol):
     # Q Does block_max_volume define total volume in block or individual wells?
     tc_mod.set_lid_temperature(37)
     tc_mod.open_lid()
-
-#run(protocol)
-
-# for simulating
-#for line in protocol.commands():
-#    print(line)
