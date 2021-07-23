@@ -132,6 +132,19 @@ def run(protocol):
         # robot.pause()
         # robot.comment('Remove transformation reactions, conduct heatshock and replace.')
         # API version 2 uses 'protocol.' instead of 'robot.' and combines '.pause' and '.comment'
+    def heat_shock():
+        #temp deck Module
+        tempdeck2 = protocol.load_module('temperature module gen2', TEMPDECK_SLOT2)
+        # Destination Plates
+        DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
+        # Loads destination plate onto temperature Module
+        destination_plate = tempdeck2.load_labware(DESTINATION_PLATE_TYPE)
+        tempdeck2.set_temperature(42)
+        protocol.pause('Conduct heat shock for by placing competent cells on tempdeck in slot 4 and resume run.')
+        protocol.delay(seconds=15)
+        protocol.pause('Return Competent cells from tempdeck on slot 4 to tempdeck on slot 10 and resume run.')
+        protocol.delay(seconds=120)
+        protocol.delay(seconds=45)
 
     def phase_switch():
         """
@@ -362,7 +375,9 @@ def run(protocol):
     # changed from '4ti-0960_FrameStar'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
     ASSEMBLY_PLATE_SLOT = '8'
-    TEMPDECK_SLOT = '10'
+    TEMPDECK_SLOT1 = '10'
+    TEMPDECK_SLOT2 = '4'
+
     TRANSFORMATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from 'Eppendorf_30133366_plate_96'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
@@ -430,9 +445,9 @@ def run(protocol):
 
     assembly_plate = protocol.load_labware(ASSEMBLY_PLATE_TYPE, ASSEMBLY_PLATE_SLOT)
     # changed to protocol.load_labware for API version 2
-    tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT)
+    tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT1)
     # changed to protocol.load_module for API version 2
-    transformation_plate = tempdeck.load_labware(TRANSFORMATION_PLATE_TYPE, TEMPDECK_SLOT)
+    transformation_plate = tempdeck.load_labware(TRANSFORMATION_PLATE_TYPE, TEMPDECK_SLOT1)
     # changed to protocol.load_labware for API version 2
     # removed share=True, not required in API version 2
     # removed TEMPDECK_SLOT as it is loaded directly onto temperature module
@@ -454,6 +469,7 @@ def run(protocol):
 
     # Run functions
     transformation_setup(generate_transformation_wells(spotting_tuples))
+    heat_shock()
     phase_switch()
     spotting_tuples_cols = [col for cols in spotting_cols(spotting_tuples) for col in cols]
     unique_cols = [col for i, col in enumerate(spotting_tuples_cols) if spotting_tuples_cols.index(col) == i]

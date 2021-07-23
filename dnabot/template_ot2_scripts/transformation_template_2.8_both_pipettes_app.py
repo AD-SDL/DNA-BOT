@@ -119,18 +119,17 @@ def run(protocol):
         # p10_pipette.delay(minutes=INCUBATION_TIME)
         # API version 2 no longer has .delay() for pipettes, it uses protocol.delay() to pause the entire protocol
     def heat_shock():
-
-
-        #Thermocycler Module
-        tc_mod = protocol.load_module('temperature module gen2', TEMPDECK_SLOT2)
+        #temp deck Module
+        TEMPDECK_SLOT2=4
+        tempdeck2 = protocol.load_module('temperature module gen2', TEMPDECK_SLOT2)
         # Destination Plates
         DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
-        # Loads destination plate onto Thermocycler Module
-        destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
-        tc_mod.set_temperature(42)
+        # Loads destination plate onto temperature Module
+        destination_plate = tempdeck2.load_labware(DESTINATION_PLATE_TYPE)
+        tempdeck2.set_temperature(42)
         protocol.pause('Conduct heat shock for by placing competent cells on tempdeck in slot 4 and resume run.')
         protocol.delay(seconds=15)
-         protocol.pause('Return Competent cells from tempdeck on slot 4 to tempdeck on slot 10 and resume run.')
+        protocol.pause('Return Competent cells from tempdeck on slot 4 to tempdeck on slot 10 and resume run.')
         protocol.delay(seconds=120)
         protocol.delay(seconds=45)
 
