@@ -139,13 +139,13 @@ def run(protocol):
         destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
         tc_mod.set_block_temperature(42)
         protocol.pause()
-        resume = input('Conduct heat shock for by placing competent cells on tempdeck in slot 4 and resume run.')
+        resume = input('Conduct heat shock for by placing competent cells on tempdeck in slot 4 and types yes to resume run.')
         if resume == "yes":
             print("Resuming protocol")
             protocol.resume()
         protocol.delay(seconds=15)
         protocol.pause()
-        resume = input('Return Competent cells from tempdeck on slot 4 to tempdeck on slot 10 and resume run.')
+        resume = input('Return Competent cells from tempdeck on slot 4 to tempdeck on slot 10 and types yes to resume run.')
         if resume == "yes":
             print("Resuming protocol")
             protocol.resume()

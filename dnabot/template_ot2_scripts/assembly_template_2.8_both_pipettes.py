@@ -5,7 +5,7 @@ metadata = {
 'protocolName': 'My Protocol',
 'author': 'Name <email@address.com>',
 'description': 'Simple protocol to get started using OT2',
-'apiLevel': '2.7'
+'apiLevel': '2.8'
 }
 #protocol = simulate.get_protocol_api('2.7')
 # protocol run function. the part after the colon lets your editor know
@@ -13,37 +13,24 @@ metadata = {
 # where to look for autocomplete suggestions
 
 def run(protocol:protocol_api.ProtocolContext):
-
-    # Calculates which rack and tip within rack to pick up based on how many have already been picked up
-    # accomodates a switch from 8 channel functionality with 'transfer' and 1 channel functionality
-    def get_tip(index, offsets, tips):
-        return tips[int(index // 96)][index % 96 - offsets[index // 96]]
-
-    # After transfering MM, water as 8 channel now direct the pipette to pick up tips from the end
-    # Need to set offset so that pipette correctly transitions to using next tip rack
-    def switch_from_8_to_1(reverse_tips, tip_at):
-        # We now need to switch the reverse pick algorithm so set an offset for the current rack
-        offset_by_rack = len(reverse_tips) * [0]
-        current_rack = tip_at // 96
-        for i in range(len(offset_by_rack)):
-            if current_rack == i:
-                offset_by_rack[i] = tip_at
-        return offset_by_rack
-
+    def chunks(lst, n):
+        """Yield successive n-sized chunks from lst."""
+        for i in range(0, len(lst), n):
+            yield lst[i:i + n]
     def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_filtertiprack_20ul"):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
-#                 CANDIDATE_TIPRACK_SLOTS = ['6', '9', '3', '2', '10', '8', '11']
-                CANDIDATE_TIPRACK_SLOTS = ['6', '9', '11'] # add more if needed
-                PIPETTE_MOUNT = 'right'
+                CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '8', '10', '11']
+                PIPETTE_MOUNT_multi = 'right'
+                PIPETTE_MOUNT_single = 'left'
                 #Plate of sample after  purification
                 MAG_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
                 MAG_PLATE_POSITION = '5'
                 #Tuberack
                 TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'
-                TUBE_RACK_POSITION = '10'
+                TUBE_RACK_POSITION = '7'
                 #Destination plate
-                DESTINATION_PLATE_TYPE = 'opentrons_96_aluminumblock_generic_pcr_strip_200ul'
+                DESTINATION_PLATE_TYPE = 'opentrons_96_aluminumblock_nest_wellplate_100ul'
                 #Temperature control plate
                 TEMPDECK_SLOT = '4'
                 TEMP = 20
@@ -56,17 +43,13 @@ def run(protocol:protocol_api.ProtocolContext):
                 tipracks = [protocol.load_labware(tiprack_type, slot)
                     for slot in slots]
 
-                # for transfers
-                reverse_tips = [tipracks[i].wells()[::-1] for i in range(len(tipracks))]
-                tip_at = 0
-
                 # Errors
                 sample_number = len(final_assembly_dict.keys())
                 if sample_number > 96:
                     raise ValueError('Final assembly nummber cannot exceed 96.')
 
-
-                pipette = protocol.load_instrument('p20_multi_gen2', PIPETTE_MOUNT, tip_racks=tipracks)#old code: pipette = instruments.P10_Single(mount=PIPETTE_MOUNT, tip_racks=tipracks)
+                pipette_single = protocol.load_instrument('p20_single_gen2', PIPETTE_MOUNT_single, tip_racks=tipracks)
+                pipette_multi = protocol.load_instrument('p20_multi_gen2', PIPETTE_MOUNT_multi, tip_racks=tipracks)#old code: pipette = instruments.P10_Single(mount=PIPETTE_MOUNT, tip_racks=tipracks)
                 # Define Labware and set temperature
                 magbead_plate = protocol.load_labware(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
                #old code: magbead_plate = labware.load(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
@@ -93,10 +76,13 @@ def run(protocol:protocol_api.ProtocolContext):
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-                    pipette.transfer(TOTAL_VOL - x * PART_VOL, master_mix_well,
-                                                                 tube_rack.wells_by_name()[master_mix_well],
-                                                                 destination_wells, new_tip='never')
-                    tip_at += 8
+                    # After ~3 transfers with the same tips, dripping is expected so drop the tip after 4 columns
+                    for d in list(chunks(destination_wells, 3)):
+                        pipette_multi.transfer(TOTAL_VOL - x * PART_VOL,
+                                                                     tube_rack.wells_by_name()[master_mix_well],
+                                                                     d, touch_tip=True,
+                                               new_tip='once', trash=False, blow_out=True,
+                                           blowout_location="destination well")
 
                     '''
                      1 channel code
@@ -108,30 +94,14 @@ def run(protocol:protocol_api.ProtocolContext):
                     tip_at +=1
                     '''
 
-
-                # We now need to switch the reverse pick algorithm so set an offset for the current rack
-                offset_by_rack = switch_from_8_to_1(reverse_tips, tip_at)
-
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):
                     for value in values:# magbead_plate.wells and destination_plate.wells in the same type
-                        # pipette.transfer(PART_VOL, magbead_plate.wells(value),
-                        #                  destination_plate.wells(key), mix_after=MIX_SETTINGS,
-                        #                  new_tip='always')#transfer parts in one tube
-
-                        pipette.pick_up_tip(get_tip(tip_at, offset_by_rack, reverse_tips))
-                        pipette.aspirate(PART_VOL, magbead_plate.wells_by_name()[value])
-                        pipette.dispense(PART_VOL,destination_plate.wells_by_name()[key])
-                        pipette.mix(3)
-
-                        tip_at += 1
-                        pipette.drop_tip()
+                        pipette_single.transfer(PART_VOL, magbead_plate.wells_by_name()[value],
+                                         destination_plate.wells_by_name()[key], mix_after=MIX_SETTINGS,
+                                         new_tip='always', trash=False, blow_out=True, blowout_location="destination well")#transfer parts in one tube
 
                 tempdeck.deactivate() #stop increasing the temperature
 
     final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
 
-# run(protocol)
-#
-# for line in protocol.commands():
-#     print(line)

@@ -1,23 +1,17 @@
-from opentrons import simulate, protocol_api
+# Final version of the assembly template to be used in actual DNA assembly experiment
+# with all the correct labware
 import numpy as np
 # metadata
 metadata = {
 'protocolName': 'My Protocol',
 'author': 'Name <email@address.com>',
 'description': 'Simple protocol to get started using OT2',
-'apiLevel': '2.7'
+'apiLevel': '2.8'
 }
-#protocol = simulate.get_protocol_api('2.7')
-# protocol run function. the part after the colon lets your editor know
-# where to look for autocomplete suggestions
-# where to look for autocomplete suggestions
 
-def run(protocol:protocol_api.ProtocolContext):
-    def chunks(lst, n):
-        """Yield successive n-sized chunks from lst."""
-        for i in range(0, len(lst), n):
-            yield lst[i:i + n]
-    def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_filtertiprack_20ul"):
+def run(protocol):
+
+    def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_tiprack_20ul"):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
                 CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '8', '10', '11']
@@ -27,8 +21,8 @@ def run(protocol:protocol_api.ProtocolContext):
                 MAG_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
                 MAG_PLATE_POSITION = '5'
                 #Tuberack
-                TUBE_RACK_TYPE = 'nest_96_wellplate_2ml_deep'
-                TUBE_RACK_POSITION = '7'
+                TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
+                TUBE_RACK_POSITION = '1' #moved bc thermocycler is in 7
                 #Destination plate
                 DESTINATION_PLATE_TYPE = 'opentrons_96_aluminumblock_nest_wellplate_100ul'
                 #Temperature control plate
@@ -67,41 +61,42 @@ def run(protocol:protocol_api.ProtocolContext):
                 for values in final_assembly_dict.values():
                     final_assembly_lens.append(len(values))
                 unique_assemblies_lens = list(set(final_assembly_lens))
-                # master_mix_well_letters = ['A', 'B', 'C', 'D']
+                master_mix_well_letters = ['A', 'B', 'C', 'D']
                 for x in unique_assemblies_lens:
-                    # to use as 8 channel, start well must be A
-                    master_mix_well = 'A1'  # master_mix_well_letters[(x - 1) // 6] + str(x - 1)
-                    # assume that every 8th index starts at A so we can use 8 channel
-                    destination_inds = [i for i, lens in enumerate(final_assembly_lens) if lens == x][::8]
+                    master_mix_well = master_mix_well_letters[(x - 1) // 6] + str(x - 1) # A4
+                    destination_inds = [i for i, lens in enumerate(final_assembly_lens) if lens == x]
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])
                     destination_wells = [destination_plate.wells_by_name()[i] for i in destination_wells]
-                    # After ~3 transfers with the same tips, dripping is expected so drop the tip after 4 columns
-                    for d in list(chunks(destination_wells, 3)):
-                        pipette_multi.transfer(TOTAL_VOL - x * PART_VOL,
-                                                                     tube_rack.wells_by_name()[master_mix_well],
-                                                                     d, touch_tip=True,
-                                               new_tip='once', trash=False, blow_out=True,
+                    pipette_single.transfer(TOTAL_VOL - x * PART_VOL,
+                                                                 tube_rack.wells_by_name()[master_mix_well],
+                                                                 destination_wells, new_tip='once', blow_out=True,
                                            blowout_location="destination well")
-
-                    '''
-                     1 channel code
-                    pipette.pick_up_tip(reverse_tips[tip_at // 96][tip_at % 96])
-                    for destination_well in destination_wells:# make tube_rack_wells and destination_plate.wells in the same type
-                        pipette.aspirate(TOTAL_VOL - x * PART_VOL, tube_rack.wells_by_name()[master_mix_well])
-                        pipette.dispense(TOTAL_VOL - x * PART_VOL,destination_plate.wells_by_name()[destination_well])
-                    pipette.drop_tip()
-                    tip_at +=1
-                    '''
 
                 # Part transfers
                 for key, values in list(final_assembly_dict.items()):
                     for value in values:# magbead_plate.wells and destination_plate.wells in the same type
                         pipette_single.transfer(PART_VOL, magbead_plate.wells_by_name()[value],
                                          destination_plate.wells_by_name()[key], mix_after=MIX_SETTINGS,
-                                         new_tip='always', trash=False, blow_out=True, blowout_location="destination well")#transfer parts in one tube
+                                         new_tip='always', blow_out=True, blowout_location="destination well")#transfer parts in one tube
 
                 tempdeck.deactivate() #stop increasing the temperature
+
+                protocol.pause()
+                resume = input('Transfer the plate to the thermocycler. Type yes to resume.')
+                if resume == "yes":
+                    print("Resuming protocol")
+                    protocol.resume()
+
+                # Thermocycler Module
+                tc_mod = protocol.load_module('Thermocycler Module')
+                tc_mod.close_lid()
+                tc_mod.set_lid_temperature(105)
+                tc_mod.set_block_temperature(50, hold_time_minutes=45, block_max_volume=15)
+                tc_mod.set_block_temperature(4, hold_time_minutes=2, block_max_volume=30)
+                # Increase the hold time at 4 C if necessary
+                tc_mod.set_lid_temperature(37)
+                tc_mod.open_lid()
 
     final_assembly(final_assembly_dict=final_assembly_dict, tiprack_num=tiprack_num)
 
