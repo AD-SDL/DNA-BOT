@@ -133,13 +133,13 @@ def run(protocol):
         # robot.comment('Remove transformation reactions, conduct heatshock and replace.')
         # API version 2 uses 'protocol.' instead of 'robot.' and combines '.pause' and '.comment'
     def heat_shock():
-        #temp deck Module
-        tempdeck2 = protocol.load_module('temperature module gen2', TEMPDECK_SLOT2)
+        #Thermocycler Module
+        tc_mod = protocol.load_module('Thermocycler Module')
         # Destination Plates
         DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
-        # Loads destination plate onto temperature Module
-        destination_plate = tempdeck2.load_labware(DESTINATION_PLATE_TYPE)
-        tempdeck2.set_temperature(42)
+        # Loads destination plate onto Thermocycler Module
+        destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
+        tc_mod.set_block_temperature(42)
         protocol.pause()
         resume = input('Conduct heat shock for by placing competent cells on tempdeck in slot 4 and resume run.')
         if resume == "yes":
@@ -384,7 +384,6 @@ def run(protocol):
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
     ASSEMBLY_PLATE_SLOT = '8'
     TEMPDECK_SLOT1 = '10'
-    TEMPDECK_SLOT2 = '4'
 
     TRANSFORMATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from 'Eppendorf_30133366_plate_96'
@@ -398,7 +397,7 @@ def run(protocol):
 
     SOC_PLATE_TYPE = 'nest_96_wellplate_2ml_deep'
     # changed from '4ti0136_96_deep-well'
-    SOC_PLATE_SLOT = '7'
+    SOC_PLATE_SLOT = '4' # change this bc thermocycler is assumed to be at 7...
     TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'  # not sure
     # changed from 'tube-rack_E1415-1500'
     TUBE_RACK_SLOT = '1'

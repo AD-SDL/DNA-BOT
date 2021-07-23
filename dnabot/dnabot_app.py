@@ -19,9 +19,9 @@ import shutil
 # Constant str
 TEMPLATE_DIR_NAME = 'template_ot2_scripts'
 CLIP_TEMP_FNAME = 'bio/clip_template_PCR_2.8.py'
-MAGBEAD_TEMP_FNAME = 'purification_template_2.8.py'
+MAGBEAD_TEMP_FNAME = 'bio/purification_template_2.8.py'
 F_ASSEMBLY_TEMP_FNAME = 'bio/assembly_template_2.8.py'
-TRANS_SPOT_TEMP_FNAME = 'transformation_template_2.8_both_pipettes_app.py'
+TRANS_SPOT_TEMP_FNAME = 'bio/transformation_template_2.8_both_pipettes_cli_thermocycler.py'
 CLIP_FNAME = '1_clip.ot2.py'
 MAGBEAD_FNAME = '2_purification.ot2.py'
 F_ASSEMBLY_FNAME = '3_assembly.ot2.py'

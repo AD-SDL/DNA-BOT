@@ -104,7 +104,7 @@ def run(protocol):
                              [assembly_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              [transformation_plate.wells_by_name()[well_name] for well_name in transformation_wells],
                              new_tip='always',
-                             mix_after=(MIX_SETTINGS), trash=False)
+                             mix_after=(MIX_SETTINGS))
 
         # old code:
         # p10_pipette.transfer(ASSEMBLY_VOL,
@@ -115,8 +115,6 @@ def run(protocol):
         # .wells() doesn't take lists as arguements, newer wells_by_name() returns a dictionary
 
         # Incubate for 20 minutes and remove competent cells for heat shock
-        #DEBUG
-        INCUBATION_TIME=1
         protocol.delay(minutes=INCUBATION_TIME)
         # old code:
         # p10_pipette.delay(minutes=INCUBATION_TIME)
@@ -133,13 +131,13 @@ def run(protocol):
         # robot.comment('Remove transformation reactions, conduct heatshock and replace.')
         # API version 2 uses 'protocol.' instead of 'robot.' and combines '.pause' and '.comment'
     def heat_shock():
-        #temp deck Module
-        tempdeck2 = protocol.load_module('temperature module gen2', TEMPDECK_SLOT2)
+        #Thermocycler Module
+        tc_mod = protocol.load_module('Thermocycler Module')
         # Destination Plates
         DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
-        # Loads destination plate onto temperature Module
-        destination_plate = tempdeck2.load_labware(DESTINATION_PLATE_TYPE)
-        tempdeck2.set_temperature(42)
+        # Loads destination plate onto Thermocycler Module
+        destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
+        tc_mod.set_block_temperature(42)
         protocol.pause()
         resume = input('Conduct heat shock for by placing competent cells on tempdeck in slot 4 and resume run.')
         if resume == "yes":
@@ -203,7 +201,7 @@ def run(protocol):
         # p300_pipette.set_flow_rate(aspirate=SOC_ASPIRATION_RATE)
         # flow rates are set directly in API version 2, brackets not required
         p300_pipette.transfer(SOC_VOL, soc, transformation_cols,
-                              new_tip='always', mix_after=SOC_MIX_SETTINGS, trash=False)
+                              new_tip='always', mix_after=SOC_MIX_SETTINGS)
         p300_pipette.flow_rate.aspirate = P300_DEFAULT_ASPIRATION_RATE
         # old code:
         # p300_pipette.set_flow_rate(aspirate=P300_DEFAULT_ASPIRATION_RATE)
@@ -215,8 +213,6 @@ def run(protocol):
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
 
-        # DEBUG
-        OUTGROWTH_TIME = 1
         protocol.delay(minutes=OUTGROWTH_TIME)
         # old code:
         # p300_pipette.delay(minutes=OUTGROWTH_TIME)
@@ -322,8 +318,7 @@ def run(protocol):
             # the simple .blow_out command blows out at current position (spotting waste) by defualt
             # unlike blowout=true in complex commands, which by default will blow out in waste
 
-            #p20_pipette.drop_tip()
-            p20_pipette.return_tip()
+            p20_pipette.drop_tip()
 
         def spot_tuple(spotting_tuple):
             """
@@ -365,8 +360,7 @@ def run(protocol):
                 # .mix only takes one location, not several locations
                 # added [0] to specify only the wells in row A
                 # is identical for the protocol, as this is using a multi-channel pipette
-                #p300_pipette.drop_tip()
-                p300_pipette.return_tip()
+                p300_pipette.drop_tip()
             spot_tuple(spotting_tuple)
 
     ### Run protocol
@@ -384,7 +378,6 @@ def run(protocol):
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
     ASSEMBLY_PLATE_SLOT = '8'
     TEMPDECK_SLOT1 = '10'
-    TEMPDECK_SLOT2 = '4'
 
     TRANSFORMATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from 'Eppendorf_30133366_plate_96'
@@ -398,7 +391,7 @@ def run(protocol):
 
     SOC_PLATE_TYPE = 'nest_96_wellplate_2ml_deep'
     # changed from '4ti0136_96_deep-well'
-    SOC_PLATE_SLOT = '7'
+    SOC_PLATE_SLOT = '4' # change this bc thermocycler is assumed to be at 7...
     TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'  # not sure
     # changed from 'tube-rack_E1415-1500'
     TUBE_RACK_SLOT = '1'
@@ -468,7 +461,7 @@ def run(protocol):
     # changed to protocol.load_labware for API version 2
 
     # Register agar_plate for calibration
-    p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'), trash=False)
+    p20_pipette.transfer(1, agar_plate.wells('A1'), agar_plate.wells('H12'))
 
     # removed:
     # p10_pipette.start_at_tip(p10_tipracks[0][0])
