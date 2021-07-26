@@ -243,11 +243,12 @@ def generate_constructs_list(path):
             linker.
 
             """
-            if len(linker) >= 4:
-                if linker[:3] == 'UTR':
-                    return linker[:4] + '-S'
-            else:
-                return linker + "-S"
+            # if len(linker) >= 4:
+            #     if linker[:3] == 'UTR':
+            #         return linker[:4] + '-S'
+            # else:
+            #     print(linker)
+            return linker + "-S"
 
         clips_info = {'prefixes': [], 'parts': [],
                       'suffixes': []}
@@ -361,6 +362,7 @@ def generate_clips_dict(clips_df, sources_dict):
                   'water_vols': []}
 
     # Generate clips_dict from args
+    print(clips_df)
     try:
         for _, clip_info in clips_df.iterrows():
             prefix_linker = clip_info['prefixes']
@@ -368,16 +370,19 @@ def generate_clips_dict(clips_df, sources_dict):
                                                 * clip_info['number'])
             clips_dict['prefixes_plates'].append(
                 [handle_2_columns(sources_dict[prefix_linker])[2]] * clip_info['number'])
+
             suffix_linker = clip_info['suffixes']
             clips_dict['suffixes_wells'].append([sources_dict[suffix_linker][0]]
                                                 * clip_info['number'])
             clips_dict['suffixes_plates'].append(
                 [handle_2_columns(sources_dict[suffix_linker])[2]] * clip_info['number'])
+
             part = clip_info['parts']
             clips_dict['parts_wells'].append([sources_dict[part][0]]
                                              * clip_info['number'])
             clips_dict['parts_plates'].append([handle_2_columns(sources_dict[part])[2]]
                                               * clip_info['number'])
+
             if not sources_dict[part][1]:
                 clips_dict['parts_vols'].append([DEFAULT_PART_VOL] *
                                                 clip_info['number'])

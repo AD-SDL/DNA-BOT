@@ -15,6 +15,9 @@ clips_dict = {"prefixes_wells": ["A8", "A7", "C5", "C7", "C10"], "prefixes_plate
               "parts_vols": [1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0]}
 
 
+clips_dict={"prefixes_wells": ["A1", "A3", "B1", "B3", "B1", "B3", "A5", "B3", "B3", "A7", "B3", "B3"], "prefixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"], "suffixes_wells": ["A4", "B2", "B4", "A2", "B4", "A2", "A4", "A6", "A6", "A4", "A8", "A8"], "suffixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"], "parts_wells": ["B5", "B6", "B7", "B9", "B8", "B10", "B5", "B9", "B10", "B5", "B9", "B10"], "parts_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5", "5"], "parts_vols": [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0]}
+
+
 def run(protocol):
     # added run function for API 2.8
 
@@ -23,7 +26,7 @@ def run(protocol):
     # Tiprack
     tiprack_type = "opentrons_96_tiprack_20ul"
     INITIAL_TIP = 'A1'
-    CANDIDATE_TIPRACK_SLOTS = ['1']
+    CANDIDATE_TIPRACK_SLOTS = ['1', '2']
 
     # Pipettes - pipette instructions in a single location so redefining pipette type is simpler
     PIPETTE_TYPE_multi = 'p20_multi_gen2'

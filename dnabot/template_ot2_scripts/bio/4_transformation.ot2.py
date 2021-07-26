@@ -1,7 +1,11 @@
-# Final version of the assembly template to be used in actual DNA assembly experiment
-# with all the correct labware
-
+# from opentrons import protocol_api, simulate,execute
 import numpy as np
+
+# protocol = execute.get_protocol_api('2.8')
+# protocol.home()
+# Rename to 'purification_template' and paste into 'template_ot2_scripts' folder in DNA-BOT to use
+# replace TRANSFORMATION_PLATE_TYPE and AGAR_PLATE_TYPE with custom labware before use!
+# email leetingan99@gmail.com if there are issues
 
 metadata = {
     'apiLevel': '2.8',
@@ -18,6 +22,10 @@ metadata = {
 # soc_well='A1'
 
 soc_well = 'A1'
+
+
+spotting_tuples=[(('A1', 'B1', 'C1', 'D1', 'E1', 'F1'), ('A1', 'B1', 'C1', 'D1', 'E1', 'F1'), (5, 5, 5, 5, 5, 5))]
+soc_well='A1'
 
 
 def run(protocol):
@@ -126,6 +134,27 @@ def run(protocol):
         # robot.pause()
         # robot.comment('Remove transformation reactions, conduct heatshock and replace.')
         # API version 2 uses 'protocol.' instead of 'robot.' and combines '.pause' and '.comment'
+    def heat_shock():
+        #Thermocycler Module
+        tc_mod = protocol.load_module('Thermocycler Module')
+        # Destination Plates
+        DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
+        # Loads destination plate onto Thermocycler Module
+        destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
+        tc_mod.set_block_temperature(42)
+        protocol.pause()
+        resume = input('Conduct heat shock for by placing competent cells on tempdeck in slot 4 and types yes to resume run.')
+        if resume == "yes":
+            print("Resuming protocol")
+            protocol.resume()
+        protocol.delay(seconds=15)
+        protocol.pause()
+        resume = input('Return Competent cells from tempdeck on slot 4 to tempdeck on slot 10 and types yes to resume run.')
+        if resume == "yes":
+            print("Resuming protocol")
+            protocol.resume()
+        protocol.delay(seconds=120)
+        protocol.delay(seconds=45)
 
     def phase_switch():
         """
@@ -341,8 +370,8 @@ def run(protocol):
     ### Run protocol
     # fix the pipette
     # Constants
-    CANDIDATE_P20_SLOTS = ['9']
-    CANDIDATE_P300_SLOTS = ['2']
+    CANDIDATE_P20_SLOTS = ['9', '6', '5']
+    CANDIDATE_P300_SLOTS = ['2', '3']
     P20_TIPRACK_TYPE = 'opentrons_96_tiprack_20ul'
     # changed from 'tiprack-10ul'
     P300_TIPRACK_TYPE = 'opentrons_96_tiprack_300ul'
@@ -352,7 +381,8 @@ def run(protocol):
     # changed from '4ti-0960_FrameStar'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
     ASSEMBLY_PLATE_SLOT = '8'
-    TEMPDECK_SLOT = '10'
+    TEMPDECK_SLOT1 = '10'
+
     TRANSFORMATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from 'Eppendorf_30133366_plate_96'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
@@ -363,15 +393,14 @@ def run(protocol):
     # custom labware not defined: what plate to change to? why is this plate used?
     # according to add_labware.py, it is a 250ul 96 well plate with spacing identical to the 4ti0960-FrameStar 96 wp
 
-    # Total SOC volume transfered is 125uL *11 columns=1.375 mL
-    # Total SOC volume transfered is 125uL *11 columns=1.375 mL
     SOC_PLATE_TYPE = 'nest_96_wellplate_2ml_deep'
-    SOC_PLATE_SLOT = '7'
-    TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
+    # changed from '4ti0136_96_deep-well'
+    SOC_PLATE_SLOT = '4' # change this bc thermocycler is assumed to be at 7...
+    TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'  # not sure
     # changed from 'tube-rack_E1415-1500'
     TUBE_RACK_SLOT = '1'
     SPOTTING_WASTE_WELL = 'A1'
-    AGAR_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
+    AGAR_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'  # don't have it
     AGAR_PLATE_SLOT = '11'
     # changed from 'Nunc_Omnitray'
     # it is a 1 well plate filled with agar;
@@ -421,9 +450,9 @@ def run(protocol):
 
     assembly_plate = protocol.load_labware(ASSEMBLY_PLATE_TYPE, ASSEMBLY_PLATE_SLOT)
     # changed to protocol.load_labware for API version 2
-    tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT)
+    tempdeck = protocol.load_module('temperature module gen2', TEMPDECK_SLOT1)
     # changed to protocol.load_module for API version 2
-    transformation_plate = tempdeck.load_labware(TRANSFORMATION_PLATE_TYPE, TEMPDECK_SLOT)
+    transformation_plate = tempdeck.load_labware(TRANSFORMATION_PLATE_TYPE, TEMPDECK_SLOT1)
     # changed to protocol.load_labware for API version 2
     # removed share=True, not required in API version 2
     # removed TEMPDECK_SLOT as it is loaded directly onto temperature module
@@ -445,6 +474,7 @@ def run(protocol):
 
     # Run functions
     transformation_setup(generate_transformation_wells(spotting_tuples))
+    heat_shock()
     phase_switch()
     spotting_tuples_cols = [col for cols in spotting_cols(spotting_tuples) for col in cols]
     unique_cols = [col for i, col in enumerate(spotting_tuples_cols) if spotting_tuples_cols.index(col) == i]

@@ -1,0 +1,160 @@
+Load competent cells, uncap and type yes to resume: Remove transformation reactions, conduct heatshock and replace. Type yes to resume: Conduct heat shock for by placing competent cells on tempdeck in slot 4 and types yes to resume run.Return Competent cells from tempdeck on slot 4 to tempdeck on slot 10 and types yes to resume run.Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Type yes to resume: ['1']
+Transferring 1.0 from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 to H12 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11
+	Picking up tip from A1 of Opentrons 96 Tip Rack 20 µL on 9
+	Aspirating 1.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 7.56 uL/sec
+	Dispensing 1.0 uL into H12 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 7.56 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Setting Temperature Module temperature to 4.0 °C (rounded off to nearest integer)
+Pausing robot operation
+Transferring 5.0 from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 8 to A1 of 10 on Temperature Module GEN2 on 10
+	Picking up tip from B1 of Opentrons 96 Tip Rack 20 µL on 9
+	Aspirating 5.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 8 at 7.56 uL/sec
+	Dispensing 5.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from C1 of Opentrons 96 Tip Rack 20 µL on 9
+	Aspirating 5.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 8 at 7.56 uL/sec
+	Dispensing 5.0 uL into B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from D1 of Opentrons 96 Tip Rack 20 µL on 9
+	Aspirating 5.0 uL from C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 8 at 7.56 uL/sec
+	Dispensing 5.0 uL into C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from E1 of Opentrons 96 Tip Rack 20 µL on 9
+	Aspirating 5.0 uL from D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 8 at 7.56 uL/sec
+	Dispensing 5.0 uL into D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from F1 of Opentrons 96 Tip Rack 20 µL on 9
+	Aspirating 5.0 uL from E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 8 at 7.56 uL/sec
+	Dispensing 5.0 uL into E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from G1 of Opentrons 96 Tip Rack 20 µL on 9
+	Aspirating 5.0 uL from F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 8 at 7.56 uL/sec
+	Dispensing 5.0 uL into F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Aspirating 5.0 uL from F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Delaying for 20 minutes and 0.0 seconds
+Pausing robot operation
+Setting Thermocycler well block temperature to 42.0 °C
+Pausing robot operation
+Delaying for 0 minutes and 15.0 seconds
+Pausing robot operation
+Delaying for 2 minutes and 0.0 seconds
+Delaying for 0 minutes and 45.0 seconds
+Pausing robot operation
+Transferring 125.0 from A1 of NEST 96 Deepwell Plate 2mL on 4 to A1 of 10 on Temperature Module GEN2 on 10
+	Picking up tip from A1 of Opentrons 96 Tip Rack 300 µL on 2
+	Aspirating 125.0 uL from A1 of NEST 96 Deepwell Plate 2mL on 4 at 25.0 uL/sec
+	Dispensing 125.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+	Mixing 4 times with a volume of 50.0 ul
+		Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 25.0 uL/sec
+		Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+		Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 25.0 uL/sec
+		Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+		Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 25.0 uL/sec
+		Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+		Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 25.0 uL/sec
+		Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Setting Temperature Module temperature to 37.0 °C (rounded off to nearest integer)
+Delaying for 60 minutes and 0.0 seconds
+Deactivating Temperature Module
+Picking up tip from A2 of Opentrons 96 Tip Rack 300 µL on 2
+Mixing 4 times with a volume of 50.0 ul
+	Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 150.0 uL/sec
+	Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+	Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 150.0 uL/sec
+	Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+	Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 150.0 uL/sec
+	Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+	Aspirating 50.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 150.0 uL/sec
+	Dispensing 50.0 uL into A1 of 10 on Temperature Module GEN2 on 10 at 94.0 uL/sec
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Picking up tip from H1 of Opentrons 96 Tip Rack 20 µL on 9
+Aspirating 7.0 uL from A1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+Dispensing 5.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 0.189 uL/sec
+Dispensing 2.0 uL into A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+Blowing out at A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Picking up tip from A2 of Opentrons 96 Tip Rack 20 µL on 9
+Aspirating 7.0 uL from B1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+Dispensing 5.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 0.189 uL/sec
+Dispensing 2.0 uL into A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+Blowing out at A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Picking up tip from B2 of Opentrons 96 Tip Rack 20 µL on 9
+Aspirating 7.0 uL from C1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+Dispensing 5.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 0.189 uL/sec
+Dispensing 2.0 uL into A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+Blowing out at A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Picking up tip from C2 of Opentrons 96 Tip Rack 20 µL on 9
+Aspirating 7.0 uL from D1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+Dispensing 5.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 0.189 uL/sec
+Dispensing 2.0 uL into A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+Blowing out at A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Picking up tip from D2 of Opentrons 96 Tip Rack 20 µL on 9
+Aspirating 7.0 uL from E1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+Dispensing 5.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 0.189 uL/sec
+Dispensing 2.0 uL into A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+Blowing out at A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Picking up tip from E2 of Opentrons 96 Tip Rack 20 µL on 9
+Aspirating 7.0 uL from F1 of 10 on Temperature Module GEN2 on 10 at 7.56 uL/sec
+Dispensing 5.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 11 at 0.189 uL/sec
+Dispensing 2.0 uL into A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+Blowing out at A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1
+Dropping tip into A1 of Opentrons Fixed Trash on 12

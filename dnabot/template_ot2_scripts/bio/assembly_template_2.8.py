@@ -14,7 +14,7 @@ def run(protocol):
     def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_tiprack_20ul"):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
-                CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '8', '10', '11']
+                CANDIDATE_TIPRACK_SLOTS = ['3']
                 PIPETTE_MOUNT_multi = 'right'
                 PIPETTE_MOUNT_single = 'left'
                 #Plate of sample after  purification

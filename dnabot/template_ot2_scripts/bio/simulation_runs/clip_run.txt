@@ -1,0 +1,503 @@
+Picking up tip from A1 of Opentrons 96 Tip Rack 20 µL on 1
+Transferring 20.0 from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 to A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Aspirating 20.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 20.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0] from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 to A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from B1 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from C1 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from D1 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from E1 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from F1 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from G1 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from H1 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from A2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from B2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from C2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from D2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+	Picking up tip from E2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 7.0 uL from A2 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 3 at 7.56 uL/sec
+	Dispensing 7.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from F2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from G2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from H2 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from A3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from B3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B6 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from C3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B6 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from D3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from E3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from F3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from G3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from H3 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B9 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from A4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B9 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from B4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B1 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from C4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from D4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at E1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from E4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from F4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B10 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from G4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B10 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at F1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from H4 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from A5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from B5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at G1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from C5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A6 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from D5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A6 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B9 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from E5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B9 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at H1 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from F5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A6 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from G5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A6 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B10 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from H5 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B10 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at A2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from A6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from B6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A4 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from C6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B5 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at B2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from D6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from E6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B9 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from F6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B9 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at C2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from G6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B3 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from A8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from H6 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from A8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 3.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.0 from B10 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Picking up tip from A7 of Opentrons 96 Tip Rack 20 µL on 1
+	Aspirating 1.0 uL from B10 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Mixing 4 times with a volume of 5.0 ul
+		Aspirating 5.0 uL from D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Aspirating 5.0 uL from D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+		Dispensing 5.0 uL into D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7 at 7.56 uL/sec
+	Blowing out at D2 of NEST 96 Well Plate 100 µL PCR Full Skirt on Thermocycler Module on 7
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Closing Thermocycler lid
+Setting Thermocycler lid temperature to 105.0 °C
+Thermocycler starting 20 repetitions of cycle composed of the following steps: [{'temperature': 37, 'hold_time_minutes': 2}, {'temperature': 20, 'hold_time_minutes': 1}]
+Setting Thermocycler well block temperature to 60.0 °C with a hold time of 10.0 minutes and 0 seconds
+Setting Thermocycler well block temperature to 4.0 °C with a hold time of 2.0 minutes and 0 seconds
+Setting Thermocycler lid temperature to 37.0 °C
+Opening Thermocycler lid

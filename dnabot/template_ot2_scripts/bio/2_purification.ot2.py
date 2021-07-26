@@ -11,6 +11,10 @@ metadata = {
 sample_number = 5
 ethanol_well = 'A11'
 
+sample_number=12
+ethanol_well='A11'
+
+
 def run(protocol):
     # added run function for API verison 2
 
@@ -50,7 +54,7 @@ def run(protocol):
         # new constant for easier swapping between pipette types
 
         # Tiprack
-        CANDIDATE_TIPRACK_SLOTS = ['3', '6']
+        CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '5']
 
         # Magnetic Module
         MAGDECK_POSITION = 1
@@ -63,7 +67,7 @@ def run(protocol):
 
         # Reagents
         # total ethanol volume is 150uL * 5 columns * 2 washes = 1.5mL
-        REAGENT_CONTAINER_TYPE = '4ti0131_12_reservoir_21000ul'
+        REAGENT_CONTAINER_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
