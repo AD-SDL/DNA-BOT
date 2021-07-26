@@ -1,7 +1,7 @@
-Well,Linker 1,Part 1,Linker 2,Linker 3,Linker 3.5,Part 2,Linker 4,Part 3 test
-A1,L1S-head,pGGAselect,L7P-tail,pRBS,test,mCherry,S-tail,mCherry-test
-B1,L1S-head,pGGAselect,L7P-tail,pRBS,test,GFP,S-tail,GFP-test
-C1,BBa_J23101,pGGAselect,L7P-tail,pRBS,test,mCherry,S-tail,mCherry-test
-D1,BBa_J23101,pGGAselect,L7P-tail,pRBS,test,GFP,S-tail,GFP-test
-E1,BBa_J23105,pGGAselect,L7P-tail,pRBS,test,mCherry,S-tail,mCherry-test
-F1,BBa_J23105,pGGAselect,L7P-tail,pRBS,test,GFP,S-tail,GFP-test
+Well,Linker 1,Part 1,Linker 2,Part 2
+A1,L1S-head-S-tail,pGGAselect,L7P-tail-pRBS,mCherry
+B1,L1S-head-S-tail,pGGAselect,L7P-tail-pRBS,GFP
+C1,BBa_J23101-S-tail,pGGAselect,L7P-tail-pRBS,mCherry
+D1,BBa_J23101-S-tail,pGGAselect,L7P-tail-pRBS,GFP
+E1,BBa_J23105-S-tail,pGGAselect,L7P-tail-pRBS,mCherry
+F1,BBa_J23105-S-tail,pGGAselect,L7P-tail-pRBS,GFP

@@ -370,8 +370,8 @@ def run(protocol):
     ### Run protocol
     # fix the pipette
     # Constants
-    CANDIDATE_P20_SLOTS = ['9', '6', '5']
-    CANDIDATE_P300_SLOTS = ['2', '3']
+    CANDIDATE_P20_SLOTS = ['9']
+    CANDIDATE_P300_SLOTS = ['2']
     P20_TIPRACK_TYPE = 'opentrons_96_tiprack_20ul'
     # changed from 'tiprack-10ul'
     P300_TIPRACK_TYPE = 'opentrons_96_tiprack_300ul'

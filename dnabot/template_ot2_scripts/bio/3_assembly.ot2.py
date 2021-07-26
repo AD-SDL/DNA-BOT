@@ -9,7 +9,7 @@ metadata = {
 'apiLevel': '2.8'
 }
 
-final_assembly_dict={"A1": ["A7", "B7", "C7", "D7"], "B1": ["A7", "B7", "E7", "F7"], "C1": ["G7", "B7", "C7", "H7"], "D1": ["G7", "B7", "E7", "A8"], "E1": ["B8", "B7", "C7", "C8"], "F1": ["B8", "B7", "E7", "D8"]}
+final_assembly_dict={"A1": ["A7", "B7"], "B1": ["A7", "C7"], "C1": ["D7", "E7"], "D1": ["D7", "F7"], "E1": ["G7", "H7"], "F1": ["G7", "A8"]}
 tiprack_num=1
 
 
@@ -18,7 +18,7 @@ def run(protocol):
     def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_tiprack_20ul"):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
-                CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '8', '10', '11']
+                CANDIDATE_TIPRACK_SLOTS = ['3']
                 PIPETTE_MOUNT_multi = 'right'
                 PIPETTE_MOUNT_single = 'left'
                 #Plate of sample after  purification
