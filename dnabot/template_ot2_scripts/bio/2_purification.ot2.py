@@ -67,7 +67,7 @@ def run(protocol):
 
         # Reagents
         # total ethanol volume is 150uL * 5 columns * 2 washes = 1.5mL
-        REAGENT_CONTAINER_TYPE = 'nest_96_wellplate_2ml_deep'
+        REAGENT_CONTAINER_TYPE = '4ti0131_12_reservoir_21000ul'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
@@ -240,9 +240,8 @@ def run(protocol):
 
         # Transfer beads+samples back to magdeck
         for target in range(int(len(samples))):
-            # TODO is the sample too fragile to do touch tip?
             pipette.transfer(total_vol, mixing[target], samples[target], blow_out=True,
-                             blowout_location='destination well', touch_tip=True)
+                             blowout_location='destination well')
             # added blowout_location=destination well because default location of blowout is waste in API version 2
 
         # Engagae MagDeck and incubate
@@ -255,14 +254,13 @@ def run(protocol):
         # Remove supernatant from magnetic beads
         for target in samples:
             pipette.transfer(total_vol, target, liquid_waste,
-                             blow_out=True, blowout_location="destination well",
-                             touch_tip=True)
+                             blow_out=True, blowout_location="destination well")
 
         # Wash beads twice with 70% ethanol
         air_vol = pipette.max_volume * AIR_VOL_COEFF
         for cycle in range(2):
             for target in samples:
-                pipette.transfer(ETHANOL_VOL, ethanol, target, air_gap=air_vol, touch_tip=True)
+                pipette.transfer(ETHANOL_VOL, ethanol, target, air_gap=air_vol)
             protocol.delay(minutes=WASH_TIME)
             # old code:
             # pipette.delay(minutes=WASH_TIME)
