@@ -136,7 +136,7 @@ def run(protocol):
         # API version 2 uses 'protocol.' instead of 'robot.' and combines '.pause' and '.comment'
     def heat_shock():
         #Thermocycler Module
-        tc_mod = protocol.load_module('Thermocycler Module')
+        tc_mod = protocol.load_module('thermocycler module')
         # Destination Plates
         DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
         # Loads destination plate onto Thermocycler Module
@@ -375,13 +375,13 @@ def run(protocol):
     P20_TIPRACK_TYPE = 'opentrons_96_tiprack_20ul'
     # changed from 'tiprack-10ul'
     P300_TIPRACK_TYPE = 'opentrons_96_tiprack_300ul'
-    P20_MOUNT = 'right'
-    P300_MOUNT = 'left'
+    P20_MOUNT = 'left'
+    P300_MOUNT = 'right'
     ASSEMBLY_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from '4ti-0960_FrameStar'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
-    ASSEMBLY_PLATE_SLOT = '8'
-    TEMPDECK_SLOT1 = '10'
+    ASSEMBLY_PLATE_SLOT = '3'
+    TEMPDECK_SLOT1 = '4'
 
     TRANSFORMATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from 'Eppendorf_30133366_plate_96'
@@ -395,13 +395,13 @@ def run(protocol):
 
     SOC_PLATE_TYPE = 'nest_96_wellplate_2ml_deep'
     # changed from '4ti0136_96_deep-well'
-    SOC_PLATE_SLOT = '4' # change this bc thermocycler is assumed to be at 7...
+    SOC_PLATE_SLOT = '5' # change this bc thermocycler is assumed to be at 7...
     TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'  # not sure
     # changed from 'tube-rack_E1415-1500'
     TUBE_RACK_SLOT = '1'
     SPOTTING_WASTE_WELL = 'A1'
     AGAR_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'  # don't have it
-    AGAR_PLATE_SLOT = '11'
+    AGAR_PLATE_SLOT = '6'
     # changed from 'Nunc_Omnitray'
     # it is a 1 well plate filled with agar;
     # but for the Opentron to spot in the locations of a 96 wp, it is defined similar to a 96 wp

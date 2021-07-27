@@ -19,7 +19,7 @@ def run(protocol):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
                 CANDIDATE_TIPRACK_SLOTS = ['3']
-                PIPETTE_MOUNT_single = 'right'
+                PIPETTE_MOUNT_single = 'left'
                 #Plate of sample after  purification
                 MAG_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
                 MAG_PLATE_POSITION = '5'
@@ -91,7 +91,7 @@ def run(protocol):
                     protocol.resume()
 
                 # Thermocycler Module
-                tc_mod = protocol.load_module('Thermocycler Module')
+                tc_mod = protocol.load_module('thermocycler module')
                 tc_mod.close_lid()
                 tc_mod.set_lid_temperature(105)
                 tc_mod.set_block_temperature(50, hold_time_minutes=45, block_max_volume=15)

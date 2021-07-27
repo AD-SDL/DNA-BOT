@@ -89,7 +89,7 @@ def run(protocol):
                     protocol.resume()
 
                 # Thermocycler Module
-                tc_mod = protocol.load_module('Thermocycler Module')
+                tc_mod = protocol.load_module('thermocycler module')
                 tc_mod.close_lid()
                 tc_mod.set_lid_temperature(105)
                 tc_mod.set_block_temperature(50, hold_time_minutes=45, block_max_volume=15)
