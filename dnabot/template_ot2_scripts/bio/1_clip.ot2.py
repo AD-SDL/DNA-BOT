@@ -15,7 +15,11 @@ clips_dict = {"prefixes_wells": ["A8", "A7", "C5", "C7", "C10"], "prefixes_plate
               "parts_vols": [1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0]}
 
 
-clips_dict={"prefixes_wells": ["A1", "A3", "A3", "A5", "A3", "A3", "A7", "A3", "A3"], "prefixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5"], "suffixes_wells": ["A4", "A2", "A2", "A4", "A2", "A2", "A4", "A2", "A2"], "suffixes_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5"], "parts_wells": ["B1", "B2", "B3", "B1", "B2", "B3", "B1", "B2", "B3"], "parts_plates": ["5", "5", "5", "5", "5", "5", "5", "5", "5"], "parts_vols": [1, 1, 1, 1, 1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0, 7.0]}
+clips_dict={"prefixes_wells": ["A1", "A3", "A3", "A5", "A3", "A3", "A7", "A3", "A3"],
+            "prefixes_plates": ["", "", "", "", "", "", "", "", ""],
+            "suffixes_wells": ["A4", "A2", "A2", "A4", "A2", "A2", "A4", "A2", "A2"],
+            "suffixes_plates": ["", "", "", "", "", "", "", "", ""],
+            "parts_wells": ["B1", "B2", "B3", "B1", "B2", "B3", "B1", "B2", "B3"], "parts_plates": ["", "", "", "", "", "", "", "", ""], "parts_vols": [1, 3.4, 1.0, 1, 3.4, 1.0, 1, 3.4, 1.0], "water_vols": [7.0, 4.6, 7.0, 7.0, 4.6, 7.0, 7.0, 4.6, 7.0]}
 
 
 def run(protocol):
@@ -78,6 +82,11 @@ def run(protocol):
             parts_plates,
             parts_vols,
             water_vols):
+        
+        # TODO: hardcoded bc we can't find the bug in DNA-BOT that generates empty plate lists
+        prefixes_plates=len(water_vols)*['2']
+        suffixes_plates=len(water_vols)*['2']
+        parts_plates=len(water_vols)*['2']
 
         ### Loading Tiprack
         # Calculates whether one, two, or three tipracks are needed, which are in slots 3, 6, and 9 respectively

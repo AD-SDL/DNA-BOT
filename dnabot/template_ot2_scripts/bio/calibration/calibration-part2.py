@@ -9,22 +9,24 @@ metadata = {
 
 
 def run(protocol):
-    tipracks_20 = [protocol.load_labware("opentrons_96_tiprack_20ul", 3)]
+    tipracks_300 = [protocol.load_labware("opentrons_96_tiprack_300ul", 3)]
 
-    pipette_20 = protocol.load_instrument("p20_single_gen2", mount="right", tip_racks=tipracks_20)
+    pipette_300 = protocol.load_instrument("p300_multi_gen2", mount="left", tip_racks=tipracks_300)
 
-    well_plate = protocol.load_labware("nest_96_wellplate_100ul_pcr_full_skirt", 6)
-    tube_rack = protocol.load_labware("opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap", 2)
+    trough = protocol.load_labware("4ti0131_12_reservoir_21000ul", 6)
+    deep_well = protocol.load_labware("nest_96_wellplate_2ml_deep", 2)
 
-    MAGDECK = protocol.load_module('magnetic module gen2', 1)
-    mag_plate = MAGDECK.load_labware("nest_96_wellplate_100ul_pcr_full_skirt")
+    TEMPDECK = protocol.load_module('temperature module gen2', 1)
+    THERMOCYCLER = protocol.load_module('Thermocycler Module') # default 10/7/11/8 slots
+    temp_plate = TEMPDECK.load_labware("nest_96_wellplate_100ul_pcr_full_skirt")
+    tc_plate = THERMOCYCLER.load_labware("nest_96_wellplate_100ul_pcr_full_skirt")
 
-    pipette_20.pick_up_tip()
-    pipette_20.aspirate(1, tube_rack.wells_by_name()['A1'])
-    pipette_20.dispense(1, well_plate.wells_by_name()['A1'])
-    pipette_20.return_tip()
+    pipette_300.pick_up_tip()
+    pipette_300.aspirate(1, deep_well.wells_by_name()['A1'])
+    pipette_300.dispense(1, tc_plate.wells_by_name()['A1'])
+    pipette_300.return_tip()
 
-    pipette_20.pick_up_tip()
-    pipette_20.aspirate(1, tube_rack.wells_by_name()['A1'])
-    pipette_20.dispense(1, mag_plate.wells_by_name()['A1'])
-    pipette_20.return_tip()
+    pipette_300.pick_up_tip()
+    pipette_300.aspirate(1, trough.wells_by_name()['A1'])
+    pipette_300.dispense(1, temp_plate.wells_by_name()['A1'])
+    pipette_300.return_tip()

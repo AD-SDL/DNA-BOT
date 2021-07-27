@@ -1,23 +1,23 @@
 Transfer the plate to the thermocycler. Type yes to resume.Setting Temperature Module temperature to 20.0 °C (rounded off to nearest integer)
-Transferring 9.0 from A3 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 to A1 of 4 on Temperature Module GEN2 on 4
+Transferring 12.0 from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 to A1 of 4 on Temperature Module GEN2 on 4
 	Picking up tip from A1 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 9.0 uL from A3 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
-	Dispensing 9.0 uL into A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Aspirating 12.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+	Dispensing 12.0 uL into A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at A1 of 4 on Temperature Module GEN2 on 4
-	Aspirating 9.0 uL from A3 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
-	Dispensing 9.0 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Aspirating 12.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+	Dispensing 12.0 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at B1 of 4 on Temperature Module GEN2 on 4
-	Aspirating 9.0 uL from A3 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
-	Dispensing 9.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Aspirating 12.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+	Dispensing 12.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at C1 of 4 on Temperature Module GEN2 on 4
-	Aspirating 9.0 uL from A3 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
-	Dispensing 9.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Aspirating 12.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+	Dispensing 12.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at D1 of 4 on Temperature Module GEN2 on 4
-	Aspirating 9.0 uL from A3 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
-	Dispensing 9.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Aspirating 12.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+	Dispensing 12.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at E1 of 4 on Temperature Module GEN2 on 4
-	Aspirating 9.0 uL from A3 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
-	Dispensing 9.0 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Aspirating 12.0 uL from A1 of Opentrons 24 Tube Rack with Eppendorf 1.5 mL Safe-Lock Snapcap on 1 at 7.56 uL/sec
+	Dispensing 12.0 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at F1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
 Transferring 1.5 from A7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A1 of 4 on Temperature Module GEN2 on 4
@@ -38,26 +38,8 @@ Transferring 1.5 from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A1
 		Dispensing 3.0 uL into A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at A1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from D1 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at A1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from D7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to A1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from E1 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from D7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into A1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at A1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
 Transferring 1.5 from A7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from F1 of Opentrons 96 Tip Rack 20 µL on 3
+	Picking up tip from D1 of Opentrons 96 Tip Rack 20 µL on 3
 	Aspirating 1.5 uL from A7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
 	Dispensing 1.5 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Mixing 1 times with a volume of 3.0 ul
@@ -65,171 +47,81 @@ Transferring 1.5 from A7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1
 		Dispensing 3.0 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Blowing out at B1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of 4 on Temperature Module GEN2 on 4
+Transferring 1.5 from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of 4 on Temperature Module GEN2 on 4
+	Picking up tip from E1 of Opentrons 96 Tip Rack 20 µL on 3
+	Aspirating 1.5 uL from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.5 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at B1 of 4 on Temperature Module GEN2 on 4
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.5 from D7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of 4 on Temperature Module GEN2 on 4
+	Picking up tip from F1 of Opentrons 96 Tip Rack 20 µL on 3
+	Aspirating 1.5 uL from D7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.5 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at C1 of 4 on Temperature Module GEN2 on 4
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.5 from E7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of 4 on Temperature Module GEN2 on 4
 	Picking up tip from G1 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at B1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from E7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from H1 of Opentrons 96 Tip Rack 20 µL on 3
 	Aspirating 1.5 uL from E7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Dispensing 1.5 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at B1 of 4 on Temperature Module GEN2 on 4
+		Aspirating 3.0 uL from C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at C1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from F7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to B1 of 4 on Temperature Module GEN2 on 4
+Transferring 1.5 from D7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of 4 on Temperature Module GEN2 on 4
+	Picking up tip from H1 of Opentrons 96 Tip Rack 20 µL on 3
+	Aspirating 1.5 uL from D7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
+	Dispensing 1.5 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Mixing 1 times with a volume of 3.0 ul
+		Aspirating 3.0 uL from D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at D1 of 4 on Temperature Module GEN2 on 4
+	Dropping tip into A1 of Opentrons Fixed Trash on 12
+Transferring 1.5 from F7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of 4 on Temperature Module GEN2 on 4
 	Picking up tip from A2 of Opentrons 96 Tip Rack 20 µL on 3
 	Aspirating 1.5 uL from F7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Dispensing 1.5 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into B1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at B1 of 4 on Temperature Module GEN2 on 4
+		Aspirating 3.0 uL from D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at D1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from G7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of 4 on Temperature Module GEN2 on 4
+Transferring 1.5 from G7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of 4 on Temperature Module GEN2 on 4
 	Picking up tip from B2 of Opentrons 96 Tip Rack 20 µL on 3
 	Aspirating 1.5 uL from G7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Dispensing 1.5 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at C1 of 4 on Temperature Module GEN2 on 4
+		Aspirating 3.0 uL from E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at E1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of 4 on Temperature Module GEN2 on 4
+Transferring 1.5 from H7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of 4 on Temperature Module GEN2 on 4
 	Picking up tip from C2 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at C1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from D2 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at C1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from H7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to C1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from E2 of Opentrons 96 Tip Rack 20 µL on 3
 	Aspirating 1.5 uL from H7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Dispensing 1.5 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into C1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at C1 of 4 on Temperature Module GEN2 on 4
+		Aspirating 3.0 uL from E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at E1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from G7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from F2 of Opentrons 96 Tip Rack 20 µL on 3
+Transferring 1.5 from G7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of 4 on Temperature Module GEN2 on 4
+	Picking up tip from D2 of Opentrons 96 Tip Rack 20 µL on 3
 	Aspirating 1.5 uL from G7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Dispensing 1.5 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at D1 of 4 on Temperature Module GEN2 on 4
+		Aspirating 3.0 uL from F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+		Dispensing 3.0 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
+	Blowing out at F1 of 4 on Temperature Module GEN2 on 4
 	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from G2 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at D1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from E7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from H2 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from E7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at D1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from A8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to D1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from A3 of Opentrons 96 Tip Rack 20 µL on 3
+Transferring 1.5 from A8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of 4 on Temperature Module GEN2 on 4
+	Picking up tip from E2 of Opentrons 96 Tip Rack 20 µL on 3
 	Aspirating 1.5 uL from A8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into D1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at D1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from B8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from B3 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from B8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at E1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from C3 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at E1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from D3 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from C7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at E1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from C8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to E1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from E3 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from C8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into E1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at E1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from B8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from F3 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from B8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at F1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from G3 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from B7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at F1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from E7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from H3 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from E7 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
-	Dispensing 1.5 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Mixing 1 times with a volume of 3.0 ul
-		Aspirating 3.0 uL from F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-		Dispensing 3.0 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
-	Blowing out at F1 of 4 on Temperature Module GEN2 on 4
-	Dropping tip into A1 of Opentrons Fixed Trash on 12
-Transferring 1.5 from D8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 to F1 of 4 on Temperature Module GEN2 on 4
-	Picking up tip from A4 of Opentrons 96 Tip Rack 20 µL on 3
-	Aspirating 1.5 uL from D8 of NEST 96 Well Plate 100 µL PCR Full Skirt on 5 at 7.56 uL/sec
 	Dispensing 1.5 uL into F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec
 	Mixing 1 times with a volume of 3.0 ul
 		Aspirating 3.0 uL from F1 of 4 on Temperature Module GEN2 on 4 at 7.56 uL/sec

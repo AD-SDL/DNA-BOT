@@ -19,8 +19,7 @@ def run(protocol):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
                 CANDIDATE_TIPRACK_SLOTS = ['3']
-                PIPETTE_MOUNT_multi = 'right'
-                PIPETTE_MOUNT_single = 'left'
+                PIPETTE_MOUNT_single = 'right'
                 #Plate of sample after  purification
                 MAG_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
                 MAG_PLATE_POSITION = '5'
@@ -47,7 +46,6 @@ def run(protocol):
                     raise ValueError('Final assembly nummber cannot exceed 96.')
 
                 pipette_single = protocol.load_instrument('p20_single_gen2', PIPETTE_MOUNT_single, tip_racks=tipracks)
-                pipette_multi = protocol.load_instrument('p20_multi_gen2', PIPETTE_MOUNT_multi, tip_racks=tipracks)#old code: pipette = instruments.P10_Single(mount=PIPETTE_MOUNT, tip_racks=tipracks)
                 # Define Labware and set temperature
                 magbead_plate = protocol.load_labware(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
                #old code: magbead_plate = labware.load(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
@@ -67,7 +65,7 @@ def run(protocol):
                 unique_assemblies_lens = list(set(final_assembly_lens))
                 master_mix_well_letters = ['A', 'B', 'C', 'D']
                 for x in unique_assemblies_lens:
-                    master_mix_well = master_mix_well_letters[(x - 1) // 6] + str(x - 1) # A4
+                    master_mix_well = master_mix_well_letters[(x - 1) // 6] + str(x - 1)
                     destination_inds = [i for i, lens in enumerate(final_assembly_lens) if lens == x]
                     destination_wells = np.array([key for key, value in list(final_assembly_dict.items())])
                     destination_wells = list(destination_wells[destination_inds])

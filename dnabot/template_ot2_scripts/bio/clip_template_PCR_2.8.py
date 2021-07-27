@@ -26,18 +26,13 @@ def run(protocol):
     CANDIDATE_TIPRACK_SLOTS = ['1']
 
     # Pipettes - pipette instructions in a single location so redefining pipette type is simpler
-    PIPETTE_TYPE_multi = 'p20_multi_gen2'
     # API 2 supports gen_1 pipettes like the p10_single
-    PIPETTE_MOUNT_multi = 'right'
     ### Load Pipette
     # checks if it's a P20 Multi pipette
-    if PIPETTE_TYPE_multi != 'p20_multi_gen2':
-        print('Define labware must be changed to use', PIPETTE_TYPE_multi)
-        exit()
 
 
     PIPETTE_TYPE_single = 'p20_single_gen2'
-    PIPETTE_MOUNT_single = 'left'
+    PIPETTE_MOUNT_single = 'right'
     ### Load Pipette
     # checks if it's a P20 Single pipette
     if PIPETTE_TYPE_single != 'p20_single_gen2':
@@ -46,7 +41,7 @@ def run(protocol):
 
     # Thermocycler Module
     DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
-    tc_mod = protocol.load_module('Thermocycler Module')
+    tc_mod = protocol.load_module('thermocycler module')
     # Loads destination plate onto Thermocycler Module
     destination_plate = tc_mod.load_labware(DESTINATION_PLATE_TYPE)
 
@@ -75,6 +70,11 @@ def run(protocol):
             parts_plates,
             parts_vols,
             water_vols):
+
+        # TODO: hardcoded bc we can't find the bug in DNA-BOT that generates empty plate lists
+        prefixes_plates=len(water_vols)*['2']
+        suffixes_plates=len(water_vols)*['2']
+        parts_plates=len(water_vols)*['2']
 
         ### Loading Tiprack
         # Calculates whether one, two, or three tipracks are needed, which are in slots 3, 6, and 9 respectively
