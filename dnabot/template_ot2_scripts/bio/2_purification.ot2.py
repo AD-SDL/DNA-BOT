@@ -54,7 +54,7 @@ def run(protocol):
         # new constant for easier swapping between pipette types
 
         # Tiprack
-        CANDIDATE_TIPRACK_SLOTS = ['3', '6']
+        CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '5']
 
         # Magnetic Module
         MAGDECK_POSITION = 1
@@ -67,7 +67,7 @@ def run(protocol):
 
         # Reagents
         # total ethanol volume is 150uL * 5 columns * 2 washes = 1.5mL
-        REAGENT_CONTAINER_TYPE = '4ti0131_12_reservoir_21000ul'
+        REAGENT_CONTAINER_TYPE = 'nest_96_wellplate_2ml_deep'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         REAGENT_CONTAINER_POSITION = '7'
 
@@ -101,12 +101,9 @@ def run(protocol):
         ### Loading Tiprack
 
         # Calculates whether one/two/three/four/five tipracks are needed, which are in slots 3, 6, 9, 2, and 5 respectively
-        total_tips = sample_number * TIPS_PER_SAMPLE
-        tiprack_num = total_tips // 96 + (1 if total_tips % 96 > 0 else 0)
-        slots = CANDIDATE_TIPRACK_SLOTS[:tiprack_num]
-        tipracks = [protocol.load_labware(tiprack_type, slot) for slot in slots]
+        # Simplify calculation of tipracks...
+        tipracks = [protocol.load_labware(tiprack_type, slot) for slot in CANDIDATE_TIPRACK_SLOTS]
         # changed to protocol.load_labware for API version 2
-
         ### Loading Pipettes
 
         pipette = protocol.load_instrument(PIPETTE_TYPE, mount="left", tip_racks=tipracks)
