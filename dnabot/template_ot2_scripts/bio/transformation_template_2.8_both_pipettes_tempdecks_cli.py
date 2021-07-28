@@ -112,20 +112,27 @@ def run(protocol):
 
         # Incubate for 20 minutes and remove competent cells for heat shock
         protocol.delay(minutes=INCUBATION_TIME)
-        # old code:
-        # p10_pipette.delay(minutes=INCUBATION_TIME)
-        # API version 2 no longer has .delay() for pipettes, it uses protocol.delay() to pause the entire protocol
-
+    def heat_shock():
+        #Thermocycler Module
+        tempdeck2 = protocol.load_module('temperature module gen2', 10)
+        # Destination Plates
+        DESTINATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
+        # Loads destination plate onto Thermocycler Module
+        destination_plate = tempdeck2.load_labware(DESTINATION_PLATE_TYPE)
+        tempdeck2.set_temperature(42)
         protocol.pause()
-        resume = input("Remove transformation reactions, conduct heatshock and replace. Type yes to resume: ")
+        resume = input('Conduct heat shock for by placing competent cells on tempdeck in slot 10 and types yes to resume run.')
         if resume == "yes":
             print("Resuming protocol")
             protocol.resume()
-
-        # old code:
-        # robot.pause()
-        # robot.comment('Remove transformation reactions, conduct heatshock and replace.')
-        # API version 2 uses 'protocol.' instead of 'robot.' and combines '.pause' and '.comment'
+        protocol.delay(seconds=15)
+        protocol.pause()
+        resume = input('Return Competent cells from tempdeck on slot 10 to tempdeck on slot 1 and types yes to resume run.')
+        if resume == "yes":
+            print("Resuming protocol")
+            protocol.resume()
+        protocol.delay(seconds=120)
+        protocol.delay(seconds=45)
 
     def phase_switch():
         """
@@ -352,7 +359,7 @@ def run(protocol):
     # changed from '4ti-0960_FrameStar'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
     ASSEMBLY_PLATE_SLOT = '8'
-    TEMPDECK_SLOT = '10'
+    TEMPDECK_SLOT = '1'
     TRANSFORMATION_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     # changed from 'Eppendorf_30133366_plate_96'
     # was previously defined in add.labware.py, API version 2 doesn't support labware.create anymore
@@ -366,10 +373,10 @@ def run(protocol):
     # Total SOC volume transfered is 125uL *11 columns=1.375 mL
     # Total SOC volume transfered is 125uL *11 columns=1.375 mL
     SOC_PLATE_TYPE = 'nest_96_wellplate_2ml_deep'
-    SOC_PLATE_SLOT = '7'
+    SOC_PLATE_SLOT = '5'
     TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
     # changed from 'tube-rack_E1415-1500'
-    TUBE_RACK_SLOT = '1'
+    TUBE_RACK_SLOT = '4'
     SPOTTING_WASTE_WELL = 'A1'
     AGAR_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
     AGAR_PLATE_SLOT = '11'
@@ -445,6 +452,7 @@ def run(protocol):
 
     # Run functions
     transformation_setup(generate_transformation_wells(spotting_tuples))
+    heat_shock()
     phase_switch()
     spotting_tuples_cols = [col for cols in spotting_cols(spotting_tuples) for col in cols]
     unique_cols = [col for i, col in enumerate(spotting_tuples_cols) if spotting_tuples_cols.index(col) == i]

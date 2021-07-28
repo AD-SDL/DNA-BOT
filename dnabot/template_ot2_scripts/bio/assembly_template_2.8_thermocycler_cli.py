@@ -15,8 +15,8 @@ def run(protocol):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
                 CANDIDATE_TIPRACK_SLOTS = ['3']
-                PIPETTE_MOUNT_multi = 'right'
-                PIPETTE_MOUNT_single = 'left'
+                PIPETTE_MOUNT_multi = 'left'
+                PIPETTE_MOUNT_single = 'right'
                 #Plate of sample after  purification
                 MAG_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
                 MAG_PLATE_POSITION = '5'

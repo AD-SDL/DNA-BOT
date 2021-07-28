@@ -54,7 +54,7 @@ def run(protocol):
         # new constant for easier swapping between pipette types
 
         # Tiprack
-        CANDIDATE_TIPRACK_SLOTS = ['3', '6', '9', '2', '5']
+        CANDIDATE_TIPRACK_SLOTS = ['3', '6']
 
         # Magnetic Module
         MAGDECK_POSITION = 1
@@ -76,6 +76,7 @@ def run(protocol):
         BEAD_CONTAINER_TYPE = 'nest_96_wellplate_2ml_deep'
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         # old plate type was '4ti0136_96_deep-well'
+        BEAD_CONTAINER_POSITION = '8'
         BEAD_CONTAINER_POSITION = '8'
 
         # Settings
@@ -104,6 +105,7 @@ def run(protocol):
         # Simplify calculation of tipracks...
         tipracks = [protocol.load_labware(tiprack_type, slot) for slot in CANDIDATE_TIPRACK_SLOTS]
         # changed to protocol.load_labware for API version 2
+
         ### Loading Pipettes
 
         pipette = protocol.load_instrument(PIPETTE_TYPE, mount="left", tip_racks=tipracks)

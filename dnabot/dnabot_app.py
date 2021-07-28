@@ -21,7 +21,7 @@ TEMPLATE_DIR_NAME = 'template_ot2_scripts'
 CLIP_TEMP_FNAME = 'bio/clip_template_PCR_2.8.py'
 MAGBEAD_TEMP_FNAME = 'bio/purification_template_2.8.py'
 F_ASSEMBLY_TEMP_FNAME = 'bio/assembly_template_2.8_thermocycler_cli.py'
-TRANS_SPOT_TEMP_FNAME = 'bio/transformation_template_2.8_both_pipettes_thermocycler_cli.py'
+TRANS_SPOT_TEMP_FNAME = 'bio/transformation_template_2.8_both_pipettes_tempdecks_cli.py'
 CLIP_FNAME = '1_clip.ot2.py'
 MAGBEAD_FNAME = '2_purification.ot2.py'
 F_ASSEMBLY_FNAME = '3_assembly.ot2.py'
@@ -363,6 +363,7 @@ def generate_clips_dict(clips_df, sources_dict):
 
     # Generate clips_dict from args
     print(clips_df)
+    print(sources_dict)
     try:
         for _, clip_info in clips_df.iterrows():
             prefix_linker = clip_info['prefixes']
@@ -542,9 +543,10 @@ def generate_sources_paths_df(paths, deck_positions):
     """
     source_plates_dict = {'Deck position': [], 'Source plate': [], 'Path': []}
     for index, path in enumerate(paths):
-        source_plates_dict['Deck position'].append(SOURCE_DECK_POS[index])
+        source_plates_dict['Deck position'].append(deck_positions[index])
         source_plates_dict['Source plate'].append(os.path.basename(path))
         source_plates_dict['Path'].append(path)
+    print(source_plates_dict['Deck position'])
     return pd.DataFrame(source_plates_dict)
 
 
