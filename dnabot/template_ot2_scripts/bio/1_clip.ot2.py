@@ -184,6 +184,13 @@ def run(protocol):
     tc_mod.execute_profile(steps=profile, repetitions=20, block_max_volume=30)
     tc_mod.set_block_temperature(60, hold_time_minutes=10, block_max_volume=30)
     tc_mod.set_block_temperature(4, hold_time_minutes=2, block_max_volume=30)
+
+    #TODO
+    #DEBUG REMOVE BEFORE ACTUAL BIO RUN
+    tc_mod.execute_profile(steps=profile, repetitions=1, block_max_volume=30)
+    tc_mod.set_block_temperature(60, hold_time_minutes=1, block_max_volume=30)
+    tc_mod.set_block_temperature(4, hold_time_minutes=1, block_max_volume=30)
+
     # Q Does block_max_volume define total volume in block or individual wells?
     tc_mod.set_lid_temperature(37)
     tc_mod.open_lid()

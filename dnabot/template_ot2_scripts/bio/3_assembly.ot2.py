@@ -98,6 +98,11 @@ def run(protocol):
                 tc_mod.set_lid_temperature(105)
                 tc_mod.set_block_temperature(50, hold_time_minutes=45, block_max_volume=15)
                 tc_mod.set_block_temperature(4, hold_time_minutes=2, block_max_volume=30)
+
+                #TODO
+                #DEBUG REMOVE BEFORE BIO RUN
+                tc_mod.set_block_temperature(1, hold_time_minutes=45, block_max_volume=15)
+                tc_mod.set_block_temperature(1, hold_time_minutes=2, block_max_volume=30)
                 # Increase the hold time at 4 C if necessary
                 tc_mod.set_lid_temperature(37)
                 tc_mod.open_lid()
