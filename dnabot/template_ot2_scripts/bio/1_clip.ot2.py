@@ -15,7 +15,14 @@ clips_dict = {"prefixes_wells": ["A8", "A7", "C5", "C7", "C10"], "prefixes_plate
               "parts_vols": [1, 1, 1, 1, 1], "water_vols": [7.0, 7.0, 7.0, 7.0, 7.0]}
 
 
-clips_dict={"prefixes_wells": ["A1", "A3", "A3", "A5", "A3", "A3", "A7", "A3", "A3"], "prefixes_plates": ["", "", "", "", "", "", "", "", ""], "suffixes_wells": ["A4", "A2", "A2", "A4", "A2", "A2", "A4", "A2", "A2"], "suffixes_plates": ["", "", "", "", "", "", "", "", ""], "parts_wells": ["B1", "B2", "B3", "B1", "B2", "B3", "B1", "B2", "B3"], "parts_plates": ["", "", "", "", "", "", "", "", ""], "parts_vols": [2.7, 3.4, 1.0, 2.7, 3.4, 1.0, 2.7, 3.4, 1.0], "water_vols": [5.3, 4.6, 7.0, 5.3, 4.6, 7.0, 5.3, 4.6, 7.0]}
+clips_dict={"prefixes_wells": ["A1", "A3", "A3", "A5", "A3", "A3", "A7", "A3", "A3"],
+            "prefixes_plates": ["", "", "", "", "", "", "", "", ""],
+            "suffixes_wells": ["A4", "A2", "A2", "A4", "A2", "A2", "A4", "A2", "A2"],
+            "suffixes_plates": ["", "", "", "", "", "", "", "", ""],
+            "parts_wells": ["B1", "B2", "B3", "B1", "B2", "B3", "B1", "B2", "B3"],
+            "parts_plates": ["", "", "", "", "", "", "", "", ""],
+            "parts_vols": [2.7, 3.4, 1.0, 2.7, 3.4, 1.0, 2.7, 3.4, 1.0],
+            "water_vols": [5.3, 4.6, 7.0, 5.3, 4.6, 7.0, 5.3, 4.6, 7.0]}
 
 
 def run(protocol):
@@ -155,11 +162,11 @@ def run(protocol):
 
 
         for clip_num in range(len(parts_wells)):
-            pipette_single.transfer(1, source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
+            pipette_single.transfer(5, source_plates[prefixes_plates[clip_num]].wells_by_name()[prefixes_wells[clip_num]],
                                     destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
                                     mix_after=LINKER_MIX_SETTINGS)
 
-            pipette_single.transfer(1, source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
+            pipette_single.transfer(5, source_plates[suffixes_plates[clip_num]].wells_by_name()[suffixes_wells[clip_num]],
                                     destination_wells[clip_num], blow_out=True, blowout_location='destination well', new_tip='always',
                                     mix_after=LINKER_MIX_SETTINGS)
 
@@ -184,12 +191,6 @@ def run(protocol):
     tc_mod.execute_profile(steps=profile, repetitions=20, block_max_volume=30)
     tc_mod.set_block_temperature(60, hold_time_minutes=10, block_max_volume=30)
     tc_mod.set_block_temperature(4, hold_time_minutes=2, block_max_volume=30)
-
-    #TODO
-    #DEBUG REMOVE BEFORE ACTUAL BIO RUN
-    tc_mod.execute_profile(steps=profile, repetitions=1, block_max_volume=30)
-    tc_mod.set_block_temperature(60, hold_time_minutes=1, block_max_volume=30)
-    tc_mod.set_block_temperature(4, hold_time_minutes=1, block_max_volume=30)
 
     # Q Does block_max_volume define total volume in block or individual wells?
     tc_mod.set_lid_temperature(37)

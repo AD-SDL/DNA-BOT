@@ -37,13 +37,6 @@ def run(protocol):
             sample_offset=0,
             tiprack_type="opentrons_96_tiprack_300ul"):
 
-        #TODO
-        #DEBUG REMOVE BEFORE BIO RUN
-        incubation_time = 0.1
-        settling_time = 0.1
-        drying_time = 0.1
-        elution_time = 0.1
-
         """
         Selected args:
             ethanol_well (str): well in reagent container containing ethanol.

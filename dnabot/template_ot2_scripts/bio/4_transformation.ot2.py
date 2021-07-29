@@ -84,10 +84,6 @@ def run(protocol):
         MIX_SETTINGS = (4, 5)  # Mix after setting during final assembly transfers.
         INCUBATION_TIME = 20  # Cells and final assembly incubation time.
 
-        #TODO
-        #DEBUG REMOVE BEFORE BIO RUN
-        INCUBATION_TIME = 20
-
         # Set temperature deck to 4 °C and load competent cells
         tempdeck.set_temperature(TEMP)
         # removed: tempdeck.wait_for_temp()
@@ -202,9 +198,6 @@ def run(protocol):
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
 
-        #TODO
-        # DEBUG REMOVE BEFORE BIO RUN
-        OUTGROWTH_TIME = 1
         protocol.delay(minutes=OUTGROWTH_TIME)
         # old code:
         # p300_pipette.delay(minutes=OUTGROWTH_TIME)
