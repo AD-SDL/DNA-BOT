@@ -22,11 +22,11 @@ def run(protocol):
                 MAG_PLATE_POSITION = '5'
                 #Tuberack
                 TUBE_RACK_TYPE = 'opentrons_24_tuberack_eppendorf_1.5ml_safelock_snapcap'
-                TUBE_RACK_POSITION = '1' #moved bc thermocycler is in 7
+                TUBE_RACK_POSITION = '4' #moved bc thermocycler is in 7
                 #Destination plate
                 DESTINATION_PLATE_TYPE = 'opentrons_96_aluminumblock_nest_wellplate_100ul'
                 #Temperature control plate
-                TEMPDECK_SLOT = '4'
+                TEMPDECK_SLOT = '1'
                 TEMP = 20
                 TOTAL_VOL = 15
                 PART_VOL = 1.5
