@@ -20,10 +20,6 @@ metadata = {
 soc_well = 'A1'
 
 
-spotting_tuples=[(('A1', 'B1', 'C1', 'D1', 'E1', 'F1'), ('A1', 'B1', 'C1', 'D1', 'E1', 'F1'), (5, 5, 5, 5, 5, 5))]
-soc_well='A1'
-
-
 def run(protocol):
     # added run function for API version 2
 
@@ -90,11 +86,7 @@ def run(protocol):
         # removed: tempdeck.wait_for_temp()
         # API version2 automatically pauses execution until the set temperature is reached
         # thus it no longer uses .wait_for_temp()
-        protocol.pause()
-        resume = input("Load competent cells, uncap and type yes to resume: ")
-        if resume == "yes":
-            print("Resuming protocol")
-            protocol.resume()
+        protocol.pause("Load competent cells, uncap and type yes to resume: ")
         # old code:
         # robot.pause()
         # robot.comment('Load competent cells, uncap and resume run')
@@ -124,17 +116,9 @@ def run(protocol):
         # Loads destination plate onto Thermocycler Module
         destination_plate = tempdeck2.load_labware(DESTINATION_PLATE_TYPE)
         tempdeck2.set_temperature(42)
-        protocol.pause()
-        resume = input('Conduct heat shock for by placing competent cells on tempdeck in slot 10 and types yes to resume run.')
-        if resume == "yes":
-            print("Resuming protocol")
-            protocol.resume()
+        protocol.pause('Conduct heat shock for by placing competent cells on tempdeck in slot 10 and types yes to resume run.')
         protocol.delay(seconds=15)
-        protocol.pause()
-        resume = input('Return Competent cells from tempdeck on slot 10 to tempdeck on slot 1 and types yes to resume run.')
-        if resume == "yes":
-            print("Resuming protocol")
-            protocol.resume()
+        protocol.pause('Return Competent cells from tempdeck on slot 10 to tempdeck on slot 1 and types yes to resume run.')
         protocol.delay(seconds=120)
         protocol.delay(seconds=45)
 
@@ -142,11 +126,8 @@ def run(protocol):
         """
         Function pauses run enabling addition/removal of labware.
         """
-        protocol.pause()
-        resume = input("Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Type yes to resume: ")
-        if resume == "yes":
-            print("Resuming protocol")
-            protocol.resume()
+        protocol.pause("Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Type yes to resume: ")
+
 
         # old code:
         # def phase_switch(comment='Remove final assembly plate. Introduce agar tray and deep well plate containing SOC media. Resume run.'):

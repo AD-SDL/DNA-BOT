@@ -9,10 +9,6 @@ metadata = {
 'apiLevel': '2.8'
 }
 
-final_assembly_dict={"A1": ["A7", "B7"], "B1": ["A7", "C7"], "C1": ["D7", "E7"], "D1": ["D7", "F7"], "E1": ["G7", "H7"], "F1": ["G7", "A8"]}
-tiprack_num=1
-
-
 def run(protocol):
 
     def final_assembly(final_assembly_dict, tiprack_num, tiprack_type="opentrons_96_tiprack_20ul"):
@@ -86,11 +82,7 @@ def run(protocol):
 
                 tempdeck.deactivate() #stop increasing the temperature
 
-                protocol.pause()
-                resume = input('Transfer the plate to the thermocycler. Type yes to resume.')
-                if resume == "yes":
-                    print("Resuming protocol")
-                    protocol.resume()
+                protocol.pause('Transfer the plate to the thermocycler. Type yes to resume.')
 
                 # Thermocycler Module
                 tc_mod = protocol.load_module('thermocycler module')

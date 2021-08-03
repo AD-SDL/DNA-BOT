@@ -20,8 +20,8 @@ import shutil
 TEMPLATE_DIR_NAME = 'template_ot2_scripts'
 CLIP_TEMP_FNAME = 'bio/clip_template_PCR_2.8.py'
 MAGBEAD_TEMP_FNAME = 'bio/purification_template_2.8.py'
-F_ASSEMBLY_TEMP_FNAME = 'bio/assembly_template_2.8_thermocycler_cli.py'
-TRANS_SPOT_TEMP_FNAME = 'bio/transformation_template_2.8_both_pipettes_tempdecks_cli.py'
+F_ASSEMBLY_TEMP_FNAME = 'bio/cli/assembly_template_2.8_thermocycler_cli.py'
+TRANS_SPOT_TEMP_FNAME = 'bio/cli/transformation_template_2.8_both_pipettes_tempdecks_cli.py'
 CLIP_FNAME = '1_clip.ot2.py'
 MAGBEAD_FNAME = '2_purification.ot2.py'
 F_ASSEMBLY_FNAME = '3_assembly.ot2.py'
@@ -29,6 +29,12 @@ TRANS_SPOT_FNAME = '4_transformation.ot2.py'
 CLIPS_INFO_FNAME = 'clip_run_info.csv'
 FINAL_ASSEMBLIES_INFO_FNAME = 'final_assembly_run_info.csv'
 WELL_OUTPUT_FNAME = 'wells.txt'
+
+# Toggle to app version here
+# F_ASSEMBLY_TEMP_FNAME = 'bio/app/assembly_template_2.8_thermocycler_app.py'
+# TRANS_SPOT_TEMP_FNAME = 'bio/app/transformation_template_2.8_both_pipettes_tempdecks_app.py'
+# F_ASSEMBLY_FNAME = '3_assembly_app.ot2.py'
+# TRANS_SPOT_FNAME = '4_transformation_app.ot2.py'
 
 # Constant floats/ints
 CLIP_DEAD_VOL = 60

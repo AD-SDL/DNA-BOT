@@ -86,11 +86,7 @@ def run(protocol):
 
                 tempdeck.deactivate() #stop increasing the temperature
 
-                protocol.pause()
-                resume = input('Transfer the plate to the thermocycler. Type yes to resume.')
-                if resume == "yes":
-                    print("Resuming protocol")
-                    protocol.resume()
+                protocol.pause('Transfer the plate to the thermocycler. Type yes to resume.')
 
                 # Thermocycler Module
                 tc_mod = protocol.load_module('thermocycler module')

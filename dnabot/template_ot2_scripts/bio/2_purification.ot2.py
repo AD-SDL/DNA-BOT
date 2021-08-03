@@ -77,7 +77,6 @@ def run(protocol):
         # modified from custom labware as API 2 doesn't support labware.create anymore, so the old add_labware script can't be used
         # old plate type was '4ti0136_96_deep-well'
         BEAD_CONTAINER_POSITION = '8'
-        BEAD_CONTAINER_POSITION = '8'
 
         # Settings
         LIQUID_WASTE_WELL = 'A12'
