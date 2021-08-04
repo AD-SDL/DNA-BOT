@@ -24,9 +24,9 @@ def run(protocol):
     pipette_300.pick_up_tip()
     pipette_300.aspirate(1, deep_well.wells_by_name()['A1'])
     pipette_300.dispense(1, tc_plate.wells_by_name()['A1'])
-    pipette_300.return_tip()
+    pipette_300.drop_tip()
 
     pipette_300.pick_up_tip()
     pipette_300.aspirate(1, trough.wells_by_name()['A1'])
     pipette_300.dispense(1, temp_plate.wells_by_name()['A1'])
-    pipette_300.return_tip()
+    pipette_300.drop_tip()

@@ -43,7 +43,6 @@ def run(protocol):
                     raise ValueError('Final assembly nummber cannot exceed 96.')
 
                 pipette_single = protocol.load_instrument('p20_single_gen2', PIPETTE_MOUNT_single, tip_racks=tipracks)
-                pipette_multi = protocol.load_instrument('p20_multi_gen2', PIPETTE_MOUNT_multi, tip_racks=tipracks)#old code: pipette = instruments.P10_Single(mount=PIPETTE_MOUNT, tip_racks=tipracks)
                 # Define Labware and set temperature
                 magbead_plate = protocol.load_labware(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
                #old code: magbead_plate = labware.load(MAG_PLATE_TYPE, MAG_PLATE_POSITION)
