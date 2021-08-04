@@ -15,7 +15,6 @@ def run(protocol):
                 # Constants, we update all the labware name in version 2
                 #Tiprack
                 CANDIDATE_TIPRACK_SLOTS = ['3']
-                PIPETTE_MOUNT_multi = 'left'
                 PIPETTE_MOUNT_single = 'right'
                 #Plate of sample after  purification
                 MAG_PLATE_TYPE = 'nest_96_wellplate_100ul_pcr_full_skirt'
@@ -54,6 +53,7 @@ def run(protocol):
                 DESTINATION_PLATE_TYPE, TEMPDECK_SLOT)
                 tempdeck.set_temperature(TEMP)
                #old code: destination_plate = labware.load(DESTINATION_PLATE_TYPE, TEMPDECK_SLOT, share=True)tempdeck.set_temperature(TEMP)tempdeck.wait_for_temp()
+                tc_mod = protocol.load_module('thermocycler module')
 
                 # Master mix transfers
                 final_assembly_lens = []
@@ -88,7 +88,6 @@ def run(protocol):
                     protocol.resume()
 
                 # Thermocycler Module
-                tc_mod = protocol.load_module('thermocycler module')
                 tc_mod.close_lid()
                 tc_mod.set_lid_temperature(105)
                 tc_mod.set_block_temperature(50, hold_time_minutes=45, block_max_volume=15)
